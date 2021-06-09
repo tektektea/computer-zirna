@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #f6f6f6;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+table{
+    border-collapse: separate;
+}
+table th{
+    background: #f1f1f1;
+    padding: 0;
+}
+table tr th:first-child{
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+}
+table tr th:last-child{
+    /*border-right: 4px solid #369;*/
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.my-card{
+    border: 1px solid #EAEAEA;
+    padding:28px;
+    margin-bottom:16px;
+    border-radius: 16px;
+    background-color: #fff;
+    box-shadow: 0 10px 12px 0 rgba(0,0,0,0.1);
+}
+
+.ribbon {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+}
+.ribbon::before,
+.ribbon::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 5px solid #2980b9;
+}
+.ribbon span {
+
+    padding: 8px 0;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    font: 700 18px/1 'Lato', sans-serif;
+    text-shadow: 0 1px 1px rgba(0,0,0,.2);
+    text-transform: uppercase;
+    text-align: center;
+}
+/* top right*/
+.ribbon-top-right {
+    top: -10px;
+    right: -10px;
+}
+.ribbon-top-right::before,
+.ribbon-top-right::after {
+    border-top-color: transparent;
+    border-right-color: transparent;
+}
+.ribbon-top-right::before {
+    top: 0;
+    left: 0;
+}
+.ribbon-top-right::after {
+    bottom: 0;
+    right: 0;
+}
+.ribbon-top-right span {
+    left: 0px;
+    top: 45px;
+    transform: rotate(45deg);
+}
+.title{
+    font-size: 24px;
+    font-weight: bold;
+    font-family:lato;
+    margin: 0px 0px 24px 16px;
+}
+.subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Lato;
+    margin: 0px;
+    padding: 0px;
+}
+.label{
+    color: #484848;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 19px;
+    margin:0px;
+}
+.maincontent {
+    padding: 32px 28px;
+    min-height: 100vh;
+    background: #f6f6f6;
+}
+.my-card{
+    flex: 1;
+    padding: 24px;
+    position: relative;
+    border: 1px solid #E0E7F4;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    box-shadow: 0 10px 12px 0 rgba(0,0,0,0.1)
+}
+
+@keyframes updown {
+    0%{
+        transform: translateY(10px);
+    }
+
+    100%{
+        transform: translateY(-100px);
+    }
+}
+@keyframes footeranim {
+    0%{
+        transform: rotate(0deg);
+        color: #484848;
+    }
+
+    100%{
+        transform: rotate(360deg);
+        color: red;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .maincontent {
+        padding: 24px 0px;
+    }
+}
+
+
