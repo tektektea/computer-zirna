@@ -17,7 +17,7 @@ class UserController extends Controller
             if (!$permit) {
                 throw  new \Exception('Permission denied', 403);
             }
-            return $this->handleResponse(User::query()->paginate(), '');
+            return $this->handleResponse(User::query()->where('type','admin')->paginate(), '');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }

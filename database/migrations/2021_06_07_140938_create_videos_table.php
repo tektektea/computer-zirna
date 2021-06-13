@@ -17,7 +17,7 @@ class CreateVideosTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('description')->nullable(true);
-            $table->string('url')->nullable(false);
+            $table->string('video_url')->nullable(false);
             $table->unsignedBigInteger('course_id')->nullable(false);
 
             $table->foreign('course_id')

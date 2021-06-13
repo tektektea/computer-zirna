@@ -49,25 +49,27 @@ const styles = theme => ({
 
 })
 
-const CourseCard = ({classes, course, handleDelete, handleEdit, onClick}) => {
+const CourseCard = ({classes, data,title,description,caption,url, handleDelete, handleEdit, onClick}) => {
 
     return (
         <Card className={classes.root}>
-            <CardActionArea onClick={event => onClick(course)}>
-                <span className={classes.chip}>{course?.title}</span>
+            <CardActionArea onClick={event => onClick(data)}>
+                <span className={classes.chip}>{title}</span>
                 <CardMedia
                     component="img"
-                    alt={course?.title}
+                    alt={data?.name}
                     height="190"
-                    image={course?.url}
-                    title={course?.title}
+                    image={url}
+                    title={title}
                 />
 
                 <CardContent>
-                    <Typography variant={"body2"}>{course?.description}</Typography>
-                    <div>
+                    <Typography style={{fontSize:18}}>{title}</Typography>
+                    <Typography style={{fontSize:16}}>{description}</Typography>
+                    <Typography style={{fontSize:14}}>{caption}</Typography>
+                    <div style={{float:'right',marginBottom:8}}>
                         <IconButton onClick={handleEdit}><Icon>edit</Icon></IconButton>
-                        <IconButton onClick={handleDelete}><Icon>trash</Icon></IconButton>
+                        <IconButton color={"secondary"} onClick={handleDelete}><Icon>delete</Icon></IconButton>
                     </div>
 
                 </CardContent>

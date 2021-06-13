@@ -15,7 +15,7 @@ class VideoController extends Controller
             if (!$permit) {
                 throw  new \Exception('Permission denied', 403);
             }
-            return $this->handleResponse(Video::all(), '');
+            return $this->handleResponse(Video::query()->paginate(), '');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
@@ -28,13 +28,13 @@ class VideoController extends Controller
             if (!$permit) {
                 throw new \Exception('Permission denied', 403);
             }
-            $this->validate($request->only(['title', 'description', 'url','course_id']), [
+            $this->validate($request->only(['title', 'description', 'video_url','course_id']), [
                 'title' => 'required',
-                'url' => 'required',
+                'video_url' => 'required',
                 'course_id'=>'required'
             ]);
-            $course=Video::create($request->only(['title','description','url','course_id']));
-            return $this->handleResponse($course, 'New Video created successfully');
+            $video=Video::create($request->only(['title','description','video_url','course_id']));
+            return $this->handleResponse($video, 'New Video created successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
@@ -62,7 +62,7 @@ class VideoController extends Controller
             return $this->handlingException($exception);
         }
     }
-    public function delete(Request $request,Course $video)
+    public function delete(Request $request,Video $video)
     {
         try {
             $permit=$request->user()->tokenCan('delete:video');

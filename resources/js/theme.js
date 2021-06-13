@@ -79,6 +79,9 @@ theme = {
         MuiFormControlLabel: {
             root: {
                 fontSize: 16
+            },
+            label:{
+                width:120
             }
         },
         MuiPaper: {},
@@ -221,6 +224,7 @@ theme = {
                 padding: 24
             }
         },
+
     },
 
 

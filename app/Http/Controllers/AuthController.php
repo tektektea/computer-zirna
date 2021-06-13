@@ -19,16 +19,16 @@ class AuthController extends Controller
             $this->validate($request->only(['email', 'password', 'phone_no']), [
                 'email' => 'required|email|unique:users',
                 'password' => 'required|min:6',
-                'phone_no'=>'required|digit:10'
+                'phone_no' => 'required|digit:10'
             ]);
 
-            $user=User::create([
+            $user = User::create([
                 'phone_no' => $request->get('phone_no'),
                 'name' => $request->get('name'),
                 'email' => $request->get('email'),
                 'password' => Hash::make($request->get('password'))
             ]);
-            $token = $user->createToken('access-token',PermissionUtil::userPerms());
+            $token = $user->createToken('access-token', PermissionUtil::userPerms());
             Auth::login($user);
             return $this->handleResponse([
                 'token' => $token
@@ -52,18 +52,20 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         try {
-            if (!Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('password')]))
+
+            if (!Auth::attempt([
+                'email' => $request->get('email'),
+                'password' => $request->get('password')
+            ]))
                 throw new Exception(Lang::get('Invalid credential'), 400);
 
             $user = Auth::user();
 
-            $perms=$user->type === 'ADMIN' ? PermissionUtil::adminPerms() : PermissionUtil::userPerms();
+            $perms = $user->type === 'admin' ? PermissionUtil::adminPerms() : PermissionUtil::userPerms();
 
-            $token = $user->createToken('access-token',$perms)->plainTextToken;
-            return $this->handleResponse([
-                'logged'=>true,
-                'token' => $token
-            ],'');
+            $token = $user->createToken('access-token', $perms)->plainTextToken;
+            return $this->handleResponse(
+                $token, '');
 
         } catch (\Exception $exception) {
             return $this->handlingException($exception);

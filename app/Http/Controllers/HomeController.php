@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function homeimages(Request $request)
     {
         $items = [
             ['title' => 'Image1 title image',
@@ -20,5 +21,10 @@ class HomeController extends Controller
                 'image_path' => Storage::disk('public')->get('/images/tech3.jpg')]
         ];
         return $this->handleResponse($items, '');
+    }
+
+    public function ads(Request $request)
+    {
+
     }
 }

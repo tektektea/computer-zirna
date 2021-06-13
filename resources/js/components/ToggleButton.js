@@ -15,7 +15,7 @@ const styles = theme => ({
         borderRight: `3px solid ${theme.palette.primary.light} !important`,
     }
 })
-const ToggleButton = ({classes, primaryText,secondaryText,route, ...rest}) => {
+const ToggleButton = ({classes,icon, primaryText,secondaryText,route, ...rest}) => {
     const [checked, setChecked] = React.useState(false);
     const history = useHistory();
     const handleClick=e=>{
@@ -23,7 +23,7 @@ const ToggleButton = ({classes, primaryText,secondaryText,route, ...rest}) => {
     }
     return (
         <ListItem onClick={handleClick} button={true} classes={classes}>
-            <ListItemIcon><Icon>person_outline</Icon></ListItemIcon>
+            <ListItemIcon><Icon>{icon}</Icon></ListItemIcon>
             <ListItemText primary={primaryText} secondary={secondaryText}/>
         </ListItem>
     )

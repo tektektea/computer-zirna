@@ -11,7 +11,7 @@ class Video extends Model
 {
     use SoftDeletes,HasFactory;
 
-    protected $fillable = ['title', 'description', 'url','course_id'];
+    protected $fillable = ['title', 'description', 'video_url','course_id'];
 
     public function course(): BelongsTo
     {

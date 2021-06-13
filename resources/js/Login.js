@@ -3,6 +3,10 @@ import {Button, FormLabel, Grid, TextField, Typography, withStyles} from "@mater
 import {useHistory} from 'react-router-dom';
 import * as yup from 'yup';
 import {useFormik} from "formik";
+import {ADMIN_LOGIN_API} from "./utils/ApiRoutes";
+import {AppContext} from "./context/AppContextProvider";
+import {LOGIN, MESSAGE} from "./utils/Action";
+import {Alert} from "@material-ui/lab";
 
 const styles = theme => ({
     title: {
@@ -50,7 +54,7 @@ const loginSchema = yup.object().shape({
 
 
 const Login = ({classes, submit}) => {
-
+    const [state,dispatch] = React.useContext(AppContext);
     const history = useHistory();
     const {handleSubmit, handleChange, handleBlur, touched, values, errors} = useFormik({
         initialValues: {
@@ -58,8 +62,28 @@ const Login = ({classes, submit}) => {
             password: ""
         },
         validationSchema: loginSchema,
+
         onSubmit(values, e) {
-            // doLogin(values.email, values.password,history);
+            axios.post(ADMIN_LOGIN_API,values)
+                .then(res=>{
+                    dispatch({
+                        type: LOGIN,
+                        payload:res.data.data
+                    })
+                    history.push("/admin")
+
+                })
+                .catch(err=>{
+                    const errMsg = !!err.response ? err.response.data.error : err.toString();
+                    console.log('error',errMsg)
+                    dispatch({
+                        type: MESSAGE,
+                        payload:{
+                            message_type: 'error',
+                            message:errMsg
+                        }
+                    })
+                })
         }
     });
 
@@ -67,6 +91,10 @@ const Login = ({classes, submit}) => {
         history.push('/forgot-password');
     }
 
+    React.useEffect(()=>{
+        console.log('state ',state)
+        console.log('dispatch ',dispatch)
+    },[])
     return (
 
             <Grid style={{height:'100vh'}} container={true} justify={"center"} alignContent={"center"} alignItems={"center"}>
@@ -80,6 +108,11 @@ const Login = ({classes, submit}) => {
                                 <Typography className={classes.subtitle} variant={"h3"}>Mizoram Computer zirna </Typography>
                             </Grid>
                             <Grid container={true} direction={"column"} style={{width: 350}} spacing={2}>
+
+                                <Grid item={true}>
+                                    {Boolean(state?.message) && <Alert severity={state?.message_type}>{state?.message}</Alert>}
+                                </Grid>
+
                                 <Grid item={true}>
                                     <FormLabel>Email</FormLabel>
                                 </Grid>

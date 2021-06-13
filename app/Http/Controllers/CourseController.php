@@ -27,11 +27,12 @@ class CourseController extends Controller
             if (!$permit) {
                 throw new \Exception('Permission denied', 403);
             }
-            $this->validate($request->only(['title', 'description', 'price']), [
-                'title' => 'required',
+            $this->validate($request->only(['name', 'description','intro_url', 'price']), [
+                'name' => 'required',
+                'intro_url' => 'required',
                 'price' => 'required|numeric'
             ]);
-            $course=Course::create($request->only(['title','description','price']));
+            $course=Course::create($request->only(['name','description','intro_url','price']));
             return $this->handleResponse($course, 'Course created successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);

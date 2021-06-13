@@ -15,6 +15,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore'
 import {useHistory} from "react-router-dom";
 import Hidden from "@material-ui/core/Hidden";
 import ToggleButton from "../components/ToggleButton";
+import {LOGOUT_API} from "../utils/ApiRoutes";
 
 
 const styles = theme => ({
@@ -57,11 +58,22 @@ const AdminMenu = {
         {key: 'public_account', label: 'Public account', active: false},
     ]
 }
+const AppMenu = {
+    id: 'app',
+    label: 'App config',
+    icon: 'manage_accounts',
+    open: false,
+    items: [
+        {key: 'corousel', label: 'Corousel', active: true},
+        {key: 'banner', label: 'Banner', active: false},
+    ]
+}
 
 
-const Nav = ({classes,mobile,toggleDrawer}) => {
+const Nav = ({classes, mobile, toggleDrawer}) => {
     const history = useHistory();
     const [adminMenu, setAdminMenu] = React.useState(AdminMenu);
+    const [appMenu, setAppMenu] = React.useState(AppMenu);
 
     const [selectedMenu, setSelectedMenu] = React.useState('dashboard');
     const handleAdminMenuItem = (index, key) => {
@@ -89,15 +101,60 @@ const Nav = ({classes,mobile,toggleDrawer}) => {
             toggleDrawer(!mobile)
         }
     };
-    const handleAdminMenu = item => setAdminMenu(prevState => ({...prevState, open: !item.open}))
+    const handleAppMenuItem = (index, key) => {
+        let temp = appMenu.items;
+        const selectedItem = appMenu.items[index];
+        selectedItem.active = !selectedItem.active;
+        temp[index] = selectedItem;
 
-    const handleMenu=name=>{
+        setAppMenu(prevState => ({
+            ...prevState, items: temp
+        }))
+        switch (index) {
+            //Documents
+            case 0:
+                history.push('/admin/app/corousel')
+                break;
+            //verify
+            case 1:
+                history.push('/admin/app/banner')
+                break;
+            default:
+                break;
+        }
+        if (mobile) {
+            toggleDrawer(!mobile)
+        }
+    };
+    const handleAdminMenu = item => setAdminMenu(prevState => ({...prevState, open: !item.open}))
+    const handleAppMenu = item => setAppMenu(prevState => ({...prevState, open: !item.open}))
+
+    const handleMenu = name => {
         switch (name) {
             case 'courses':
                 history.push('/admin/courses');
                 break;
+            case 'videos':
+                history.push('/admin/videos');
+                break;
+            case 'media':
+                history.push('/admin/media');
+                break;
+            case 'users':
+                history.push('/admin/users');
+                break;
+            case 'subscriptions':
+                history.push('/admin/subscriptions');
+                break;
         }
         setSelectedMenu('name');
+    }
+    const doLogout=()=>{
+        axios.post(LOGOUT_API)
+            .then(res=>{
+                window.location.replace('/')
+            })
+
     }
     return (
         <List
@@ -115,18 +172,20 @@ const Nav = ({classes,mobile,toggleDrawer}) => {
                     <Typography>CZ</Typography>
                 </ListItem>
             </Hidden>
-            <ToggleButton route={'/admin/dashboard'} primaryText={"Dashboard"} secondaryText={''}/>
+            <ToggleButton icon={'dashboard'} route={'/admin/dashboard'} primaryText={"Dashboard"} secondaryText={''}/>
             <Divider light={true}/>
             <ListItem divider={true} onClick={event => {
                 if (mobile) {
                     toggleDrawer(!mobile)
                 }
+                handleMenu('videos')
             }} button={true}>
                 <ListItemIcon>
                     <Icon>camera</Icon>
                 </ListItemIcon>
                 <ListItemText primary={"Videos"}/>
             </ListItem>
+
             <ListItem divider={true} onClick={event => {
                 if (mobile) {
                     toggleDrawer(!mobile)
@@ -139,7 +198,59 @@ const Nav = ({classes,mobile,toggleDrawer}) => {
                 <ListItemText primary={"Courses"}/>
             </ListItem>
 
+            <ListItem divider={true} onClick={event => {
+                if (mobile) {
+                    toggleDrawer(!mobile)
+                }
+                handleMenu('media')
+            }} button={true}>
+                <ListItemIcon>
+                    <Icon>view_sidebar</Icon>
+                </ListItemIcon>
+                <ListItemText primary={"Media"}/>
+            </ListItem>
+            <ListItem divider={true} onClick={event => {
+                if (mobile) {
+                    toggleDrawer(!mobile)
+                }
+                handleMenu('subscriptions')
+            }} button={true}>
+                <ListItemIcon>
+                    <Icon>view_sidebar</Icon>
+                </ListItemIcon>
+                <ListItemText primary={"Subscriptions"}/>
+            </ListItem>
             <br/>
+            <List>
+                <Typography className={classes.menuTitle} paragraph={true}>APPS</Typography>
+                <ListItem className={classes.nav} button={true} onClick={event => handleAppMenu(appMenu)}>
+                    <ListItemIcon style={{marginRight: 1}}>
+                        <Icon fontSize={"small"}>{appMenu.icon}</Icon>
+                    </ListItemIcon>
+                    <ListItemText primary={appMenu.label}/>
+                    {appMenu.open ? <ExpandLess/> : <ExpandMore/>}
+                </ListItem>
+                <Collapse in={appMenu.open} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        {appMenu.items.map((child, index) =>
+
+                            <ListItem key={index} button
+                                      onClick={event => {
+                                          if (mobile) {
+                                              toggleDrawer(!mobile)
+                                          }
+                                          handleAppMenuItem(index,child.key)
+                                      }}>
+                                <ListItemIcon>
+                                    <Icon>navigate_next</Icon>
+                                </ListItemIcon>
+                                <ListItemText primary={child.label}/>
+                            </ListItem>
+                        )}
+                    </List>
+                </Collapse>
+
+            </List>
             <List>
                 <Typography className={classes.menuTitle} paragraph={true}>ADMINISTRATION</Typography>
                 <ListItem className={classes.nav} button={true} onClick={event => handleAdminMenu(adminMenu)}>
@@ -154,7 +265,12 @@ const Nav = ({classes,mobile,toggleDrawer}) => {
                         {adminMenu.items.map((child, index) =>
 
                             <ListItem key={index} button
-                                      onClick={event => handleAdminMenuItem(index, child.key)}>
+                                      onClick={event => {
+                                          if (mobile) {
+                                              toggleDrawer(!mobile)
+                                          }
+                                          handleMenu('users')}
+                                      }>
                                 <ListItemIcon>
                                     <Icon>navigate_next</Icon>
                                 </ListItemIcon>
@@ -166,9 +282,10 @@ const Nav = ({classes,mobile,toggleDrawer}) => {
 
             </List>
 
+
             <Divider light={true}/>
             <ListItem onClick={event => {
-                // doLogout()
+                doLogout()
                 if (mobile) {
                     toggleDrawer(!mobile)
                 }

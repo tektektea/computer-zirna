@@ -1,21 +1,34 @@
 import React, { useReducer, createContext } from "react";
+import {GET_PUBLIC_DATA, LOADING, LOGIN, LOGOUT, MESSAGE} from "../utils/Action";
 
 // Create Context Object
-export const AppContext = createContext({});
 
 const initState = {
     message:'',
     message_type: '',
-    loading:false
+    loading:false,
+    courses:[]
 };
 
+export const AppContext = createContext({});
+
 const reducer = (state, action) => {
-    switch (action.type) {
-        case "SET_MESSAGE":
+    const {type, payload} = action;
+    switch (type) {
+        case MESSAGE:
             const {message, message_type} = action.payload;
             return {...state,message,message_type};
-        case "LOADING":
+        case LOADING:
             return {...state,loading:action.payload}
+        case LOGIN:
+            localStorage.setItem('token', payload);
+            axios.defaults.headers['Authorization'] = `Bearer ${payload}`;
+            return {...state,token:payload}
+        case LOGOUT:
+            localStorage.removeItem('token');
+            return {...state,token:false}
+        case GET_PUBLIC_DATA:
+            return {...state,courses: payload?.courses}
         default:
             return state;
     }

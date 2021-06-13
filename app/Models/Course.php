@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Course extends Model
 {
     use SoftDeletes,HasFactory;
-    protected $fillable=['title','description','price'];
+    protected $fillable=['name','description','price','intro_url'];
 
     public function videos(): HasMany
     {
