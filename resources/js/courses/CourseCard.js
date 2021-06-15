@@ -2,11 +2,10 @@ import React from "react";
 import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import CardActionArea from '@material-ui/core/CardActionArea'
-import CardMedia from '@material-ui/core/CardMedia'
 import withStyles from '@material-ui/core/styles/withStyles'
-import IconButton from "@material-ui/core/IconButton";
-import Icon from "@material-ui/core/Icon";
+import Button from "@material-ui/core/Button";
+import {CardActions} from "@material-ui/core";
+import ReactPlayer from "react-player";
 
 
 const styles = theme => ({
@@ -49,32 +48,34 @@ const styles = theme => ({
 
 })
 
-const CourseCard = ({classes, data,title,description,caption,url, handleDelete, handleEdit, onClick}) => {
+const CourseCard = ({classes, course, handleDelete, handleEdit, onClick}) => {
 
     return (
         <Card className={classes.root}>
-            <CardActionArea onClick={event => onClick(data)}>
-                <span className={classes.chip}>{title}</span>
-                <CardMedia
-                    component="img"
-                    alt={data?.name}
-                    height="190"
-                    image={url}
-                    title={title}
-                />
+            <span className={classes.chip}>{new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR'
+            }).format(course?.price)}</span>
+            <ReactPlayer
+                className='react-player'
+                url={course?.intro_url}
+                width='120'
+                height='120'
+            />
 
-                <CardContent>
-                    <Typography style={{fontSize:18}}>{title}</Typography>
-                    <Typography style={{fontSize:16}}>{description}</Typography>
-                    <Typography style={{fontSize:14}}>{caption}</Typography>
-                    <div style={{float:'right',marginBottom:8}}>
-                        <IconButton onClick={handleEdit}><Icon>edit</Icon></IconButton>
-                        <IconButton color={"secondary"} onClick={handleDelete}><Icon>delete</Icon></IconButton>
-                    </div>
+            <CardContent>
+                <Typography style={{fontSize: 16}}>{new Intl.NumberFormat('en-IN', {
+                    style: 'currency',
+                    currency: 'INR'
+                }).format(course?.price)}</Typography>
+                <Typography style={{fontSize: 14}}>{course?.name}</Typography>
+                <Typography style={{fontSize: 12}}>{course?.description}</Typography>
+            </CardContent>
 
-                </CardContent>
-
-            </CardActionArea>
+            <CardActions style={{padding:4}}>
+                    <Button onClick={handleEdit}>edit</Button>
+                    <Button color={"secondary"} onClick={handleDelete}>delete</Button>
+            </CardActions>
 
         </Card>
     )

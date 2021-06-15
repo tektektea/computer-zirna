@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OtpController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -32,15 +33,17 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::group(['prefix' => 'courses', 'middleware' => 'auth:sanctum'], function () {
     Route::get('index', [CourseController::class, 'all']);
+    Route::get('{course}/show', [CourseController::class, 'show']);
     Route::post('create', [CourseController::class, 'create']);
     Route::delete('{course}', [CourseController::class, 'delete']);
     Route::put('{course}', [CourseController::class, 'update']);
 });
 Route::group(['prefix' => 'videos','middleware' => 'auth:sanctum'], function () {
-    Route::get('index', [VideoController::class, 'all']);
+    Route::get('all', [VideoController::class, 'all']);
+    Route::get('index', [VideoController::class, 'index']);
     Route::post('create', [VideoController::class, 'create']);
-    Route::delete('{video}/delete', [VideoController::class, 'delete']);
-    Route::put('{video}/update', [VideoController::class, 'update']);
+    Route::delete('{video}', [VideoController::class, 'delete']);
+    Route::put('{video}', [VideoController::class, 'update']);
 });
 Route::group(['prefix' => 'admin','middleware' => 'auth:sanctum'], function () {
     Route::get('index', [UserController::class, 'all']);
@@ -54,5 +57,10 @@ Route::group(['prefix' => 'media', 'middleware' => 'auth:sanctum'], function () 
     Route::delete('{media}', [MediaController::class, 'delete']);
 });
 
+Route::group(['prefix' => 'setting', 'middleware' => 'auth:sanctum'], function () {
+    Route::post('corousel/change', [SettingController::class, 'changeCorousel']);
+});
+
 
 Route::get('public/data',[PublicController::class,'getPublicData']);
+

@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
     video_url: Yup.string()
         .required('Video url is required'),
 });
-const CreateDialog = ({video,createVideo, open, onClose, ...rest}) => {
+const EditDialog = ({video,updateVideo, open, onClose, ...rest}) => {
     const [state, dispatch] = React.useContext(AppContext);
     const {handleChange, errors, values, touched, handleSubmit} = useFormik({
         initialValues: {
@@ -30,7 +30,7 @@ const CreateDialog = ({video,createVideo, open, onClose, ...rest}) => {
         },
         validationSchema,
         onSubmit(values) {
-            createVideo(values);
+            updateVideo(values);
             onClose();
         }
     });
@@ -40,9 +40,8 @@ const CreateDialog = ({video,createVideo, open, onClose, ...rest}) => {
     }, [])
     return (
         <Dialog {...rest} fullWidth={true} maxWidth={"sm"} open={open} onClose={onClose}>
+            <form onSubmit={handleSubmit}>
             <DialogContent>
-                <form onSubmit={handleSubmit}>
-
                     <Grid container={true} spacing={1}>
                         <Grid item={true} xs={12}>
                             <CardHeader style={{padding: 0}} title={'New video'}
@@ -61,6 +60,7 @@ const CreateDialog = ({video,createVideo, open, onClose, ...rest}) => {
                                        placeholder={""}
                                        required={true}
                                        name={'title'}
+                                       value={values?.title}
                                        onChange={handleChange}
                                        error={touched?.title && errors?.title}
                                        helperText={touched?.title && errors?.title}
@@ -76,6 +76,7 @@ const CreateDialog = ({video,createVideo, open, onClose, ...rest}) => {
                                        label={"Description"}
                                        placeholder={"Description of the course"}
                                        name={'description'}
+                                       value={values?.description}
                                        onChange={handleChange}
                             />
                         </Grid>
@@ -87,6 +88,7 @@ const CreateDialog = ({video,createVideo, open, onClose, ...rest}) => {
                                        placeholder={"https://www/youtube.com/vdfdfadf"}
                                        required={true}
                                        name={'video_url'}
+                                       value={values?.video_url}
                                        onChange={handleChange}
                                        error={touched?.video_url && errors?.video_url}
                                        helperText={touched?.video_url && errors?.video_url}
@@ -96,15 +98,15 @@ const CreateDialog = ({video,createVideo, open, onClose, ...rest}) => {
 
 
                     </Grid>
-                </form>
             </DialogContent>
 
             <DialogActions>
-                <Button onClick={handleSubmit} variant={"contained"} color={"primary"}>Save</Button>
+                <Button onClick={handleSubmit} variant={"contained"} color={"primary"}>Update</Button>
                 <Button onClick={onClose} variant={"outlined"} color={"secondary"}>Cancel</Button>
             </DialogActions>
-        </Dialog>
+        </form>
+</Dialog>
     )
 }
 
-export default CreateDialog;
+export default EditDialog;

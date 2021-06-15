@@ -125,6 +125,7 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
         if (mobile) {
             toggleDrawer(!mobile)
         }
+        setSelectedMenu(key)
     };
     const handleAdminMenu = item => setAdminMenu(prevState => ({...prevState, open: !item.open}))
     const handleAppMenu = item => setAppMenu(prevState => ({...prevState, open: !item.open}))
@@ -147,11 +148,11 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                 history.push('/admin/subscriptions');
                 break;
         }
-        setSelectedMenu('name');
+        setSelectedMenu(name);
     }
-    const doLogout=()=>{
+    const doLogout = () => {
         axios.post(LOGOUT_API)
-            .then(res=>{
+            .then(res => {
                 window.location.replace('/')
             })
 
@@ -169,54 +170,66 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                         toggleDrawer(!mobile)
                     }
                 }}>
-                    <Typography>CZ</Typography>
+                    <Typography>COMPUTER ZIRNA</Typography>
                 </ListItem>
             </Hidden>
             <ToggleButton icon={'dashboard'} route={'/admin/dashboard'} primaryText={"Dashboard"} secondaryText={''}/>
             <Divider light={true}/>
-            <ListItem divider={true} onClick={event => {
-                if (mobile) {
-                    toggleDrawer(!mobile)
-                }
-                handleMenu('videos')
-            }} button={true}>
+            <ListItem divider={true}
+                      selected={selectedMenu === 'videos'}
+                      onClick={event => {
+                          if (mobile) {
+                              toggleDrawer(!mobile)
+                          }
+                          handleMenu('videos');
+                          setSelectedMenu('videos')
+                      }} button={true}>
                 <ListItemIcon>
                     <Icon>camera</Icon>
                 </ListItemIcon>
                 <ListItemText primary={"Videos"}/>
             </ListItem>
 
-            <ListItem divider={true} onClick={event => {
-                if (mobile) {
-                    toggleDrawer(!mobile)
-                }
-                handleMenu('courses')
-            }} button={true}>
+            <ListItem divider={true}
+                      selected={selectedMenu === 'courses'}
+                      onClick={event => {
+                          if (mobile) {
+                              toggleDrawer(!mobile)
+                          }
+                          handleMenu('courses')
+                          setSelectedMenu('courses')
+                      }} button={true}>
                 <ListItemIcon>
-                    <Icon>view_sidebar</Icon>
+                    <Icon>sticky_note_2_outlined</Icon>
                 </ListItemIcon>
                 <ListItemText primary={"Courses"}/>
             </ListItem>
 
-            <ListItem divider={true} onClick={event => {
-                if (mobile) {
-                    toggleDrawer(!mobile)
-                }
-                handleMenu('media')
-            }} button={true}>
+            <ListItem divider={true}
+                      selected={selectedMenu === 'media'}
+                      onClick={event => {
+                          if (mobile) {
+                              toggleDrawer(!mobile)
+                          }
+                          handleMenu('media')
+                          setSelectedMenu('media')
+                      }} button={true}>
                 <ListItemIcon>
-                    <Icon>view_sidebar</Icon>
+                    <Icon>image_outlined</Icon>
                 </ListItemIcon>
-                <ListItemText primary={"Media"}/>
+                <ListItemText primary={"Images"}/>
             </ListItem>
-            <ListItem divider={true} onClick={event => {
-                if (mobile) {
-                    toggleDrawer(!mobile)
-                }
-                handleMenu('subscriptions')
-            }} button={true}>
+            <ListItem divider={true}
+                      selected={selectedMenu==='subscriptions'}
+                      onClick={event => {
+                          if (mobile) {
+                              toggleDrawer(!mobile)
+                          }
+                          handleMenu('subscriptions')
+                          setSelectedMenu('subscriptions')
+                      }} button={true}>
                 <ListItemIcon>
-                    <Icon>view_sidebar</Icon>
+                    <Icon>paid_outlined</Icon>
                 </ListItemIcon>
                 <ListItemText primary={"Subscriptions"}/>
             </ListItem>
@@ -235,11 +248,12 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                         {appMenu.items.map((child, index) =>
 
                             <ListItem key={index} button
+                                      selected={selectedMenu === child.key}
                                       onClick={event => {
                                           if (mobile) {
                                               toggleDrawer(!mobile)
                                           }
-                                          handleAppMenuItem(index,child.key)
+                                          handleAppMenuItem(index, child.key)
                                       }}>
                                 <ListItemIcon>
                                     <Icon>navigate_next</Icon>
@@ -269,7 +283,8 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                                           if (mobile) {
                                               toggleDrawer(!mobile)
                                           }
-                                          handleMenu('users')}
+                                          handleMenu('users')
+                                      }
                                       }>
                                 <ListItemIcon>
                                     <Icon>navigate_next</Icon>

@@ -32,7 +32,7 @@ const UploadImageDialog = ({open, onClose, uploadImages}) => {
                                 <div style={{
                                     display: 'flex',
                                     justifyContent: 'center',
-                                    height: 250,
+                                    height: 200,
                                     background: '#f4f4f4'
                                 }} {...getRootProps()}>
                                     <input {...getInputProps()} />
@@ -44,8 +44,11 @@ const UploadImageDialog = ({open, onClose, uploadImages}) => {
                     <Grid container={true} spacing={2} item={true} xs={12}>
                         {Boolean(images) ? images.map((image, index) =>
                                 <div style={{position:'relative'}} key={index}>
-                                    <IconButton style={{position:'absolute',top:0,right:0}}
-                                                onClick={event => removeItem(index)}><Icon>close</Icon></IconButton>
+                                    <IconButton color={"secondary"}
+                                                style={{position:'absolute',top:0,right:0}}
+                                                onClick={event => removeItem(index)}>
+                                        <Icon>close</Icon>
+                                    </IconButton>
                                     <img src={URL.createObjectURL(image)} width={100} height={100}/>
                                 </div>) :
                             <div style={{background: '#f4f4f4', width: 100, height: 100}}/>}
@@ -54,7 +57,11 @@ const UploadImageDialog = ({open, onClose, uploadImages}) => {
 
             </DialogContent>
             <DialogActions>
-                <Button onClick={event => uploadImages(images)} color={"primary"} variant={'contained'}>Upload</Button>
+                <Button onClick={event => uploadImages(images)}
+                        color={"primary"}
+                        variant={'contained'}>
+                    Upload
+                </Button>
                 <Button onClick={event => {
                     setImages([]);
                     onClose()

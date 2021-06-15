@@ -26,6 +26,7 @@
         "@material-ui/lab": "^4.0.0-alpha.58",
         "formik": "^2.2.9",
         "react-dropzone": "^11.3.2",
+        "react-player": "^2.9.0",
         "react-router-dom": "^5.2.0",
         "yup": "^0.32.9"
     }

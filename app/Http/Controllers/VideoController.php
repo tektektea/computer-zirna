@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
-    public function all(Request $request)
+    public function index(Request $request)
     {
         try {
             $permit=$request->user()->tokenCan('view:video');
@@ -16,6 +16,18 @@ class VideoController extends Controller
                 throw  new \Exception('Permission denied', 403);
             }
             return $this->handleResponse(Video::query()->paginate(), '');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
+    public function all(Request $request)
+    {
+        try {
+            $permit=$request->user()->tokenCan('view:video');
+            if (!$permit) {
+                throw  new \Exception('Permission denied', 403);
+            }
+            return $this->handleResponse(Video::all(), '');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
@@ -28,13 +40,12 @@ class VideoController extends Controller
             if (!$permit) {
                 throw new \Exception('Permission denied', 403);
             }
-            $this->validate($request->only(['title', 'description', 'video_url','course_id']), [
+            $this->validate($request->only(['title', 'description', 'video_url']), [
                 'title' => 'required',
                 'video_url' => 'required',
-                'course_id'=>'required'
             ]);
-            $video=Video::create($request->only(['title','description','video_url','course_id']));
-            return $this->handleResponse($video, 'New Video created successfully');
+            $video=Video::create($request->only(['title','description','video_url']));
+            return $this->handleResponse(Video::query()->paginate(12), 'New Video created successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
@@ -71,7 +82,7 @@ class VideoController extends Controller
             }
             $video->delete();
 
-            return $this->handleResponse($video, 'Course delete successfully');
+            return $this->handleResponse(Video::query()->paginate(), 'Course delete successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }

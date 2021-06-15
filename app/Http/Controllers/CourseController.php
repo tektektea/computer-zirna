@@ -3,10 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    public function show(Request $request,Course $course)
+    {
+        try {
+            $permit=$request->user()->tokenCan('view:course');
+            if (!$permit) {
+                throw  new \Exception('Permission denied', 403);
+            }
+            return $this->handleResponse($course->load(['videos']), '');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
     public function all(Request $request)
     {
         try {
@@ -27,12 +40,15 @@ class CourseController extends Controller
             if (!$permit) {
                 throw new \Exception('Permission denied', 403);
             }
-            $this->validate($request->only(['name', 'description','intro_url', 'price']), [
+            $this->validate($request->only(['name', 'description','intro_url', 'price','videos']), [
                 'name' => 'required',
                 'intro_url' => 'required',
-                'price' => 'required|numeric'
+                'price' => 'required|numeric',
+                'videos'=>'required'
             ]);
             $course=Course::create($request->only(['name','description','intro_url','price']));
+            $videos = Video::query()->findMany($request->get('videos'));
+            $course->videos()->saveMany($videos);
             return $this->handleResponse($course, 'Course created successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
@@ -45,14 +61,24 @@ class CourseController extends Controller
             if (!$permit) {
                 throw new \Exception('Permission denied', 403);
             }
-            $this->validate($request->only(['title', 'description', 'price']), [
-                'title' => 'required',
-                'price' => 'required'
+            $this->validate($request->only(['name', 'description','intro_url', 'price','videos']), [
+                'name' => 'required',
+                'intro_url' => 'required',
+                'price' => 'required|numeric',
+                'videos'=>'required'
             ]);
-            $course->title = $request->get('title');
+            $course->name = $request->get('name');
             $course->description = $request->get('description');
             $course->price = $request->get('price');
+            $course->intro_url = $request->get('intro_url');
             $course->save();
+            $ids = $request->get('videos');
+            $videos=Video::query()->findMany($ids);
+            $course->videos()->each(function ($item) {
+                $item->course_id = null;
+                $item->save();
+            });
+            $course->videos()->saveMany($videos);
 
             return $this->handleResponse($course, 'Course updated successfully');
         } catch (\Exception $exception) {
@@ -68,7 +94,7 @@ class CourseController extends Controller
             }
             $course->delete();
 
-            return $this->handleResponse($course, 'Course deleted successfully');
+            return $this->handleResponse(Course::all(), 'Course deleted successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }

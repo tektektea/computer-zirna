@@ -1,5 +1,5 @@
 import React, { useReducer, createContext } from "react";
-import {GET_PUBLIC_DATA, LOADING, LOGIN, LOGOUT, MESSAGE} from "../utils/Action";
+import {GET_PUBLIC_DATA, LOADING, LOGIN, LOGOUT, MESSAGE, SET_COROUSEL} from "../utils/Action";
 
 // Create Context Object
 
@@ -7,7 +7,9 @@ const initState = {
     message:'',
     message_type: '',
     loading:false,
-    courses:[]
+    courses:[],
+    corousel:[],
+    images:[],
 };
 
 export const AppContext = createContext({});
@@ -27,8 +29,10 @@ const reducer = (state, action) => {
         case LOGOUT:
             localStorage.removeItem('token');
             return {...state,token:false}
+        case SET_COROUSEL:
+            return {...state, corousel: payload};
         case GET_PUBLIC_DATA:
-            return {...state,courses: payload?.courses}
+            return {...state,courses: payload?.courses,corousel:payload?.corousel,images: payload?.images}
         default:
             return state;
     }

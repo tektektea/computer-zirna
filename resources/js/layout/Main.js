@@ -14,6 +14,8 @@ import Subscriptions from "../subscription/Subscriptions";
 import Dashboard from "../dashboard/Dashboard";
 import Corousel from "../apps/Corousel";
 import Banner from "../apps/Banner";
+import Create from "../courses/Create";
+import Edit from "../courses/Edit";
 
 
 const drawerWidth = 256;
@@ -72,6 +74,8 @@ const Main=({classes})=>{
                             <Route exact path={'/admin'} component={Dashboard}/>
                             <Route exact path={'/admin/Dashboard'} component={Dashboard}/>
                             <Route exact path={'/admin/courses'} component={Courses}/>
+                            <Route exact path={'/admin/courses/create'} component={Create}/>
+                            <Route exact path={'/admin/courses/:id/edit'} component={Edit}/>
                             <Route exact path={'/admin/videos'} component={Videos}/>
                             <Route exact path={'/admin/media'} component={Images}/>
                             <Route exact path={'/admin/users'} component={Users}/>
