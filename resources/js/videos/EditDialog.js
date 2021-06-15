@@ -22,9 +22,10 @@ const validationSchema = Yup.object().shape({
 });
 const EditDialog = ({video,updateVideo, open, onClose, ...rest}) => {
     const [state, dispatch] = React.useContext(AppContext);
-    const {handleChange, errors, values, touched, handleSubmit} = useFormik({
+    const {handleChange,setValues, errors, values, touched, handleSubmit} = useFormik({
         initialValues: {
-            title: video?.name,
+            id:video?.id,
+            title: video?.title,
             description: video?.description,
             video_url: video?.video_url
         },
@@ -36,15 +37,20 @@ const EditDialog = ({video,updateVideo, open, onClose, ...rest}) => {
     });
 
     React.useEffect(() => {
-        console.log(state);
-    }, [])
+         setValues({
+             id:video?.id,
+             title: video?.title,
+             description: video?.description,
+             video_url: video?.video_url
+         })
+    }, [video])
     return (
         <Dialog {...rest} fullWidth={true} maxWidth={"sm"} open={open} onClose={onClose}>
             <form onSubmit={handleSubmit}>
             <DialogContent>
                     <Grid container={true} spacing={1}>
                         <Grid item={true} xs={12}>
-                            <CardHeader style={{padding: 0}} title={'New video'}
+                            <CardHeader style={{padding: 0}} title={'Edit video'}
                                         action={<IconButton
                                             onClick={event => onClose()}><Icon>close</Icon></IconButton>}/>
                         </Grid>

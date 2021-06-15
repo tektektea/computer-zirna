@@ -36,7 +36,6 @@ const VideoCard = ({classes, video, handleDelete, handleEdit, onClick}) => {
 
     return (
         <Card className={classes.root}>
-            <CardActionArea onClick={event => onClick(video)}>
                 <ReactPlayer
                     className='react-player'
                     url={video?.video_url}
@@ -48,13 +47,11 @@ const VideoCard = ({classes, video, handleDelete, handleEdit, onClick}) => {
                     <Typography style={{fontSize:18}}>{video?.title}</Typography>
                     <Typography style={{fontSize:12}}>{video?.description}</Typography>
                     <div style={{float:'right',marginBottom:8}}>
-                        <Button color={"primary"} onClick={handleEdit}>edit</Button>
+                        <Button color={"primary"} onClick={e=>handleEdit(video)}>edit</Button>
                         <Button color={"secondary"} onClick={e=>handleDelete(video)}>delete</Button>
                     </div>
 
                 </CardContent>
-
-            </CardActionArea>
 
         </Card>
     )

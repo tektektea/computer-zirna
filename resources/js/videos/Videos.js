@@ -44,7 +44,7 @@ const Videos = props => {
             })
     }
 
-    const  handleUpdate=values=>{
+    const handleUpdate = values => {
         axios.put(UPDATE_VIDEO_API(values.id), values)
             .then(res => {
                 setVideos(res.data.data);
@@ -68,7 +68,7 @@ const Videos = props => {
                 })
             })
     }
-    const handleCreate=values=>{
+    const handleCreate = values => {
         axios.post(CREATE_VIDEO_API, values)
             .then(res => {
                 setVideos(res.data.data);
@@ -99,8 +99,7 @@ const Videos = props => {
 
     const handleSearch = e => {
     }
-    const handleCardClick = e => {
-    }
+
     const fetchUsers = (page = 1, search) => {
         // load(true)
         axios.get(FETCH_VIDEO_API, {params: {page, search}})
@@ -139,16 +138,15 @@ const Videos = props => {
 
                     </div>
                 </Grid>
-                {Boolean(videos.data)
+                {Boolean(videos?.data)
                     ?
-                    videos.data.map((item, i) => <Grid key={i} item={true} xs={12} md={3}>
-                        <VideoCard onClick={handleCardClick}
-                                    video={item}
-                                   handleEdit={e=>{
-                                       setSelected(item)
+                    videos?.data.map((item, i) => <Grid key={i} item={true} xs={12} md={3}>
+                        <VideoCard video={item}
+                                   handleEdit={val => {
+                                       setSelected(prev => val)
                                        setEdit(true);
                                    }}
-                                   handleDelete={e=>{
+                                   handleDelete={e => {
                                        setConfirm(true)
                                        setSelected(item?.id)
                                    }}
@@ -161,15 +159,15 @@ const Videos = props => {
                     <Pagination count={Math.floor(videos?.total / videos?.per_page)} onChange={handlePagination}/>
                 </Grid>
 
-                {edit && <EditDialog   updateVideo={handleUpdate}
-                                       video={selected}
-                                       open={edit}
-                                       onClose={() => setEdit(false)}/>}
+                {edit && selected && <EditDialog updateVideo={handleUpdate}
+                                                 video={selected}
+                                                 open={edit}
+                                                 onClose={() => setEdit(false)}/>}
                 {open && <CreateDialog createVideo={handleCreate}
                                        open={open}
                                        onClose={() => setOpen(!open)}/>}
                 {confirm && <ConfirmDialog open={confirm}
-                                           onClose={()=>setConfirm(false)}
+                                           onClose={() => setConfirm(false)}
                                            data={selected}
                                            confirmDelete={handleDelete}/>}
             </Grid>

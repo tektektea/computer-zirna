@@ -105,7 +105,7 @@ const Login = ({classes, submit}) => {
                                 <Typography className={classes.title} variant={"h6"}>Login to</Typography>
                             </Grid>
                             <Grid item={true}>
-                                <Typography className={classes.subtitle} variant={"h3"}>Mizoram Computer zirna </Typography>
+                                <Typography className={classes.subtitle} variant={"h3"}>Mizoram Computer Zirna </Typography>
                             </Grid>
                             <Grid container={true} direction={"column"} style={{width: 350}} spacing={2}>
 
