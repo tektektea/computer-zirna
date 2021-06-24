@@ -60,7 +60,7 @@ Route::group(['prefix' => 'media', 'middleware' => 'auth:sanctum'], function () 
 
 Route::group(['prefix' => 'order', 'middleware' => 'auth:sanctum'], function () {
     Route::get('index', [SubscriptionController::class, 'index']);
-    Route::get('create', [SubscriptionController::class, 'createOrder']);
+    Route::post('create', [SubscriptionController::class, 'createOrder']);
 });
 
 Route::group(['prefix' => 'setting', 'middleware' => 'auth:sanctum'], function () {
