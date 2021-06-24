@@ -6,6 +6,7 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OtpController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
@@ -57,10 +58,17 @@ Route::group(['prefix' => 'media', 'middleware' => 'auth:sanctum'], function () 
     Route::delete('{media}', [MediaController::class, 'delete']);
 });
 
+Route::group(['prefix' => 'order', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('index', [SubscriptionController::class, 'index']);
+    Route::get('create', [SubscriptionController::class, 'createOrder']);
+});
+
 Route::group(['prefix' => 'setting', 'middleware' => 'auth:sanctum'], function () {
     Route::post('corousel/change', [SettingController::class, 'changeCorousel']);
 });
 
 
 Route::get('public/data',[PublicController::class,'getPublicData']);
-
+Route::group(['prefix' => 'profile','middleware' => 'auth:sanctum'], function () {
+    Route::get('me', [AuthController::class, 'me']);
+});

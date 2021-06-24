@@ -17,7 +17,8 @@ class PublicController extends Controller
         return $this->handleResponse([
             'courses' => $courses,
             'corousel' => json_decode($setting->setting, true)['corousel'],
-            'images'=>Media::query()->pluck('url')
+            'images'=>Media::query()->pluck('url'),
+            'toc'=>"1. One \n2.Two \n3.Three"
         ], '');
     }
 }

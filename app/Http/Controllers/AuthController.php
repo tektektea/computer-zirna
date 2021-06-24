@@ -71,4 +71,11 @@ class AuthController extends Controller
             return $this->handlingException($exception);
         }
     }
+
+    public function me(Request $request)
+    {
+
+        $user = $request->user();
+        return $this->handleResponse($user);
+    }
 }
