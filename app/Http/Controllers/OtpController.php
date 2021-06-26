@@ -33,12 +33,15 @@ class OtpController extends Controller
             if ($result['type'] === 'error') {
                 throw new \Exception($result['message'], 400);
             }
-            $user = User::create([
-                'phone_no' => $request->get('phone_no'),
-                'type' => 'appuser'
-            ]);
-            $token = $user->createToken('access-token', PermissionUtil::userPerms());
+            $user=User::phone($request->get('phone_no'))->first();
+            if (!$user) {
+                $user = User::create([
+                    'phone_no' => $request->get('phone_no'),
+                    'type' => 'appuser'
+                ]);
+            }
             Auth::login($user);
+            $token = $user->createToken('access-token', PermissionUtil::userPerms());
 
             return $this->handleResponse($token->plainTextToken, 'Otp verified');
 

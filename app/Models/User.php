@@ -41,6 +41,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+    public function scopePhone($query,$value){
+        return $query->where('phone_no', $value);
+    }
     public function subscriptions(): HasMany
     {
         return $this->hasMany(Subscription::class);
