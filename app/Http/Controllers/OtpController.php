@@ -42,7 +42,6 @@ class OtpController extends Controller
             }
             Auth::login($user);
             $token = $user->createToken('access-token', PermissionUtil::userPerms());
-
             return $this->handleResponse($token->plainTextToken, 'Otp verified');
 
         } catch (\Exception $exception) {

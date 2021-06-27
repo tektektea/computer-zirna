@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubscriptionsTable extends Migration
+class CreateMaterialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateSubscriptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subscriptions', function (Blueprint $table) {
+        Schema::create('materials', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->string('father_name')->nullable();
-            $table->text('address')->nullable();
-            $table->string('order_id');
-            $table->string('receipt');
-            $table->string('status')->default('draft');
+            $table->string("title");
+            $table->text("description")->nullable(true);
+            $table->string('path');
+
+            $table->unsignedBigInteger('course_id');
 
 
             $table->softDeletes();
@@ -35,6 +34,6 @@ class CreateSubscriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subscriptions');
+        Schema::dropIfExists('materials');
     }
 }

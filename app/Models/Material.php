@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Subscription extends Model
+class Material extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $fillable=['user_id','father_name','address','order_id','receipt','status'];
+    protected $fillable = ['title', 'description','path','course_id'];
 
-    public function user(): BelongsTo
+    public function course(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Course::class);
     }
 }
