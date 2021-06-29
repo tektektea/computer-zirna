@@ -6,8 +6,9 @@ import Button from "@material-ui/core/Button";
 
 const Header=props=>{
     return(
-        <AppBar variant={"outlined"}
-                color={"primary"}
+        <AppBar variant={"elevation"}
+                color={"transparent"}
+                elevation={1}
                 position={"sticky"}
         >
             <Container maxWidth={"lg"}>
