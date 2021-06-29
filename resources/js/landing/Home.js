@@ -6,8 +6,14 @@ import {Route} from "react-router-dom";
 import Privacy from "./Privacy";
 import Toc from "./Toc";
 import Login from "../Login";
+import {AppContext} from "../context/AppContextProvider";
+import {getPublicData} from "../utils/Action";
 
 const Home=props=>{
+    const [state, dispatch] = React.useContext(AppContext);
+    React.useEffect(()=>{
+        getPublicData(dispatch)
+    },[])
     return(
         <main>
             <Header/>

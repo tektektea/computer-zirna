@@ -13,7 +13,7 @@ const Content = props => {
     return (
         <Carousel autoPlay>
             {state.corousel?.map((item,key)=><div key={key}>
-                <img alt={item}/>
+                <img src={item}/>
             </div>)}
         </Carousel>
     )
