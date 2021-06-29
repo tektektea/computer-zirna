@@ -39,6 +39,7 @@ const styles = theme => ({
         border: '1px solid #E0E7F4',
         borderRadius: 16,
         backgroundColor: '#FFFFFF',
+        minWidth:400,
         // boxShadow: '0 3px 7px 0 rgba(0,0,0,0.1)'
     }
 })
