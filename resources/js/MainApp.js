@@ -8,6 +8,7 @@ import Login from "./Login";
 import {AppContextProvider} from "./context/AppContextProvider";
 import './index.css';
 import {BASE_URL} from "./utils/ApiRoutes";
+import Home from "./landing/Home";
 
 window.axios = require('axios');
 
@@ -50,7 +51,7 @@ function MainApp() {
                 <BrowserRouter>
                     <Switch>
                         <Route path={'/admin'} component={Main}/>
-                        <Route path={'/'} component={Login}/>
+                        <Route path={'/'} component={Home}/>
                     </Switch>
                 </BrowserRouter>
             </MuiThemeProvider>

@@ -27,6 +27,7 @@
         "formik": "^2.2.9",
         "react-dropzone": "^11.3.2",
         "react-player": "^2.9.0",
+        "react-responsive-carousel": "^3.2.18",
         "react-router-dom": "^5.2.0",
         "yup": "^0.32.9"
     }
