@@ -40,6 +40,7 @@ class SubscriptionController extends Controller
                 ]);
             $result = json_decode($response->body(), true);
 
+            dd($result);
             DB::beginTransaction();
             $currentUser = $request->user();
             $currentUser->name = $request->get('full_name');
