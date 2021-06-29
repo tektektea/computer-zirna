@@ -28,7 +28,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::get('otp/resend', [OtpController::class, 'resend']);
 
     Route::post('admin/login', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 });
 
 
