@@ -17,10 +17,10 @@ class CreateMaterialsTable extends Migration
             $table->bigIncrements('id');
             $table->string("title");
             $table->text("description")->nullable(true);
+            $table->string('mime');
             $table->string('path');
 
-            $table->unsignedBigInteger('course_id');
-
+            $table->unsignedBigInteger('course_id')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

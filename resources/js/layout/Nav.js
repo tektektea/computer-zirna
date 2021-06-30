@@ -144,6 +144,9 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
             case 'users':
                 history.push('/admin/users');
                 break;
+            case 'material':
+                history.push('/admin/materials');
+                break;
             case 'subscriptions':
                 history.push('/admin/subscriptions');
                 break;
@@ -219,6 +222,22 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                 </ListItemIcon>
                 <ListItemText primary={"Images"}/>
             </ListItem>
+
+            <ListItem divider={true}
+                      selected={selectedMenu === 'material'}
+                      onClick={event => {
+                          if (mobile) {
+                              toggleDrawer(!mobile)
+                          }
+                          handleMenu('material')
+                          setSelectedMenu('material')
+                      }} button={true}>
+                <ListItemIcon>
+                    <Icon>image_outlined</Icon>
+                </ListItemIcon>
+                <ListItemText primary={"Materials"}/>
+            </ListItem>
+
             <ListItem divider={true}
                       selected={selectedMenu==='subscriptions'}
                       onClick={event => {

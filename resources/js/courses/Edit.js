@@ -8,10 +8,21 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Icon from "@material-ui/core/Icon";
 import {Alert} from "@material-ui/lab";
-import {DialogActions, List, ListItem, ListItemSecondaryAction, ListItemText, TextField} from "@material-ui/core";
+import {
+    DialogActions,
+    Divider,
+    List,
+    ListItem,
+    ListItemSecondaryAction,
+    ListItemText, Tab, Tabs,
+    TextField
+} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import SelectVideo from "../videos/SelectVideo";
 import {useHistory, useParams} from "react-router-dom";
+import SelectMaterial from "../materials/SelectMaterial";
+import VideoList from "./VideoList";
+import MaterialList from "./MaterialList";
 
 const validationSchema = Yup.object().shape({
     id: Yup.number().required('iD is reuqired'),
@@ -28,6 +39,8 @@ const validationSchema = Yup.object().shape({
 const Edit = ({props}) => {
     const [state, dispatch] = React.useContext(AppContext);
     const [open, setOpen] = React.useState(false);
+    const [materialOpen, setMaterialOpen] = React.useState(false);
+    const [activeTab, setActiveTab] = React.useState('videos');
 
     const {id} = useParams();
     const history = useHistory();
@@ -39,14 +52,15 @@ const Edit = ({props}) => {
             description: '',
             price: 0,
             intro_url: '',
-            videos: []
+            thumbnail_url: '',
+            videos: [],
+            materials: [],
         },
         validationSchema,
         onSubmit(values, e) {
-            console.log(values)
-            const {videos} = values;
-            const temp = videos.map(v => v.id);
-            values['videos'] = temp;
+            const {videos,materials} = values;
+            values['videos'] = videos.map(v => v.id);
+            values['materials'] = materials.map(v => v.id);
             axios.put(UDPATE_COURSE_API(values.id), values)
                 .then(res => {
                     dispatch({
@@ -75,11 +89,10 @@ const Edit = ({props}) => {
     const handleSelectVideos = v => {
         setOpen(false)
         setFieldValue('videos', v);
-
     }
-    const handleRemove = v => {
-        let temp = values.videos.filter(item => item.id !== v.id);
-        setFieldValue('videos', temp);
+    const handleSelectMaterials = v => {
+        setMaterialOpen(false)
+        setFieldValue('materials', v);
     }
 
     React.useEffect(()=>{
@@ -92,7 +105,9 @@ const Edit = ({props}) => {
                     description: data.description,
                     price: data.price,
                     intro_url: data.intro_url,
-                    videos: data?.videos
+                    thumbnail_url: data.thumbnail_url,
+                    videos: data?.videos,
+                    materials: data?.materials,
                 })
             })
             .catch(err => {
@@ -164,6 +179,18 @@ const Edit = ({props}) => {
                             <TextField fullWidth={true}
                                        variant={"outlined"}
                                        margin={"dense"}
+                                       label={"Thumbnail url"}
+                                       name={'thumbnail_url'}
+                                       onChange={handleChange}
+                                       error={touched?.thumbnail_url && errors?.thumbnail_url}
+                                       helperText={touched?.thumbnail_url && errors?.thumbnail_url}
+
+                            />
+                        </Grid>
+                        <Grid item={true} xs={12}>
+                            <TextField fullWidth={true}
+                                       variant={"outlined"}
+                                       margin={"dense"}
                                        label={"Fee"}
                                        type={'number'}
                                        placeholder={"Course fee"}
@@ -184,18 +211,24 @@ const Edit = ({props}) => {
                                   color={"primary"}>Add videos</Button> Click here to add video content</span>
                 </div>
                 <div className={'my-card'}>
-                    <List>
-                        {Array.isArray(values?.videos) && values?.videos.map((v, i) =>
-                            <ListItem divider={true} key={i}>
-                                <ListItemText primary={v.title} secondary={v.description}/>
-                                <ListItemSecondaryAction>
-                                    <IconButton onClick={event => handleRemove(v)} color={"secondary"}>
-                                        <Icon>delete</Icon>
-                                    </IconButton>
-                                </ListItemSecondaryAction>
-                            </ListItem>
-                        )}
-                    </List>
+                    <p className={'subtitle'}>Course contents</p>
+                    <Divider style={{marginTop:16,marginBottom:16}} light={true}/>
+                    <Grid container={true} justify={"space-between"}>
+                        <Button onClick={event => setOpen(true)} variant={"outlined"} color={"primary"}>Add
+                            videos</Button>
+                        <Button onClick={event => setMaterialOpen(true)} variant={"outlined"} color={"primary"}>Add
+                            materials</Button>
+                    </Grid>
+                </div>
+                <div className={'my-card'}>
+                    <Tabs value={activeTab} onChange={(e,value)=>setActiveTab(value)} aria-label="content">
+                        <Tab value={'videos'} label="Videos"/>
+                        <Tab value={'materials'} label="Materials"/>
+                    </Tabs>
+                    {activeTab === 'videos' && <VideoList videos={values.videos}
+                                                          remove={index=>setFieldValue('videos',values.videos.filter((val,i)=>i!==index))}/>}
+                    {activeTab === 'materials' && <MaterialList materials={values.materials}
+                                                                remove={index=>setFieldValue('materials',values.materials.filter((val,i)=>i!==index))}/>}
 
                 </div>
                 <div className={'my-card'}>
@@ -209,6 +242,11 @@ const Edit = ({props}) => {
                                   onClose={() => setOpen(false)}
                                   defaultVideos={values?.videos}
                                   onSelects={handleSelectVideos}/>}
+
+            {materialOpen && <SelectMaterial open={materialOpen}
+                                             onClose={() => setMaterialOpen(false)}
+                                             defaultVideos={values?.materials}
+                                             onSelects={handleSelectMaterials}/>}
         </div>
     )
 }

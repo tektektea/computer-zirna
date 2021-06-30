@@ -11,7 +11,7 @@ class Material extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $fillable = ['title', 'description','path','course_id'];
+    protected $fillable = ['title', 'description','path','mime','course_id'];
 
     public function course(): BelongsTo
     {

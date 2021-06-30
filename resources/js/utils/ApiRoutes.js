@@ -18,6 +18,16 @@ export const CREATE_VIDEO_API='videos/create'
 export const UPDATE_VIDEO_API=id=>`videos/${id}`
 export const DELETE_VIDEO_API=id=>`videos/${id}`
 
+export const GET_MATERIAL_API='material/all'
+export const FETCH_MATERIAL_API='material/index'
+export const CREATE_MATERIAL_API='material/create'
+export const UPDATE_MATERIAL_API=id=>`material/${id}`
+export const DELETE_MATERIAL_API=id=>`material/${id}`
+export const DOWNLOAD_MATERIAL_API=id=>`material/${id}`
+
+export const FETCH_SUBSCRIPTION_API='subscription/index'
+export const CREATE_SUBSCRIPTION_API='subscription/create'
+
 export const FETCH_IMAGES_API=`media/index`
 export const UPLOAD_IMAGES_API=`media/upload`
 export const DELETE_IMAGES_API=id=>`media/${id}`

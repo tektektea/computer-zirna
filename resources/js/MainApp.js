@@ -9,6 +9,7 @@ import {AppContextProvider} from "./context/AppContextProvider";
 import './index.css';
 import {BASE_URL} from "./utils/ApiRoutes";
 import Home from "./landing/Home";
+import AdminRoute from "./context/AdminRoutes";
 
 window.axios = require('axios');
 
@@ -50,7 +51,7 @@ function MainApp() {
 
                 <BrowserRouter>
                     <Switch>
-                        <Route path={'/admin'} component={Main}/>
+                        <AdminRoute path={'/admin'} component={Main}/>
                         <Route path={'/'} component={Home}/>
                     </Switch>
                 </BrowserRouter>

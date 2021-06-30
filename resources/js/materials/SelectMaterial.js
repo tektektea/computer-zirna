@@ -15,28 +15,28 @@ import CardHeader from "@material-ui/core/CardHeader";
 import IconButton from "@material-ui/core/IconButton";
 import Icon from "@material-ui/core/Icon";
 import {AppContext} from "../context/AppContextProvider";
-import {GET_VIDEO_API} from "../utils/ApiRoutes";
+import {GET_MATERIAL_API} from "../utils/ApiRoutes";
 import {MESSAGE} from "../utils/Action";
 
-const SelectVideo = ({open, onClose, defaultVideos=[], onSelects}) => {
+const SelectMaterial = ({open, onClose, onSelects, defaultVideos = []}) => {
     const [state, dispatch] = React.useContext(AppContext);
+    const [materials, setMaterials] = React.useState([]);
     const [selected, setSelected] = React.useState(defaultVideos);
-    const [videos, setVideos] = React.useState([]);
 
-    const handleSelect = (v, check) => {
+    const handleSelect = (material, check) => {
         if (check) {
             let temp = selected;
-            temp.push(v)
+            temp.push(material)
             setSelected(temp)
         } else {
-            let temp = selected.filter(item => item.id !== v.id);
+            let temp = selected.filter(item => item.id !== material.id);
             setSelected(prevState => temp);
         }
     }
     React.useEffect(() => {
-        axios.get(GET_VIDEO_API)
+        axios.get(GET_MATERIAL_API)
             .then(res => {
-                setVideos(res?.data?.data)
+                setMaterials(res?.data?.data)
             })
             .catch(err => {
                 const errMsg = !!err.response ? err.response.data.error : err.toString();
@@ -52,13 +52,17 @@ const SelectVideo = ({open, onClose, defaultVideos=[], onSelects}) => {
     }, [])
     return (
         <Dialog open={open} onClose={onClose} fullWidth={true} maxWidth={"md"}>\
-            <CardHeader title={"Select videos"} action={<IconButton onClick={onClose}><Icon>close</Icon></IconButton>}/>
+            <CardHeader title={"Select Material"}
+                        action={<IconButton onClick={onClose}><Icon>close</Icon></IconButton>}/>
             <Divider light={true}/>
             <DialogContent>
                 <List>
-                    {videos && videos.map((v, i) =>
-                        <ListItem key={i} divider={true} button={true} onClick={e => handleSelect(v)}>
-                            <ListItemText primary={v.title} secondary={v.description}/>
+                    {materials && materials.map((v, i) =>
+                        <ListItem key={i}
+                                  divider={true}
+                                  onClick={e => handleSelect(v)}>
+                            <ListItemText primary={v.title}
+                                          secondary={v.description}/>
                             <ListItemSecondaryAction>
                                 <Checkbox defaultChecked={selected.some(item => item.id === v.id)}
                                           onChange={(event, checked) => handleSelect(v,checked)} color={"primary"}/>
@@ -75,4 +79,4 @@ const SelectVideo = ({open, onClose, defaultVideos=[], onSelects}) => {
         </Dialog>
     )
 }
-export default SelectVideo;
+export default SelectMaterial;

@@ -5,13 +5,14 @@ import {CREATE_COURSE_API} from "../utils/ApiRoutes";
 import {MESSAGE} from "../utils/Action";
 import {AppContext} from "../context/AppContextProvider";
 import Grid from "@material-ui/core/Grid";
-import CardHeader from "@material-ui/core/CardHeader";
-import IconButton from "@material-ui/core/IconButton";
-import Icon from "@material-ui/core/Icon";
-import {Alert} from "@material-ui/lab";
-import {DialogActions, List, ListItem, ListItemSecondaryAction, ListItemText, TextField} from "@material-ui/core";
+import {Alert, TabList} from "@material-ui/lab";
+import {DialogActions, Divider, Tab, Tabs, TextField} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import SelectVideo from "../videos/SelectVideo";
+import SelectMaterial from "../materials/SelectMaterial";
+import VideoList from "./VideoList";
+import MaterialList from "./MaterialList";
+import {useHistory} from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -27,21 +28,25 @@ const validationSchema = Yup.object().shape({
 const Create = ({course}) => {
     const [state, dispatch] = React.useContext(AppContext);
     const [open, setOpen] = React.useState(false);
+    const [activeTab, setActiveTab] = React.useState('videos');
+    const [materialOpen, setMaterialOpen] = React.useState(false);
+    const history = useHistory();
 
-    const {handleChange,setFieldValue, errors, handleReset, values, touched, handleSubmit} = useFormik({
+    const {handleChange, setFieldValue, errors, handleReset, values, touched, handleSubmit} = useFormik({
         initialValues: {
             name: course?.name,
             description: course?.description,
             price: 0,
             intro_url: course?.intro_url,
-            videos:Boolean(course?.videos)?course.videos:[]
+            thumbnail_url: course?.thumbnail_url,
+            videos: Boolean(course?.videos) ? course.videos : [],
+            materials: Boolean(course?.materials) ? course.materials : [],
         },
         validationSchema,
-        onSubmit(values,e) {
-            console.log(values)
-            const {videos} = values;
-            const temp=videos.map(v => v.id);
-            values['videos'] = temp;
+        onSubmit(values, e) {
+            const {videos,materials} = values;
+            values['videos'] =  videos.map(v => v.id);
+            values['materials'] = materials.map(m=>m.id);
             axios.post(CREATE_COURSE_API, values)
                 .then(res => {
                     dispatch({
@@ -51,11 +56,10 @@ const Create = ({course}) => {
                             message: res.data.message
                         }
                     })
-                    handleReset(e)
+                    history.go(-1)
                 })
                 .catch(err => {
                     const errMsg = !!err.response ? err.response.data.error : err.toString();
-                    console.log('error', errMsg)
                     dispatch({
                         type: MESSAGE,
                         payload: {
@@ -67,16 +71,15 @@ const Create = ({course}) => {
         }
     });
 
-    const handleSelectVideos=v=>{
+    const handleSelectVideos = v => {
         setOpen(false)
         setFieldValue('videos', v);
 
     }
-    const handleRemove=index=>{
-        let temp = values.videos.splice(index, 1);
-        setFieldValue('videos', temp);
+    const handleSelectMaterials = v => {
+        setMaterialOpen(false)
+        setFieldValue('materials', v);
     }
-
     return (
         <div className={'maincontent'}>
             <h1 className={'title'}>New Course</h1>
@@ -131,6 +134,18 @@ const Create = ({course}) => {
                             <TextField fullWidth={true}
                                        variant={"outlined"}
                                        margin={"dense"}
+                                       label={"Thumbnail url"}
+                                       name={'thumbnail_url'}
+                                       onChange={handleChange}
+                                       error={touched?.thumbnail_url && errors?.thumbnail_url}
+                                       helperText={touched?.thumbnail_url && errors?.thumbnail_url}
+
+                            />
+                        </Grid>
+                        <Grid item={true} xs={12}>
+                            <TextField fullWidth={true}
+                                       variant={"outlined"}
+                                       margin={"dense"}
                                        label={"Fee"}
                                        type={'number'}
                                        placeholder={"Course fee"}
@@ -146,21 +161,24 @@ const Create = ({course}) => {
                     </Grid>
                 </div>
                 <div className={'my-card'}>
-                    <span><Button onClick={event => setOpen(true)} variant={"contained"} color={"primary"}>Add videos</Button> Click here to add video content</span>
+                    <p className={'subtitle'}>Course contents</p>
+                    <Divider style={{marginTop:16,marginBottom:16}} light={true}/>
+                    <Grid container={true} justify={"space-between"}>
+                        <Button onClick={event => setOpen(true)} variant={"outlined"} color={"primary"}>Add
+                            videos</Button>
+                        <Button onClick={event => setMaterialOpen(true)} variant={"outlined"} color={"primary"}>Add
+                            materials</Button>
+                    </Grid>
                 </div>
                 <div className={'my-card'}>
-                    <List>
-                        {Array.isArray(values?.videos) && values?.videos.map((v,i)=>
-                            <ListItem divider={true} key={i}>
-                                <ListItemText primary={v.title} secondary={v.description}/>
-                                <ListItemSecondaryAction>
-                                    <IconButton onClick={event => handleRemove(i)} color={"secondary"}>
-                                        <Icon>delete</Icon>
-                                    </IconButton>
-                                </ListItemSecondaryAction>
-                            </ListItem>
-                        )}
-                    </List>
+                    <Tabs value={activeTab} onChange={(e,value)=>setActiveTab(value)} aria-label="content">
+                        <Tab value={'videos'} label="Videos"/>
+                        <Tab value={'materials'} label="Materials"/>
+                    </Tabs>
+                    {activeTab === 'videos' && <VideoList videos={values.videos}
+                                                          remove={index=>setFieldValue('videos',values.videos.filter((val,i)=>i!==index))}/>}
+                    {activeTab === 'materials' && <MaterialList materials={values.materials}
+                                                                remove={index=>setFieldValue('materials',values.materials.filter((val,i)=>i!==index))}/>}
 
                 </div>
                 <div className={'my-card'}>
@@ -171,10 +189,15 @@ const Create = ({course}) => {
                 </div>
             </form>
             {open && <SelectVideo open={open}
-                                  onClose={()=>setOpen(false)}
+                                  onClose={() => setOpen(false)}
                                   defaultVideos={values?.videos}
-                                  onSelects={handleSelectVideos}/>  }
+                                  onSelects={handleSelectVideos}/>}
+
+            {materialOpen && <SelectMaterial open={materialOpen}
+                                             onClose={() => setMaterialOpen(false)}
+                                             defaultVideos={values?.materials}
+                                             onSelects={handleSelectMaterials}/>}
         </div>
-    )
+    );
 }
 export default Create;

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OtpController;
 use App\Http\Controllers\PublicController;
@@ -46,6 +47,14 @@ Route::group(['prefix' => 'videos','middleware' => 'auth:sanctum'], function () 
     Route::delete('{video}', [VideoController::class, 'delete']);
     Route::put('{video}', [VideoController::class, 'update']);
 });
+Route::group(['prefix' => 'material','middleware' => 'auth:sanctum'], function () {
+    Route::get('all', [MaterialController::class, 'all']);
+    Route::get('index', [MaterialController::class, 'index']);
+    Route::post('create', [MaterialController::class, 'create']);
+    Route::delete('{material}', [MaterialController::class, 'delete']);
+    Route::get('{material}', [MaterialController::class, 'download']);
+});
+
 Route::group(['prefix' => 'admin','middleware' => 'auth:sanctum'], function () {
     Route::get('index', [UserController::class, 'all']);
     Route::post('create', [UserController::class, 'create']);
@@ -58,7 +67,7 @@ Route::group(['prefix' => 'media', 'middleware' => 'auth:sanctum'], function () 
     Route::delete('{media}', [MediaController::class, 'delete']);
 });
 
-Route::group(['prefix' => 'order', 'middleware' => 'auth:sanctum'], function () {
+Route::group(['prefix' => 'subscription', 'middleware' => 'auth:sanctum'], function () {
     Route::get('index', [SubscriptionController::class, 'index']);
     Route::post('create', [SubscriptionController::class, 'createOrder']);
 });

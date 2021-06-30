@@ -1,15 +1,12 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import {Grid} from "@material-ui/core";
-import CourseCard from "../courses/CourseCard";
 import {Pagination} from "@material-ui/lab";
 import axios from "axios";
 import {DELETE_IMAGES_API, FETCH_IMAGES_API, UPLOAD_IMAGES_API} from "../utils/ApiRoutes";
 import {MESSAGE} from "../utils/Action";
 import {AppContext} from "../context/AppContextProvider";
 import UploadImageDialog from "./UploadImageDialog";
-import IconButton from "@material-ui/core/IconButton";
-import Icon from "@material-ui/core/Icon";
 
 const Images = props => {
     const [state, dispatch] = React.useContext(AppContext);
@@ -64,9 +61,9 @@ const Images = props => {
                 })
             })
     }
-    const deleteImage=image=>{
+    const deleteImage = image => {
         axios.delete(DELETE_IMAGES_API(image?.id))
-            .then(res=>{
+            .then(res => {
                 setImages(res.data.data)
                 dispatch({
                     type: MESSAGE,
@@ -76,7 +73,7 @@ const Images = props => {
                     }
                 })
             })
-            .catch(err=>{
+            .catch(err => {
                 const errMsg = !!err.response ? err.response.data.error : err.toString();
                 dispatch({
                     type: MESSAGE,
@@ -87,6 +84,19 @@ const Images = props => {
                 })
             })
     }
+    const copy = value => {
+        navigator.clipboard.writeText(value?.url).then(function () {
+            dispatch({
+                type: MESSAGE,
+                payload: {
+                    message: "url copied",
+                    message_type: 'success'
+                }
+            })
+        }, function (err) {
+            console.log(err)
+        });
+    }
     React.useEffect(() => {
         fetchImages(1);
     }, [])
@@ -96,13 +106,17 @@ const Images = props => {
             <div className={'my-card'}>
                 <Button onClick={event => setOpen(true)} color={'primary'} variant={"outlined"}>Upload</Button>
             </div>
-            <Grid style={{flex:1}} container={true} spacing={2}>
+            <Grid style={{flex: 1}} container={true} spacing={2}>
                 {Boolean(images?.data)
                     ?
                     images?.data.map((image, i) => <Grid key={i} item={true} xs={12} md={3}>
                         <div className={'my-card'}>
-                           <img src={image?.url} width={"100%"} height={"auto"}/>
-                           <Button color={"secondary"} onClick={e=>deleteImage(image)}>delete</Button>
+                            <img src={image?.url} width={"100%"} height={"auto"}/>
+                            <span>
+                                 <Button color={"primary"} onClick={e => copy(image)}>Copy</Button>
+                                <Button color={"secondary"} onClick={e => deleteImage(image)}>delete</Button>
+                           </span>
+
                         </div>
                     </Grid>)
                     :

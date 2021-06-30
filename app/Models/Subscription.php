@@ -11,7 +11,7 @@ class Subscription extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $fillable=['user_id','father_name','address','order_id','receipt','status'];
+    protected $fillable=['user_id','father_name','address','order_id','receipt','status','purchase_at'];
 
     public function user(): BelongsTo
     {
