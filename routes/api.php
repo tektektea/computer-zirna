@@ -70,6 +70,8 @@ Route::group(['prefix' => 'media', 'middleware' => 'auth:sanctum'], function () 
 Route::group(['prefix' => 'subscription', 'middleware' => 'auth:sanctum'], function () {
     Route::get('index', [SubscriptionController::class, 'index']);
     Route::post('create', [SubscriptionController::class, 'createOrder']);
+    Route::post('verify', [SubscriptionController::class, 'verify']);
+    Route::get('subscribers', [SubscriptionController::class, 'subscribers']);
 });
 
 Route::group(['prefix' => 'setting', 'middleware' => 'auth:sanctum'], function () {
@@ -81,3 +83,5 @@ Route::get('public/data',[PublicController::class,'getPublicData']);
 Route::group(['prefix' => 'profile','middleware' => 'auth:sanctum'], function () {
     Route::get('me', [AuthController::class, 'me']);
 });
+
+Route::get('/sub/test',[SubscriptionController::class,'subscriber']);

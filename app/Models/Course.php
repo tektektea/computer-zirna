@@ -12,6 +12,10 @@ class Course extends Model
     use SoftDeletes,HasFactory;
     protected $fillable=['name','description','price','intro_url'];
 
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Course::class);
+    }
     public function videos(): HasMany
     {
         return $this->hasMany(Video::class);

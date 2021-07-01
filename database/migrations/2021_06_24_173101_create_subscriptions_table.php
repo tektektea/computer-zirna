@@ -23,6 +23,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('status')->default('draft');//draft subscribed expired
 
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('course_id');
 
             $table->softDeletes();
             $table->timestamps();

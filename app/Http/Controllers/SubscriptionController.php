@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subscription;
+use App\Models\User;
 use App\utils\Util;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
@@ -20,7 +23,7 @@ class SubscriptionController extends Controller
         }
     }
 
-    public function purchaseCourse(Request $request)
+    public function verify(Request $request)
     {
         try {
             $this->validate($request->only(['razorpay_order_id', 'subscription_id','razorpay_payment_id', 'razorpay_signature']), [
@@ -37,7 +40,12 @@ class SubscriptionController extends Controller
             $generated_signature = hash_hmac('sha256', $message, env('RAZOR_SECRET_KEY'));
 
             if ($signature === $generated_signature) {
-                return $this->handleResponse(null, 'Payment verified');
+                $subscription=Subscription::query()->find($request->get('subscription_id'));
+                $subscription->status = 'subscribe';
+                $subscription->purchase_at = Carbon::now();
+                $subscription->save();
+
+                return $this->handleResponse($subscription, 'Payment verified');
             }
             throw new \Exception('Unauthorized payment', 400);
         } catch (\Exception $exception) {
@@ -46,6 +54,15 @@ class SubscriptionController extends Controller
 
     }
 
+    public function subscribers(Request $request)
+    {
+        try {
+            $data=User::subscribers()->paginate();
+            return $this->handleResponse($data, '');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
     public function createOrder(Request $request): JsonResponse
     {
         try {
@@ -59,7 +76,7 @@ class SubscriptionController extends Controller
             $username = env('RAZOR_KEY_ID');
             $password = env('RAZOR_SECRET_KEY');
             $response = Http::withBasicAuth($username, $password)
-                ->post(env('RAZORPAY_BASE_URL') . 'orders', [
+                ->post(env('RAZORPAY_BASE_URL') . '/orders', [
                     'amount' => Util::COURSE_AMOUNT,
                     'currency' => 'INR',
                     'receipt' => "" . now()->getTimestamp(),
@@ -67,12 +84,13 @@ class SubscriptionController extends Controller
             $result = json_decode($response->body(), true);
 
             DB::beginTransaction();
-            $currentUser = $request->user();
+
+            $currentUser = Auth::user();
             $currentUser->name = $request->get('full_name');
             $currentUser->save();
 
             $sub = Subscription::create([
-                'user_id' => $request->user()->id,
+                'user_id' =>$currentUser->id,
                 'father_name' => $request->get('father_name'),
                 'address' => $request->get('address'),
                 'course_id' => $request->get('course_id'),
@@ -82,7 +100,7 @@ class SubscriptionController extends Controller
             ]);
 
             DB::commit();
-            return $this->handleResponse($sub, 'Order detailed created successfully');
+            return $this->handleResponse($sub, 'Order created successfully');
         } catch (\Exception $exception) {
             DB::rollBack();
             return $this->handlingException($exception);

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,11 +40,23 @@ class User extends Authenticatable
      *
      * @var array
      */
-    public function scopePhone($query,$value){
+    public function scopePhone($query, $value)
+    {
         return $query->where('phone_no', $value);
     }
+
     public function subscriptions(): HasMany
     {
         return $this->hasMany(Subscription::class);
     }
+
+    public function scopeSubscribers($builder)
+    {
+        return $builder->where('id', function ($q) {
+            $q->select('user_id')
+                ->from('subscriptions');
+        });
+    }
+
+
 }
