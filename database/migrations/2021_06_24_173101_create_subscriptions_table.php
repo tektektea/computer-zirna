@@ -19,7 +19,7 @@ class CreateSubscriptionsTable extends Migration
             $table->text('address')->nullable();
             $table->string('order_id');
             $table->string('receipt');
-            $table->dateTime('purchase_at')->nullable();
+            $table->dateTime('expired_at')->nullable();
             $table->string('status')->default('draft');//draft subscribed expired
 
             $table->unsignedBigInteger('user_id');

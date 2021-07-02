@@ -12,7 +12,7 @@ class Subscription extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $fillable=['user_id','course_id','father_name','address','order_id','receipt','status','purchase_at'];
+    protected $fillable=['user_id','course_id','father_name','address','order_id','receipt','status','expired_at'];
 
     protected $appends = ['course'];
 

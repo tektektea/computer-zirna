@@ -81,26 +81,32 @@ class SubscriptionController extends Controller
                     'currency' => 'INR',
                     'receipt' => "" . now()->getTimestamp(),
                 ]);
-            $result = json_decode($response->body(), true);
+            if ($response->status() == 200) {
 
-            DB::beginTransaction();
+                $result = json_decode($response->body(), true);
 
-            $currentUser = Auth::user();
-            $currentUser->name = $request->get('full_name');
-            $currentUser->save();
+                DB::beginTransaction();
 
-            $sub = Subscription::create([
-                'user_id' =>$currentUser->id,
-                'father_name' => $request->get('father_name'),
-                'address' => $request->get('address'),
-                'course_id' => $request->get('course_id'),
-                'order_id' => $result['id'],
-                'receipt' => $result['receipt'],
-                'status' => 'draft',
-            ]);
+                $currentUser = Auth::user();
+                $currentUser->name = $request->get('full_name');
+                $currentUser->save();
 
-            DB::commit();
-            return $this->handleResponse($sub, 'Order created successfully');
+                $sub = Subscription::create([
+                    'user_id' =>$currentUser->id,
+                    'father_name' => $request->get('father_name'),
+                    'address' => $request->get('address'),
+                    'course_id' => $request->get('course_id'),
+                    'order_id' => $result['id'],
+                    'receipt' => $result['receipt'],
+                    'status' => 'draft',
+                    'expired_at' => Carbon::now()->addDays(365),
+                ]);
+
+                DB::commit();
+                return $this->handleResponse($sub, 'Order created successfully');
+            }else{
+                throw new \Exception('Opps! Something wrong');
+            }
         } catch (\Exception $exception) {
             DB::rollBack();
             return $this->handlingException($exception);

@@ -27,6 +27,7 @@ export const DOWNLOAD_MATERIAL_API=id=>`material/${id}`
 
 export const FETCH_SUBSCRIPTION_API='subscription/index'
 export const CREATE_SUBSCRIPTION_API='subscription/create'
+export const CREATE_SUBSCRIBER_API='subscription/new'
 
 export const FETCH_IMAGES_API=`media/index`
 export const UPLOAD_IMAGES_API=`media/upload`

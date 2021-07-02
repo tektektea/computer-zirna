@@ -20,8 +20,6 @@ class CreateMaterialsTable extends Migration
             $table->string('mime');
             $table->string('path');
 
-            $table->unsignedBigInteger('course_id')->nullable();
-
             $table->softDeletes();
             $table->timestamps();
         });

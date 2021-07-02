@@ -11,13 +11,12 @@ import {
     TableRow
 } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
-import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
-const SubscriptionDetail=({item})=>{
-    return(
+const SubscriptionDetail = ({item}) => {
+    return (
         <Card elevation={0}>
-            <CardHeader title={"ID: "+item?.id}/>
+            <CardHeader title={"ID: " + item && item?.id}/>
             <CardContent>
                 <TableContainer>
                     <Table>
@@ -29,11 +28,11 @@ const SubscriptionDetail=({item})=>{
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {item?.subscriptions && item?.subscriptions.map(sub=>
+                            {item?.subscriptions && item?.subscriptions.map(sub =>
                                 <TableRow key={sub?.id}>
-                                    <TableCell>{sub.receipt}</TableCell>
-                                    <TableCell>{sub.course}</TableCell>
-                                    <TableCell>{sub.status}</TableCell>
+                                    <TableCell>{sub?.receipt}</TableCell>
+                                    <TableCell>{sub?.course}</TableCell>
+                                    <TableCell>{sub?.status}</TableCell>
                                 </TableRow>
                             )}
                         </TableBody>
