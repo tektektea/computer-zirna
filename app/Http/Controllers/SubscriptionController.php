@@ -83,7 +83,6 @@ class SubscriptionController extends Controller
                 ]);
             $result = json_decode($response->body(), true);
 
-            dd($result);
             DB::beginTransaction();
 
             $currentUser = Auth::user();
