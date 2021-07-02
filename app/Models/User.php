@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     public function scopeSubscribers($builder)
     {
-        return $builder->where('id', function ($q) {
+        return $builder->whereIn('id', function ($q) {
             $q->select('user_id')
                 ->from('subscriptions');
         });
