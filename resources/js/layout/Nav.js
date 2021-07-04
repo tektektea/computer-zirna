@@ -16,7 +16,11 @@ import {useHistory} from "react-router-dom";
 import Hidden from "@material-ui/core/Hidden";
 import ToggleButton from "../components/ToggleButton";
 import {LOGOUT_API} from "../utils/ApiRoutes";
-
+import ImageOutlined from '@material-ui/icons/ImageOutlined';
+import VideoLibraryOutlined from '@material-ui/icons/VideoLibraryOutlined';
+import NoteOutlined from '@material-ui/icons/NoteOutlined';
+import PermMediaOutlined from '@material-ui/icons/PermMediaOutlined';
+import MonetizationOnOutlined from '@material-ui/icons/MonetizationOnOutlined';
 
 const styles = theme => ({
     container: {
@@ -188,7 +192,7 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                           setSelectedMenu('videos')
                       }} button={true}>
                 <ListItemIcon>
-                    <Icon>camera</Icon>
+                    <VideoLibraryOutlined/>
                 </ListItemIcon>
                 <ListItemText primary={"Videos"}/>
             </ListItem>
@@ -203,7 +207,7 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                           setSelectedMenu('courses')
                       }} button={true}>
                 <ListItemIcon>
-                    <Icon>sticky_note_2_outlined</Icon>
+                    <NoteOutlined/>
                 </ListItemIcon>
                 <ListItemText primary={"Courses"}/>
             </ListItem>
@@ -218,7 +222,7 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                           setSelectedMenu('media')
                       }} button={true}>
                 <ListItemIcon>
-                    <Icon>image_outlined</Icon>
+                      <ImageOutlined/>
                 </ListItemIcon>
                 <ListItemText primary={"Images"}/>
             </ListItem>
@@ -233,13 +237,13 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                           setSelectedMenu('material')
                       }} button={true}>
                 <ListItemIcon>
-                    <Icon>image_outlined</Icon>
+                    <PermMediaOutlined/>
                 </ListItemIcon>
                 <ListItemText primary={"Materials"}/>
             </ListItem>
 
             <ListItem divider={true}
-                      selected={selectedMenu==='subscriptions'}
+                      selected={selectedMenu === 'subscriptions'}
                       onClick={event => {
                           if (mobile) {
                               toggleDrawer(!mobile)
@@ -248,7 +252,7 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                           setSelectedMenu('subscriptions')
                       }} button={true}>
                 <ListItemIcon>
-                    <Icon>paid_outlined</Icon>
+                   <MonetizationOnOutlined/>
                 </ListItemIcon>
                 <ListItemText primary={"Subscriptions"}/>
             </ListItem>
