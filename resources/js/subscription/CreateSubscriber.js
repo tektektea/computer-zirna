@@ -7,6 +7,7 @@ import SubscriptionForm from "./SubscriptionForm";
 import PersonalForm from "./PersonalForm";
 import {CREATE_COURSE_API, CREATE_SUBSCRIBER_API} from "../utils/ApiRoutes";
 import {MESSAGE} from "../utils/Action";
+import SubmittedResult from "./SubmittedResult";
 
 const steps = [
     {id: 1, label: 'Course subscription'},
@@ -41,6 +42,7 @@ const CreateSubscriber = ({open, onClose, onSelects}) => {
         onSubmit(values, e) {
             let temp = values;
             temp['courses'] = values?.courses?.map(item => item.id);
+            alert(temp['courses'])
             axios.post(CREATE_SUBSCRIBER_API,temp)
                 .then(res=>{
                     dispatch({
@@ -67,7 +69,7 @@ const CreateSubscriber = ({open, onClose, onSelects}) => {
     });
 
     return (
-        <Dialog classes={{root:{height:'70%'}}}
+        <Dialog classes={{container:{backgroundColor:'red'}}}
                 open={open}
                 onClose={onClose}
                 fullWidth={true}
@@ -89,6 +91,8 @@ const CreateSubscriber = ({open, onClose, onSelects}) => {
                 {activeStep === 1 && <PersonalForm formik={formik}
                                                    handleBack={() => setActiveStep(activeStep - 1)}
                                                    handleNext={() => setActiveStep(activeStep + 1)}/>}
+                {activeStep===2 && <SubmittedResult reset={()=>setActiveStep(0)}
+                                                    onClose={onClose}/> }
             </DialogContent>
 
         </Dialog>

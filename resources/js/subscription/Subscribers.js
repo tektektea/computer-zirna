@@ -10,10 +10,16 @@ const Subscribers=({onItemClick})=>{
     const [state, dispatch] = React.useContext(AppContext);
 
     const handlePagination = (event, page) => {
-        setData(prevState => ({...prevState, page}))
+        fetchData(page)
     };
-    React.useEffect(()=>{
-        axios.get('subscription/subscribers')
+    const handleSearch=e=>{
+        if (e.key === 'Enter') {
+            fetchData(1,e.target.value)
+        }
+        console.log(e.key)
+    }
+    const fetchData=(page=1,search='')=>{
+        axios.get('subscription/subscribers',{params: {search,page}})
             .then(res=>{
                 setData(res.data.data);
             })
@@ -27,10 +33,17 @@ const Subscribers=({onItemClick})=>{
                     }
                 })
             })
+    }
+    React.useEffect(()=>{
+        fetchData('')
     },[])
     return(
         <List>
-            <OutlinedInput margin={"dense"} placeholder={"search"} fullWidth={true} endAdornment={<Icon>search</Icon>}/>
+            <OutlinedInput margin={"dense"}
+                           placeholder={"search"}
+                           fullWidth={true}
+                           onKeyPress={handleSearch}
+                           endAdornment={<Icon>search</Icon>}/>
             {data?.data && data?.data.map(item=>
                 <ListItem key={item?.id} onClick={event => onItemClick(item)} button={true} divider={true}>
                 <ListItemText primary={item?.name}

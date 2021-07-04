@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\MediaController;
@@ -67,11 +68,19 @@ Route::group(['prefix' => 'media', 'middleware' => 'auth:sanctum'], function () 
     Route::delete('{media}', [MediaController::class, 'delete']);
 });
 
+Route::group(['prefix' => 'banner', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('all', [BannerController::class, 'all']);
+    Route::post('create', [BannerController::class, 'create']);
+    Route::delete('{banner}', [BannerController::class, 'destroy']);
+});
+
 Route::group(['prefix' => 'subscription', 'middleware' => 'auth:sanctum'], function () {
     Route::get('index', [SubscriptionController::class, 'index']);
     Route::post('create', [SubscriptionController::class, 'createOrder']);
     Route::post('verify', [SubscriptionController::class, 'verify']);
     Route::get('subscribers', [SubscriptionController::class, 'subscribers']);
+    Route::delete('subscribers/{id}', [SubscriptionController::class, 'deleteSubscription']);
+    Route::post('subscriber/create', [SubscriptionController::class, 'createSubscriber']);
 });
 
 Route::group(['prefix' => 'setting', 'middleware' => 'auth:sanctum'], function () {
@@ -82,6 +91,5 @@ Route::group(['prefix' => 'setting', 'middleware' => 'auth:sanctum'], function (
 Route::get('public/data',[PublicController::class,'getPublicData']);
 Route::group(['prefix' => 'profile','middleware' => 'auth:sanctum'], function () {
     Route::get('me', [AuthController::class, 'me']);
+    Route::get('courses', [SubscriptionController::class, 'userCourse']);
 });
-
-Route::get('/sub/test',[SubscriptionController::class,'subscriber']);

@@ -17,8 +17,8 @@ class CreateSubscriptionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('father_name')->nullable();
             $table->text('address')->nullable();
-            $table->string('order_id');
-            $table->string('receipt');
+            $table->string('order_id')->nullable();
+            $table->string('receipt')->nullable();
             $table->dateTime('expired_at')->nullable();
             $table->string('status')->default('draft');//draft subscribed expired
 

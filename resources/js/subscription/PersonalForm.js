@@ -70,7 +70,7 @@ const PersonalForm=({formik,handleBack,handleNext})=>{
             </Grid>
             <Grid container={true} spacing={2} item={true} xs={12}>
                 <Button color={"secondary"}  onClick={handleBack}>Back</Button>
-                <Button color={"primary"} variant={"outlined"} onClick={formik.handleSubmit}>Next</Button>
+                <Button color={"primary"} variant={"outlined"} onClick={formik.handleSubmit}>Submit</Button>
             </Grid>
         </Grid>
     );

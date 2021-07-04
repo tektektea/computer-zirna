@@ -23,7 +23,7 @@ const SubscriptionForm=({formik,handleNext})=>{
             temp.push(c)
             formik.setFieldValue('courses',temp)
         } else {
-            let temp = formik?.values?.courses?.filter(item => item.id !== c.id);
+            let temp = formik?.values?.courses?.filter(item => item?.id !== c?.id);
             formik.setFieldValue('courses',temp)
         }
     }

@@ -14,11 +14,11 @@ class Subscription extends Model
 
     protected $fillable=['user_id','course_id','father_name','address','order_id','receipt','status','expired_at'];
 
-    protected $appends = ['course'];
+    protected $appends = ['course_name'];
 
-    public function getCourseAttribute()
+    public function getCourseNameAttribute()
     {
-        return $this->course() ? $this->course()->get('name') : '';
+        return $this->course() ? $this->course()->pluck('name') : '';
     }
     public function course(): BelongsTo
     {
