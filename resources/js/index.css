@@ -121,6 +121,15 @@ table tr th:last-child{
     background-color: #FFFFFF;
     box-shadow: 0 10px 12px 0 rgba(0,0,0,0.1)
 }
+.avatar-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    box-shadow: 0 10px 12px 0 rgba(0,0,0,0.1)
+}
+.qoute{
+    font-weight: bold;
+}
 footer{
     padding: 80px;
     background: #2d3748;

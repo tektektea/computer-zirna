@@ -4,13 +4,9 @@ import {Avatar} from "@material-ui/core";
 
 const Qoute=({sentence,avatar})=>{
     return(
-        <Grid style={{padding:80}} container={true} direction={"column"} alignItems={"center"}>
-                <q>{sentence}</q>
-            <br/>
-            <br/>
-                <Avatar sizes={'large'}  variant={"circle"} src={avatar}>
-
-                </Avatar>
+        <Grid style={{padding:80}} spacing={4} container={true} direction={"column"} alignItems={"center"}>
+                <q className={"qoute"}>{sentence}</q>
+                <img className={'avatar-img'} src={avatar}/>
         </Grid>
     )
 }
