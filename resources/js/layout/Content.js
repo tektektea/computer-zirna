@@ -218,7 +218,7 @@ const Content = props => {
             <Grid container={true} spacing={2}>
                 {/*<Carousel  autoPlay>*/}
                 {state?.testimony?.map((item, key) => <Grid item={true} md={3} xs={12} key={key}>
-                    <div className={'my-card'}>
+                    <div className={'my-card2'}>
                         <Qoute avatar={item.avatar} sentence={item.qoute}/>
                     </div>
                 </Grid>)}
@@ -229,14 +229,11 @@ const Content = props => {
                 <Typography variant={"h6"}>Course offered</Typography>
             </Grid>
             <Grid container={true} item={true} spacing={2}>
-                <div className={'my-card2'}>
                     {state?.courses?.map(item =>
                         <Grid key={item.id} xs={12} md={4} item={true}>
                             <SimpleCourseCard course={item}/>
                         </Grid>
                     )}
-                </div>
-
             </Grid>
             <Grid container={true} alignItems={"center"} justify={'center'} item={true}>
                 <Typography variant={'h6'}>Contact us</Typography>

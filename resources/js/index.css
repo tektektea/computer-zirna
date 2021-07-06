@@ -123,7 +123,7 @@ table tr th:last-child{
 }
 .my-card2{
     flex: 1;
-    padding: 8px;
+    padding: 36px;
     border: 1px solid #E0E7F4;
     border-radius: 16px;
     background-color: #FFFFFF;
