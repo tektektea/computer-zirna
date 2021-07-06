@@ -229,7 +229,7 @@ const Content = props => {
                 <Typography variant={"h6"}>Course offered</Typography>
             </Grid>
             <Grid container={true} item={true} spacing={2}>
-                <div className={'my-card'}>
+                <div className={'my-card2'}>
                     {state?.courses?.map(item =>
                         <Grid key={item.id} xs={12} md={4} item={true}>
                             <SimpleCourseCard course={item}/>

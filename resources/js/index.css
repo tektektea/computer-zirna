@@ -121,6 +121,14 @@ table tr th:last-child{
     background-color: #FFFFFF;
     box-shadow: 0 10px 12px 0 rgba(0,0,0,0.1)
 }
+.my-card2{
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #E0E7F4;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    box-shadow: 0 10px 12px 0 rgba(0,0,0,0.1)
+}
 .avatar-img {
     width: 100px;
     height: 100px;
@@ -128,7 +136,7 @@ table tr th:last-child{
     box-shadow: 0 10px 12px 0 rgba(0,0,0,0.1)
 }
 .qoute{
-    font-weight: bold;
+    font-weight: 500;
 }
 footer{
     padding: 80px;
