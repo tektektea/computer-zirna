@@ -35,8 +35,7 @@ class PublicController extends Controller
             }])->get();
             $setting = Setting::query()->first();
             return $this->handleResponse([
-                'testimony' => '',
-
+                'testimony' => self::testimony,
                 'courses' => $courses,
                 'corousel' => json_decode($setting->setting, true)['corousel'],
                 'images'=>Media::query()->pluck('url'),
