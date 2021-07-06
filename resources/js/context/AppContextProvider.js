@@ -8,6 +8,7 @@ const initState = {
     message_type: '',
     loading:false,
     courses:[],
+    testimony: [],
     corousel:[],
     images:[],
 };
@@ -32,7 +33,7 @@ const reducer = (state, action) => {
         case SET_COROUSEL:
             return {...state, corousel: payload};
         case GET_PUBLIC_DATA:
-            return {...state,courses: payload?.courses,corousel:payload?.corousel,images: payload?.images}
+            return {...state,testimony:payload.testimony,courses: payload?.courses,corousel:payload?.corousel,images: payload?.images}
         default:
             return state;
     }

@@ -121,6 +121,11 @@ table tr th:last-child{
     background-color: #FFFFFF;
     box-shadow: 0 10px 12px 0 rgba(0,0,0,0.1)
 }
+footer{
+    padding: 80px;
+    background: #2d3748;
+    flex:1;
+}
 
 @keyframes updown {
     0%{

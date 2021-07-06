@@ -40,7 +40,6 @@ axios.interceptors.request.use(
         return successfulReq;
     },
     function(error) {
-        console.log("request resolver ",error)
         return Promise.reject(error);
     }
 );

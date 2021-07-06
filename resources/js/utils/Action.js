@@ -46,7 +46,8 @@ export const getPublicData= (dispatch)=>{
                 payload:{
                     courses:data?.courses,
                     corousel: data?.corousel,
-                    images: data?.images
+                    images: data?.images,
+                    testimony: data?.testimony
                 }
             })
         })
