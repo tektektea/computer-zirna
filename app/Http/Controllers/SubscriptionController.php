@@ -63,7 +63,7 @@ class SubscriptionController extends Controller
             if ($signature === $generated_signature) {
                 $subscription=Subscription::query()->find($request->get('subscription_id'));
                 $subscription->status = 'subscribe';
-                $subscription->purchase_at = Carbon::now();
+                //$subscription->purchase_at = Carbon::now();
                 $subscription->save();
 
                 return $this->handleResponse($subscription, 'Payment verified');
