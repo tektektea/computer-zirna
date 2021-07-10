@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('phone_no');
             $table->string('email')->nullable();
             $table->string('password')->nullable();
-            $table->enum('type', ['admin', 'appuser']);
+            $table->enum('type', ['admin', 'appuser'])->default('appuser');
 
             $table->softDeletes();
             $table->timestamps();

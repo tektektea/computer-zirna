@@ -17,6 +17,8 @@ import Banner from "../apps/Banner";
 import Create from "../courses/Create";
 import Edit from "../courses/Edit";
 import Materials from "../materials/Materials";
+import Profile from "../profile/Profile";
+import ProfileEdit from "../profile/Edit";
 
 
 const drawerWidth = 256;
@@ -55,6 +57,7 @@ const Main=({classes})=>{
             }
         })
     }
+
     React.useEffect(()=>{
        getPublicData(dispatch)
     },[])
@@ -73,6 +76,8 @@ const Main=({classes})=>{
                         </Hidden>
                         <div style={{flex:1}}>
                             <Route exact path={'/admin'} component={Dashboard}/>
+                            <Route exact path={'/admin/profile'} component={Profile}/>
+                            <Route exact path={'/admin/profile/:id'} component={ProfileEdit}/>
                             <Route exact path={'/admin/Dashboard'} component={Dashboard}/>
                             <Route exact path={'/admin/courses'} component={Courses}/>
                             <Route exact path={'/admin/courses/create'} component={Create}/>

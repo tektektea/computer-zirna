@@ -72,12 +72,24 @@ const AppMenu = {
         {key: 'banner', label: 'Banner', active: false},
     ]
 }
+const ResourceMenu = {
+    id: 'resource',
+    label: 'Resources',
+    icon: 'manage_accounts',
+    open: false,
+    items: [
+        {key: 'video', label: 'Videos', active: false},
+        {key: 'material', label: 'Material', active: false},
+        {key: 'image', label: 'Images', active: false},
+    ]
+}
 
 
 const Nav = ({classes, mobile, toggleDrawer}) => {
     const history = useHistory();
     const [adminMenu, setAdminMenu] = React.useState(AdminMenu);
     const [appMenu, setAppMenu] = React.useState(AppMenu);
+    const [resourceMenu, setResourceMenu] = React.useState(ResourceMenu);
 
     const [selectedMenu, setSelectedMenu] = React.useState('dashboard');
     const handleAdminMenuItem = (index, key) => {
@@ -133,6 +145,36 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
     };
     const handleAdminMenu = item => setAdminMenu(prevState => ({...prevState, open: !item.open}))
     const handleAppMenu = item => setAppMenu(prevState => ({...prevState, open: !item.open}))
+    const handleResourceMenu = item => setResourceMenu(prevState => ({...prevState, open: !item.open}))
+
+    const handleResourceMenuItem = (index, key) => {
+        let temp = resourceMenu.items;
+        const selectedItem = resourceMenu.items[index];
+        selectedItem.active = !selectedItem.active;
+        temp[index] = selectedItem;
+
+        setResourceMenu(prevState => ({
+            ...prevState, items: temp
+        }))
+        switch (index) {
+            //Documents
+            case 0:
+                history.push('/admin/videos');
+                break;
+            case 1:
+                history.push('/admin/materials');
+                break;
+            case 2:
+                history.push('/admin/media');
+                break;
+            default:
+                break;
+        }
+        if (mobile) {
+            toggleDrawer(!mobile)
+        }
+        setSelectedMenu(key)
+    };
 
     const handleMenu = name => {
         switch (name) {
@@ -177,25 +219,11 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                         toggleDrawer(!mobile)
                     }
                 }}>
-                    <Typography>COMPUTER ZIRNA</Typography>
+                    <p className={'title'}>COMPUTER ZIRNA</p>
                 </ListItem>
             </Hidden>
             <ToggleButton icon={'dashboard'} route={'/admin/dashboard'} primaryText={"Dashboard"} secondaryText={''}/>
             <Divider light={true}/>
-            <ListItem divider={true}
-                      selected={selectedMenu === 'videos'}
-                      onClick={event => {
-                          if (mobile) {
-                              toggleDrawer(!mobile)
-                          }
-                          handleMenu('videos');
-                          setSelectedMenu('videos')
-                      }} button={true}>
-                <ListItemIcon>
-                    <VideoLibraryOutlined/>
-                </ListItemIcon>
-                <ListItemText primary={"Videos"}/>
-            </ListItem>
 
             <ListItem divider={true}
                       selected={selectedMenu === 'courses'}
@@ -212,35 +240,6 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                 <ListItemText primary={"Courses"}/>
             </ListItem>
 
-            <ListItem divider={true}
-                      selected={selectedMenu === 'media'}
-                      onClick={event => {
-                          if (mobile) {
-                              toggleDrawer(!mobile)
-                          }
-                          handleMenu('media')
-                          setSelectedMenu('media')
-                      }} button={true}>
-                <ListItemIcon>
-                      <ImageOutlined/>
-                </ListItemIcon>
-                <ListItemText primary={"Images"}/>
-            </ListItem>
-
-            <ListItem divider={true}
-                      selected={selectedMenu === 'material'}
-                      onClick={event => {
-                          if (mobile) {
-                              toggleDrawer(!mobile)
-                          }
-                          handleMenu('material')
-                          setSelectedMenu('material')
-                      }} button={true}>
-                <ListItemIcon>
-                    <PermMediaOutlined/>
-                </ListItemIcon>
-                <ListItemText primary={"Materials"}/>
-            </ListItem>
 
             <ListItem divider={true}
                       selected={selectedMenu === 'subscriptions'}
@@ -258,7 +257,38 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
             </ListItem>
             <br/>
             <List>
-                <Typography className={classes.menuTitle} paragraph={true}>APPS</Typography>
+                <Typography className={classes.menuTitle} paragraph={true}>Manage Resources</Typography>
+                <ListItem className={classes.nav} button={true} onClick={event => handleResourceMenu(resourceMenu)}>
+                    <ListItemIcon style={{marginRight: 1}}>
+                        <Icon fontSize={"small"}>{resourceMenu.icon}</Icon>
+                    </ListItemIcon>
+                    <ListItemText primary={resourceMenu.label}/>
+                    {resourceMenu.open ? <ExpandLess/> : <ExpandMore/>}
+                </ListItem>
+                <Collapse in={resourceMenu.open} timeout="auto" unmountOnExit>
+                    <List component="div" disablePadding>
+                        {resourceMenu.items.map((child, index) =>
+
+                            <ListItem key={index} button
+                                      selected={selectedMenu === child.key}
+                                      onClick={event => {
+                                          if (mobile) {
+                                              toggleDrawer(!mobile)
+                                          }
+                                          handleResourceMenuItem(index, child.key)
+                                      }}>
+                                <ListItemIcon>
+                                    <Icon>navigate_next</Icon>
+                                </ListItemIcon>
+                                <ListItemText primary={child.label}/>
+                            </ListItem>
+                        )}
+                    </List>
+                </Collapse>
+
+            </List>
+            <List>
+                <Typography className={classes.menuTitle} paragraph={true}>Configuration</Typography>
                 <ListItem className={classes.nav} button={true} onClick={event => handleAppMenu(appMenu)}>
                     <ListItemIcon style={{marginRight: 1}}>
                         <Icon fontSize={"small"}>{appMenu.icon}</Icon>

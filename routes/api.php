@@ -79,7 +79,7 @@ Route::group(['prefix' => 'subscription', 'middleware' => 'auth:sanctum'], funct
     Route::post('create', [SubscriptionController::class, 'createOrder']);
     Route::post('verify', [SubscriptionController::class, 'verify']);
     Route::get('subscribers', [SubscriptionController::class, 'subscribers']);
-    Route::delete('subscribers/{id}', [SubscriptionController::class, 'deleteSubscription']);
+    Route::delete('{subscription}', [SubscriptionController::class, 'deleteSubscription']);
     Route::post('subscriber/create', [SubscriptionController::class, 'createSubscriber']);
 });
 
@@ -91,5 +91,8 @@ Route::group(['prefix' => 'setting', 'middleware' => 'auth:sanctum'], function (
 Route::get('public/data',[PublicController::class,'getPublicData']);
 Route::group(['prefix' => 'profile','middleware' => 'auth:sanctum'], function () {
     Route::get('me', [AuthController::class, 'me']);
+    Route::put('update', [AuthController::class, 'updateProfile']);
     Route::get('courses', [SubscriptionController::class, 'userCourse']);
 });
+
+Route::get('test/{user}', [SubscriptionController::class, 'userCourse']);

@@ -26,10 +26,19 @@ class SubscriptionController extends Controller
         }
     }
 
-    public function userCourse(Request $request)
+    public function userCourse(Request $request,User $user)
     {
         try {
-            return$this->handleResponse($request->user(), '');
+//            $user = $request->user();
+            $courses_ids=Subscription::query()
+                ->where('user_id', $user->id)
+                ->where('status', SubscriptionEnum::SUBSCRIBE)
+                ->pluck('course_id');
+            $courses=Course::query()
+                ->with(['videos','materials'])
+                ->findMany($courses_ids);
+
+            return$this->handleResponse($courses, '');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
@@ -108,9 +117,11 @@ class SubscriptionController extends Controller
             $courses = array_values($request->get('courses'));
 
             DB::transaction(function () use ($courses, $request) {
-                $user=User::query()->create($request->only(['name', 'phone_no', 'father_name', 'address']));
+
+                $user=User::query()->updateOrCreate($request->only(['name', 'phone_no']));
+
                 $subscriptions = collect($courses)->map(function ($course_id) use ($user, $request) {
-                    return Subscription::create([
+                    return new Subscription([
                         'father_name' => $request->get('father_name'),
                         'address' => $request->get('address'),
                         'course_id' => $course_id,
@@ -141,11 +152,12 @@ class SubscriptionController extends Controller
                 'course_id' => 'required',
             ]);
 
+            $course = Course::query()->find($request->get('course_id'))->first();
             $username = env('RAZOR_KEY_ID');
             $password = env('RAZOR_SECRET_KEY');
             $response = Http::withBasicAuth($username, $password)
                 ->post(env('RAZORPAY_BASE_URL') . '/orders', [
-                    'amount' => Util::COURSE_AMOUNT,
+                    'amount' => $course->price * 100,
                     'currency' => 'INR',
                     'receipt' => "" . now()->getTimestamp(),
                 ]);
@@ -163,7 +175,7 @@ class SubscriptionController extends Controller
                     'user_id' =>$currentUser->id,
                     'father_name' => $request->get('father_name'),
                     'address' => $request->get('address'),
-                    'course_id' => $request->get('course_id'),
+                    'course_id' => $course->id,
                     'order_id' => $result['id'],
                     'receipt' => $result['receipt'],
                     'status' => 'draft',

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -28,7 +27,7 @@ class Subscription extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function scopeSubscriber(Builder $builder)
+    public function scopeSubscriber( $builder)
     {
         return $builder->whereNotNull('user_id')
             ->where('status', 'subscribe');

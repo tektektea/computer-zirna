@@ -41,8 +41,8 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         try {
-            $request->user()->tokens()->delete();
-            Auth::logout();
+            $user = $request->user();
+            $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
             return $this->handleResponse(['logged' => false], '');
         } catch (Exception $exception) {
             return $this->handlingException($exception);
@@ -74,8 +74,26 @@ class AuthController extends Controller
 
     public function me(Request $request)
     {
-
         $user = $request->user();
         return $this->handleResponse($user);
+    }
+    public function updateProfile(Request $request)
+    {
+        try {
+            $user = $request->user();
+            $this->validate($request->only(['']), [
+                'email' => 'required:unique:users',
+                'password' => 'required:confirmed'
+            ]);
+            $user->update([
+                'full_name' => $request->get('full_name'),
+                'email' => $request->get('email'),
+                'password' => Hash::make('password')
+            ]);
+            return $this->handleResponse($user,'User updated successfully');
+        } catch (Exception $exception) {
+            return $this->handlingException($exception);
+        }
+
     }
 }

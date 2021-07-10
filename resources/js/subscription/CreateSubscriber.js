@@ -84,7 +84,7 @@ const CreateSubscriber = ({open, onClose, onSelects}) => {
                     ))}
                 </Stepper>
             </DialogTitle>
-            <DialogContent>
+            <DialogContent style={{height:800}}>
 
                 {activeStep === 0 && <SubscriptionForm formik={formik}
                                                        handleNext={() => setActiveStep(activeStep + 1)}/>}

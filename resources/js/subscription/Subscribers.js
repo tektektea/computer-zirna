@@ -3,11 +3,9 @@ import {List, ListItem, ListItemSecondaryAction, ListItemText, OutlinedInput} fr
 import {MESSAGE} from "../utils/Action";
 import Icon from "@material-ui/core/Icon";
 import {Pagination} from "@material-ui/lab";
-import {AppContext} from "../context/AppContextProvider";
 
-const Subscribers=({onItemClick})=>{
-    const [data, setData] = React.useState([]);
-    const [state, dispatch] = React.useContext(AppContext);
+
+const Subscribers=({fetchData,data,onItemClick})=>{
 
     const handlePagination = (event, page) => {
         fetchData(page)
@@ -18,25 +16,7 @@ const Subscribers=({onItemClick})=>{
         }
         console.log(e.key)
     }
-    const fetchData=(page=1,search='')=>{
-        axios.get('subscription/subscribers',{params: {search,page}})
-            .then(res=>{
-                setData(res.data.data);
-            })
-            .catch(err=>{
-                const errMsg = !!err.response ? err.response.data.error : err.toString();
-                dispatch({
-                    type: MESSAGE,
-                    payload: {
-                        message: errMsg,
-                        message_type: 'error'
-                    }
-                })
-            })
-    }
-    React.useEffect(()=>{
-        fetchData('')
-    },[])
+
     return(
         <List>
             <OutlinedInput margin={"dense"}

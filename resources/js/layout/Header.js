@@ -11,7 +11,7 @@ import {
     Typography,
     withStyles
 } from "@material-ui/core";
-
+import {useHistory} from 'react-router-dom';
 
 const styles = (theme) => ({
     toolbar: {
@@ -48,7 +48,8 @@ const styles = (theme) => ({
 
 });
 
-const Header=({handleDrawer,handleProfile,classes})=>{
+const Header=({handleDrawer,classes})=>{
+    const history=useHistory()
     return(
 
         <AppBar
@@ -68,14 +69,14 @@ const Header=({handleDrawer,handleProfile,classes})=>{
                                 </Grid>
                             </Hidden>
                             <Hidden mdUp={true}>
-                                <IconButton onClick={handleDrawer}>
+                                <IconButton onClick={e=>history.push('/admin/profile')}>
                                     <Icon color={"primary"}>menu</Icon>
                                 </IconButton>
                             </Hidden>
 
                             <Grid item>
                                 <div>
-                                    <IconButton onClick={handleProfile} name={'notification'}>
+                                    <IconButton onClick={event => history.push('profile')} name={'notification'}>
                                         <Avatar variant={'circular'}>T</Avatar>
                                     </IconButton>
                                     {/*{logged && <IconButton name={'notification'} onClick={event => history.push("/csc/setting")}>*/}
