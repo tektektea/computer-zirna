@@ -158,7 +158,7 @@ class SubscriptionController extends Controller
             $password = env('RAZOR_SECRET_KEY');
             $response = Http::withBasicAuth($username, $password)
                 ->post(env('RAZORPAY_BASE_URL') . '/orders', [
-                    'amount' => $course->price * 100,
+                    'amount' => $course->price,
                     'currency' => 'INR',
                     'receipt' => "" . now()->getTimestamp(),
                 ]);

@@ -42,7 +42,6 @@ const CreateSubscriber = ({open, onClose, onSelects}) => {
         onSubmit(values, e) {
             let temp = values;
             temp['courses'] = values?.courses?.map(item => item.id);
-            alert(temp['courses'])
             axios.post(CREATE_SUBSCRIBER_API,temp)
                 .then(res=>{
                     dispatch({
@@ -84,7 +83,7 @@ const CreateSubscriber = ({open, onClose, onSelects}) => {
                     ))}
                 </Stepper>
             </DialogTitle>
-            <DialogContent style={{height:800}}>
+            <DialogContent style={{height:'80%'}}>
 
                 {activeStep === 0 && <SubscriptionForm formik={formik}
                                                        handleNext={() => setActiveStep(activeStep + 1)}/>}
