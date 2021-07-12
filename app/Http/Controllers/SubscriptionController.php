@@ -26,10 +26,10 @@ class SubscriptionController extends Controller
         }
     }
 
-    public function userCourse(Request $request,User $user)
+    public function userCourse(Request $request)
     {
         try {
-//            $user = $request->user();
+            $user = $request->user();
             $courses_ids=Subscription::query()
                 ->where('user_id', $user->id)
                 ->where('status', SubscriptionEnum::SUBSCRIBE)
