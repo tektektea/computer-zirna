@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Course;
 use App\Models\Media;
 use App\Models\Setting;
@@ -41,6 +42,7 @@ class PublicController extends Controller
                 'courses' => $courses,
                 'corousel' => json_decode($setting->setting, true)['corousel'],
                 'images' => Media::query()->pluck('url'),
+                'banners' => Banner::query()->get(['url']),
                 'toc' => "1. One \n2.Two \n3.Three"
             ], '');
         } catch (\Exception $exception) {

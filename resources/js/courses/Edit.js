@@ -182,6 +182,7 @@ const Edit = ({props}) => {
                                        label={"Thumbnail url"}
                                        name={'thumbnail_url'}
                                        onChange={handleChange}
+                                       value={values?.thumbnail_url}
                                        error={touched?.thumbnail_url && errors?.thumbnail_url}
                                        helperText={touched?.thumbnail_url && errors?.thumbnail_url}
 
