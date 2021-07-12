@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Course extends Model
 {
     use SoftDeletes,HasFactory;
-    protected $fillable=['name','description','price','intro_url','thumbnail_url'];
+    protected $fillable=['id','name','description','price','intro_url','thumbnail_url'];
 
     public function subscriptions(): HasMany
     {

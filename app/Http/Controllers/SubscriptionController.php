@@ -153,7 +153,7 @@ class SubscriptionController extends Controller
                 'course_id' => 'required',
             ]);
 
-            $course = Course::query()->find($request->get('course_id'))->first();
+            $course = Course::query()->find($request->get('course_id'));
             $username = env('RAZOR_KEY_ID');
             $password = env('RAZOR_SECRET_KEY');
             $response = Http::withBasicAuth($username, $password)

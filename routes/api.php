@@ -74,7 +74,7 @@ Route::group(['prefix' => 'banner', 'middleware' => 'auth:sanctum'], function ()
     Route::delete('{banner}', [BannerController::class, 'destroy']);
 });
 
-Route::group(['prefix' => 'subscription', 'middleware' => 'auth:sanctum'], function () {
+Route::group(['prefix' => 'subscription'], function () {
     Route::get('index', [SubscriptionController::class, 'index']);
     Route::post('create', [SubscriptionController::class, 'createOrder']);
     Route::post('verify', [SubscriptionController::class, 'verify']);
