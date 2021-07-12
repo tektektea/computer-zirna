@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class SubscriptionController extends Controller
 {
@@ -185,6 +186,7 @@ class SubscriptionController extends Controller
                 DB::commit();
                 return $this->handleResponse($sub, 'Order created successfully');
             }else{
+                Log::error('error '.$response->body());
                 throw new \Exception('Opps! Something wrong');
             }
         } catch (\Exception $exception) {
