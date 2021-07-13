@@ -93,6 +93,8 @@ Route::group(['prefix' => 'profile','middleware' => 'auth:sanctum'], function ()
     Route::get('me', [AuthController::class, 'me']);
     Route::put('update', [AuthController::class, 'updateProfile']);
     Route::get('courses', [SubscriptionController::class, 'userCourse']);
+    Route::get('courses/{course}/videos', [SubscriptionController::class, 'videos']);
+    Route::get('courses/{course}/materials', [SubscriptionController::class, 'materials']);
 });
 
-Route::get('test/{user}', [SubscriptionController::class, 'userCourse']);
+Route::get('test/{course}', [SubscriptionController::class, 'videos']);

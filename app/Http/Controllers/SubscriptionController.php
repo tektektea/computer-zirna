@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Material;
 use App\Models\Subscription;
 use App\Models\User;
+use App\Models\Video;
 use App\utils\SubscriptionEnum;
 use App\utils\Util;
 use Carbon\Carbon;
@@ -22,6 +24,43 @@ class SubscriptionController extends Controller
     {
         try {
             return $this->handleResponse(Subscription::query()->paginate());
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
+
+    public function videos(Request $request,Course $course)
+    {
+        try {
+            $user = $request->user();
+            $sub=Subscription::query()->where('user_id', $user->id)
+                ->where('course_id',$course->id)
+                ->where('status','subscribe')
+                ->get();
+            if (!$sub) {
+                throw new \Exception('Permission denied', 403);
+            }
+            $videos=$course->videos()->get();
+            return $this->handleResponse($videos,'');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
+
+    public function materials(Request $request,Course $course)
+    {
+        try {
+            $user = $request->user();
+            $sub=Subscription::query()->where('user_id', $user->id)
+                ->where('course_id',$course->id)
+                ->where('status','subscribe')
+                ->get();
+            if (!$sub) {
+                throw new \Exception('Permission denied', 403);
+            }
+            $materials=$course->materials()->get();
+
+            return $this->handleResponse($materials,'');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
