@@ -4,21 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Models\Subject;
 use App\Models\Video;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
 {
-    public function all(Request $request)
+    public function index(Request $request)
     {
 
         try {
-            $data=Subject::query()->paginate();
+            $search = $request->get('search');
+            $data=Subject::query()
+                ->when($search,function (Builder $builder) use ($search) {
+                    $builder->where('title', 'LIKE', "%$search%");
+                })
+                ->paginate();
             return $this->handleResponse($data, '');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
     }
 
+    public function all(Request $request)
+    {
+        try {
+            return $this->handleResponse(Subject::all(), '');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
+    public function videos(Request $request,Subject $subject)
+    {
+
+        try {
+            $data = $subject->videos()->get();
+            return $this->handleResponse($data, '');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
     public function show(Request $request,Subject $subject)
     {
 
@@ -52,7 +76,7 @@ class SubjectController extends Controller
             $this->validate($request->only(['title', 'description']), [
                 'title' => 'required',
             ]);
-            $videos = $request->get('video_id');
+            $videos = $request->get('videos');
             $subject->update($request->only(['title', 'description']));
             $subject->videos()->sync($videos);
 
@@ -66,7 +90,7 @@ class SubjectController extends Controller
     {
         try {
             $subject->delete();
-            return $this->handleResponse($subject, 'Subject deleted successfully');
+            return $this->handleResponse(Subject::query()->paginate(), 'Subject deleted successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }

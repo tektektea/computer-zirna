@@ -16,6 +16,8 @@ class CourseVideoSubject extends Migration
         Schema::create('course_subject', function (Blueprint $table) {
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('subject_id');
+            $table->softDeletes();
+            $table->timestamps();
 
             $table->foreign('course_id')
                 ->references('id')
@@ -29,6 +31,8 @@ class CourseVideoSubject extends Migration
         Schema::create('subject_video', function (Blueprint $table) {
             $table->unsignedBigInteger('subject_id');
             $table->unsignedBigInteger('video_id');
+            $table->softDeletes();
+            $table->timestamps();
 
             $table->foreign('subject_id')
                 ->references('id')

@@ -1,28 +1,20 @@
 import React from "react";
 import * as Yup from "yup";
 import {useFormik} from "formik";
-import {CREATE_COURSE_API, SHOW_COURSE_API, UDPATE_COURSE_API} from "../utils/ApiRoutes";
+import {SHOW_COURSE_API, UDPATE_COURSE_API} from "../utils/ApiRoutes";
 import {MESSAGE} from "../utils/Action";
 import {AppContext} from "../context/AppContextProvider";
 import Grid from "@material-ui/core/Grid";
-import IconButton from "@material-ui/core/IconButton";
-import Icon from "@material-ui/core/Icon";
 import {Alert} from "@material-ui/lab";
-import {
-    DialogActions,
-    Divider,
-    List,
-    ListItem,
-    ListItemSecondaryAction,
-    ListItemText, Tab, Tabs,
-    TextField
-} from "@material-ui/core";
+import {DialogActions, Divider, Tab, Tabs, TextField} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import SelectVideo from "../videos/SelectVideo";
 import {useHistory, useParams} from "react-router-dom";
 import SelectMaterial from "../materials/SelectMaterial";
 import VideoList from "./VideoList";
 import MaterialList from "./MaterialList";
+import SelectSubject from "../subjects/SelectSubject";
+import SubjectList from "./SubjectList";
 
 const validationSchema = Yup.object().shape({
     id: Yup.number().required('iD is reuqired'),
@@ -32,22 +24,22 @@ const validationSchema = Yup.object().shape({
         .required('Price is required'),
     intro_url: Yup.string()
         .required('Video url is required'),
-    videos: Yup.array()
-        .required('Videos is required')
+    subjects: Yup.array()
+        .required('Subjects is required')
 });
 
 const Edit = ({props}) => {
     const [state, dispatch] = React.useContext(AppContext);
     const [open, setOpen] = React.useState(false);
     const [materialOpen, setMaterialOpen] = React.useState(false);
-    const [activeTab, setActiveTab] = React.useState('videos');
+    const [activeTab, setActiveTab] = React.useState('subjects');
 
     const {id} = useParams();
     const history = useHistory();
 
-    const {handleChange,setValues, setFieldValue, errors, handleReset, values, touched, handleSubmit} = useFormik({
+    const {handleChange, setValues, setFieldValue, errors, handleReset, values, touched, handleSubmit} = useFormik({
         initialValues: {
-            id:null,
+            id: null,
             name: '',
             description: '',
             price: 0,
@@ -58,8 +50,8 @@ const Edit = ({props}) => {
         },
         validationSchema,
         onSubmit(values, e) {
-            const {videos,materials} = values;
-            values['videos'] = videos.map(v => v.id);
+            const {subjects, materials} = values;
+            values['subjects'] = subjects.map(v => v.id);
             values['materials'] = materials.map(v => v.id);
             axios.put(UDPATE_COURSE_API(values.id), values)
                 .then(res => {
@@ -70,7 +62,9 @@ const Edit = ({props}) => {
                             message: res.data.message
                         }
                     })
-                    history.go(-1);
+                    setTimeout(()=>{
+                        history.goBack();
+                    },2000)
                 })
                 .catch(err => {
                     const errMsg = !!err.response ? err.response.data.error : err.toString();
@@ -86,27 +80,27 @@ const Edit = ({props}) => {
         }
     });
 
-    const handleSelectVideos = v => {
+    const handleSelectSubjects = v => {
         setOpen(false)
-        setFieldValue('videos', v);
+        setFieldValue('subjects', v);
     }
     const handleSelectMaterials = v => {
         setMaterialOpen(false)
         setFieldValue('materials', v);
     }
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         axios.get(SHOW_COURSE_API(id))
             .then(res => {
                 const {data} = res.data
                 setValues({
-                    id:data.id,
-                    name:data.name,
+                    id: data.id,
+                    name: data.name,
                     description: data.description,
                     price: data.price,
                     intro_url: data.intro_url,
                     thumbnail_url: data.thumbnail_url,
-                    videos: data?.videos,
+                    subjects: data?.subjects,
                     materials: data?.materials,
                 })
             })
@@ -120,7 +114,7 @@ const Edit = ({props}) => {
                     }
                 })
             });
-    },[])
+    }, [])
 
     return (
         <div className={'maincontent'}>
@@ -213,23 +207,23 @@ const Edit = ({props}) => {
                 </div>
                 <div className={'my-card'}>
                     <p className={'subtitle'}>Course contents</p>
-                    <Divider style={{marginTop:16,marginBottom:16}} light={true}/>
+                    <Divider style={{marginTop: 16, marginBottom: 16}} light={true}/>
                     <Grid container={true} justify={"space-between"}>
                         <Button onClick={event => setOpen(true)} variant={"outlined"} color={"primary"}>Add
-                            videos</Button>
+                            subjects</Button>
                         <Button onClick={event => setMaterialOpen(true)} variant={"outlined"} color={"primary"}>Add
                             materials</Button>
                     </Grid>
                 </div>
                 <div className={'my-card'}>
-                    <Tabs value={activeTab} onChange={(e,value)=>setActiveTab(value)} aria-label="content">
-                        <Tab value={'videos'} label="Videos"/>
+                    <Tabs value={activeTab} onChange={(e, value) => setActiveTab(value)} aria-label="content">
+                        <Tab value={'subjects'} label="Subjects"/>
                         <Tab value={'materials'} label="Materials"/>
                     </Tabs>
-                    {activeTab === 'videos' && <VideoList videos={values.videos}
-                                                          remove={index=>setFieldValue('videos',values.videos.filter((val,i)=>i!==index))}/>}
+                    {activeTab === 'subjects' && <SubjectList subjects={values.subjects}
+                                                          remove={index => setFieldValue('subjects', values.subjects?.filter((val, i) => i !== index))}/>}
                     {activeTab === 'materials' && <MaterialList materials={values.materials}
-                                                                remove={index=>setFieldValue('materials',values.materials.filter((val,i)=>i!==index))}/>}
+                                                                remove={index => setFieldValue('materials', values.materials?.filter((val, i) => i !== index))}/>}
 
                 </div>
                 <div className={'my-card'}>
@@ -239,10 +233,10 @@ const Edit = ({props}) => {
                     </DialogActions>
                 </div>
             </form>
-            {open && <SelectVideo open={open}
+            {open && <SelectSubject open={open}
                                   onClose={() => setOpen(false)}
-                                  defaultVideos={values?.videos}
-                                  onSelects={handleSelectVideos}/>}
+                                  defaultVideos={values?.subjects}
+                                  onSelects={handleSelectSubjects}/>}
 
             {materialOpen && <SelectMaterial open={materialOpen}
                                              onClose={() => setMaterialOpen(false)}

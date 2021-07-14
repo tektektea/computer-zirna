@@ -5,14 +5,15 @@ import {CREATE_COURSE_API} from "../utils/ApiRoutes";
 import {MESSAGE} from "../utils/Action";
 import {AppContext} from "../context/AppContextProvider";
 import Grid from "@material-ui/core/Grid";
-import {Alert, TabList} from "@material-ui/lab";
+import {Alert} from "@material-ui/lab";
 import {DialogActions, Divider, Tab, Tabs, TextField} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import SelectVideo from "../videos/SelectVideo";
 import SelectMaterial from "../materials/SelectMaterial";
-import VideoList from "./VideoList";
 import MaterialList from "./MaterialList";
 import {useHistory} from "react-router-dom";
+import SubjectList from "./SubjectList";
+import SelectSubject from "../subjects/SelectSubject";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -22,13 +23,15 @@ const validationSchema = Yup.object().shape({
     intro_url: Yup.string()
         .required('Video url is required'),
     videos: Yup.array()
-        .required('Videos is required')
+        .required('Videos is required'),
+    subjects: Yup.array()
+        .required('Subject is required')
 });
 
 const Create = ({course}) => {
     const [state, dispatch] = React.useContext(AppContext);
     const [open, setOpen] = React.useState(false);
-    const [activeTab, setActiveTab] = React.useState('videos');
+    const [activeTab, setActiveTab] = React.useState('subjects');
     const [materialOpen, setMaterialOpen] = React.useState(false);
     const history = useHistory();
 
@@ -39,14 +42,16 @@ const Create = ({course}) => {
             price: 0,
             intro_url: course?.intro_url,
             thumbnail_url: course?.thumbnail_url,
+            subjects: course?.subjects,
             videos: Boolean(course?.videos) ? course.videos : [],
             materials: Boolean(course?.materials) ? course.materials : [],
         },
         validationSchema,
         onSubmit(values, e) {
-            const {videos,materials} = values;
-            values['videos'] =  videos.map(v => v.id);
-            values['materials'] = materials.map(m=>m.id);
+            const {videos, materials, subjects} = values;
+            values['videos'] = videos.map(v => v.id);
+            values['materials'] = materials.map(m => m.id);
+            values['subjects'] = subjects.map(m => m.id);
             axios.post(CREATE_COURSE_API, values)
                 .then(res => {
                     dispatch({
@@ -74,6 +79,11 @@ const Create = ({course}) => {
     const handleSelectVideos = v => {
         setOpen(false)
         setFieldValue('videos', v);
+
+    }
+    const handleSubjectVideos = v => {
+        setOpen(false)
+        setFieldValue('subjects', v);
 
     }
     const handleSelectMaterials = v => {
@@ -162,23 +172,24 @@ const Create = ({course}) => {
                 </div>
                 <div className={'my-card'}>
                     <p className={'subtitle'}>Course contents</p>
-                    <Divider style={{marginTop:16,marginBottom:16}} light={true}/>
+                    <Divider style={{marginTop: 16, marginBottom: 16}} light={true}/>
                     <Grid container={true} justify={"space-between"}>
                         <Button onClick={event => setOpen(true)} variant={"outlined"} color={"primary"}>Add
-                            videos</Button>
+                            subject</Button>
                         <Button onClick={event => setMaterialOpen(true)} variant={"outlined"} color={"primary"}>Add
-                            materials</Button>
+                            material</Button>
                     </Grid>
                 </div>
                 <div className={'my-card'}>
-                    <Tabs value={activeTab} onChange={(e,value)=>setActiveTab(value)} aria-label="content">
-                        <Tab value={'videos'} label="Videos"/>
+                    <Tabs value={activeTab} onChange={(e, value) => setActiveTab(value)} aria-label="content">
+                        <Tab value={'subjects'} label="Subjects"/>
                         <Tab value={'materials'} label="Materials"/>
                     </Tabs>
-                    {activeTab === 'videos' && <VideoList videos={values.videos}
-                                                          remove={index=>setFieldValue('videos',values.videos.filter((val,i)=>i!==index))}/>}
+
+                    {activeTab === 'subjects' && <SubjectList subjects={values.subjects}
+                                                              remove={index => setFieldValue('subjects', values?.subjects?.filter((val, i) => i !== index))}/>}
                     {activeTab === 'materials' && <MaterialList materials={values.materials}
-                                                                remove={index=>setFieldValue('materials',values.materials.filter((val,i)=>i!==index))}/>}
+                                                                remove={index => setFieldValue('materials', values.materials?.filter((val, i) => i !== index))}/>}
 
                 </div>
                 <div className={'my-card'}>
@@ -188,10 +199,10 @@ const Create = ({course}) => {
                     </DialogActions>
                 </div>
             </form>
-            {open && <SelectVideo open={open}
+            {open && <SelectSubject open={open}
                                   onClose={() => setOpen(false)}
-                                  defaultVideos={values?.videos}
-                                  onSelects={handleSelectVideos}/>}
+                                  defaultVideos={values?.subjects}
+                                  onSelects={handleSubjectVideos}/>}
 
             {materialOpen && <SelectMaterial open={materialOpen}
                                              onClose={() => setMaterialOpen(false)}

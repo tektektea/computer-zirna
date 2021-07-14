@@ -41,13 +41,17 @@ Route::group(['prefix' => 'courses', 'middleware' => 'auth:sanctum'], function (
     Route::post('create', [CourseController::class, 'create']);
     Route::delete('{course}', [CourseController::class, 'delete']);
     Route::put('{course}', [CourseController::class, 'update']);
+    Route::get('{course}/subjects', [CourseController::class, 'subjects']);
+    Route::get('{course}/materials', [CourseController::class, 'materials']);
 });
 Route::group(['prefix' => 'subjects', 'middleware' => 'auth:sanctum'], function () {
-    Route::get('index', [SubjectController::class, 'all']);
+    Route::get('all', [SubjectController::class, 'all']);
+    Route::get('index', [SubjectController::class, 'index']);
     Route::get('{subject}/show', [SubjectController::class, 'show']);
     Route::post('create', [SubjectController::class, 'create']);
     Route::delete('{subject}', [SubjectController::class, 'delete']);
     Route::put('{subject}', [SubjectController::class, 'update']);
+    Route::get('{subject}/videos', [SubjectController::class, 'videos']);
 });
 
 Route::group(['prefix' => 'videos','middleware' => 'auth:sanctum'], function () {

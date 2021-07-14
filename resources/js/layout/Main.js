@@ -19,6 +19,9 @@ import Edit from "../courses/Edit";
 import Materials from "../materials/Materials";
 import Profile from "../profile/Profile";
 import ProfileEdit from "../profile/Edit";
+import SubjectList from "../subjects/Subjects";
+import CreateSubject from "../subjects/CreateSubject";
+import EditSubject from "../subjects/EditSubject";
 
 
 const drawerWidth = 256;
@@ -79,6 +82,9 @@ const Main=({classes})=>{
                             <Route exact path={'/admin/profile'} component={Profile}/>
                             <Route exact path={'/admin/profile/:id'} component={ProfileEdit}/>
                             <Route exact path={'/admin/Dashboard'} component={Dashboard}/>
+                            <Route exact path={'/admin/subjects'} component={SubjectList}/>
+                            <Route exact path={'/admin/subjects/create'} component={CreateSubject}/>
+                            <Route exact path={'/admin/subjects/:id/edit'} component={EditSubject}/>
                             <Route exact path={'/admin/courses'} component={Courses}/>
                             <Route exact path={'/admin/courses/create'} component={Create}/>
                             <Route exact path={'/admin/courses/:id/edit'} component={Edit}/>

@@ -1,17 +1,8 @@
 import React from "react";
-import {
-    AppBar,
-    Avatar,
-    Container,
-    Grid,
-    Hidden,
-    Icon,
-    IconButton,
-    Toolbar,
-    Typography,
-    withStyles
-} from "@material-ui/core";
+import {AppBar, Avatar, Container, Grid, Hidden, Icon, IconButton, Toolbar, withStyles} from "@material-ui/core";
 import {useHistory} from 'react-router-dom';
+import Logo from "../components/Logo";
+import Typography from "@material-ui/core/Typography";
 
 const styles = (theme) => ({
     toolbar: {
@@ -48,9 +39,9 @@ const styles = (theme) => ({
 
 });
 
-const Header=({handleDrawer,classes})=>{
-    const history=useHistory()
-    return(
+const Header = ({handleDrawer, classes}) => {
+    const history = useHistory()
+    return (
 
         <AppBar
             component="div"
@@ -59,37 +50,37 @@ const Header=({handleDrawer,classes})=>{
             position="sticky"
             elevation={0}
         >
-                <Toolbar className={classes.toolbar}>
-                    <Container maxWidth={"lg"}>
-                        <Grid container justify={"space-between"} alignItems="center" spacing={4}>
-                            {/*<Grid item container={true} direction={"row"}>*/}
-                            <Hidden mdDown={true}>
-                                <Grid  style={{display: 'flex',cursor:'pointer'}} item={true}>
-                                    <Typography variant={"h6"}>Mizoram Computer zirna</Typography>
-                                </Grid>
-                            </Hidden>
-                            <Hidden mdUp={true}>
-                                <IconButton onClick={e=>history.push('/admin/profile')}>
-                                    <Icon color={"primary"}>menu</Icon>
-                                </IconButton>
-                            </Hidden>
-
-                            <Grid item>
-                                <div>
-                                    <IconButton onClick={event => history.push('profile')} name={'notification'}>
-                                        <Avatar variant={'circular'}>T</Avatar>
-                                    </IconButton>
-                                    {/*{logged && <IconButton name={'notification'} onClick={event => history.push("/csc/setting")}>*/}
-                                    {/*    <Icon>settings</Icon>*/}
-                                    {/*</IconButton>}*/}
-                                </div>
-
+            <Toolbar className={classes.toolbar}>
+                <Container maxWidth={"lg"}>
+                    <Grid container justify={"space-between"} alignItems="center" spacing={4}>
+                        {/*<Grid item container={true} direction={"row"}>*/}
+                        <Hidden mdDown={true}>
+                            <Grid style={{display: 'flex', cursor: 'pointer'}} item={true}>
+                                <Typography variant={"h6"} color={"primary"}>City computer</Typography>
                             </Grid>
+                        </Hidden>
+                        <Hidden mdUp={true}>
+                            <IconButton onClick={e => history.push('/admin/profile')}>
+                                <Icon color={"primary"}>menu</Icon>
+                            </IconButton>
+                        </Hidden>
+
+                        <Grid item>
+                            <div>
+                                <IconButton onClick={event => history.push('profile')} name={'notification'}>
+                                    <Avatar variant={'circular'}>T</Avatar>
+                                </IconButton>
+                                {/*{logged && <IconButton name={'notification'} onClick={event => history.push("/csc/setting")}>*/}
+                                {/*    <Icon>settings</Icon>*/}
+                                {/*</IconButton>}*/}
+                            </div>
 
                         </Grid>
-                    </Container>
 
-                </Toolbar>
+                    </Grid>
+                </Container>
+
+            </Toolbar>
 
             {/*{loading && <LinearProgress className={classes.loading} color={"primary"} variant={"indeterminate"}/>}*/}
 

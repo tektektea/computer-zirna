@@ -18,6 +18,33 @@ class CourseController extends Controller
     {
     }
 
+    public function materials(Request $request, Course $course)
+    {
+        try {
+//            $permit=$request->user()->tokenCan('view:course');
+//            if (!$permit) {
+//                throw  new \Exception('Permission denied', 403);
+//            }
+
+            return $this->handleResponse($course->materials()->get(), '');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
+
+    public function subjects(Request $request, Course $course)
+    {
+        try {
+//            $permit=$request->user()->tokenCan('view:course');
+//            if (!$permit) {
+//                throw  new \Exception('Permission denied', 403);
+//            }
+
+            return $this->handleResponse($course->subjects()->get(), '');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
     public function show(Request $request, Course $course)
     {
         try {
@@ -25,7 +52,7 @@ class CourseController extends Controller
 //            if (!$permit) {
 //                throw  new \Exception('Permission denied', 403);
 //            }
-            return $this->handleResponse($course->load(['videos','materials']), '');
+            return $this->handleResponse($course->load(['subjects','materials']), '');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
@@ -61,7 +88,7 @@ class CourseController extends Controller
             $materials = Material::query()->findMany($request->get('materials'));
 
             $course = Course::create($request->only(['name', 'description', 'intro_url', 'thumbnail_url', 'price']));
-            $course->videos()->sync($subjects);
+            $course->subjects()->sync($subjects);
             $course->materials()->sync($materials);
             return $this->handleResponse($course, 'Course created successfully');
         } catch (\Exception $exception) {

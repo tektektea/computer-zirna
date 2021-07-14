@@ -78,6 +78,7 @@ const ResourceMenu = {
     icon: 'manage_accounts',
     open: false,
     items: [
+        {key: 'subject', label: 'Subjects', active: false},
         {key: 'video', label: 'Videos', active: false},
         {key: 'material', label: 'Material', active: false},
         {key: 'image', label: 'Images', active: false},
@@ -159,14 +160,16 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
         switch (index) {
             //Documents
             case 0:
-                history.push('/admin/videos');
+                history.push('/admin/subjects');
                 break;
             case 1:
-                history.push('/admin/materials');
+                history.push('/admin/videos');
                 break;
             case 2:
-                history.push('/admin/media');
+                history.push('/admin/materials');
                 break;
+            case 3:
+                history.push('/admin/media')
             default:
                 break;
         }

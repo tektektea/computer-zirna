@@ -18,6 +18,7 @@ class CreateSubjectsTable extends Migration
             $table->string('title');
             $table->mediumText('description');
             $table->softDeletes();
+
             $table->timestamps();
         });
     }
