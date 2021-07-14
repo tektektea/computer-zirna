@@ -33,7 +33,7 @@ class PublicController extends Controller
     public function getPublicData(Request $request): JsonResponse
     {
         try {
-            $courses = Course::with(['videos' => function ($builder) {
+            $courses = Course::with(['subjects' => function ($builder) {
                 $builder->select(['title', 'description']);
             }])->get();
             $setting = Setting::query()->first();

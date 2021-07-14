@@ -21,10 +21,10 @@ class CourseController extends Controller
     public function show(Request $request, Course $course)
     {
         try {
-            $permit=$request->user()->tokenCan('view:course');
-            if (!$permit) {
-                throw  new \Exception('Permission denied', 403);
-            }
+//            $permit=$request->user()->tokenCan('view:course');
+//            if (!$permit) {
+//                throw  new \Exception('Permission denied', 403);
+//            }
             return $this->handleResponse($course->load(['videos','materials']), '');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
@@ -33,10 +33,10 @@ class CourseController extends Controller
     public function all(Request $request)
     {
         try {
-            $permit=$request->user()->tokenCan('view:course');
-            if (!$permit) {
-                throw  new \Exception('Permission denied', 403);
-            }
+//            $permit=$request->user()->tokenCan('view:course');
+//            if (!$permit) {
+//                throw  new \Exception('Permission denied', 403);
+//            }
             return $this->handleResponse(Course::all(), '');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
@@ -46,10 +46,10 @@ class CourseController extends Controller
     public function create(Request $request)
     {
         try {
-            $permit=$request->user()->tokenCan('create:course');
-            if (!$permit) {
-                throw new \Exception('Permission denied', 403);
-            }
+//            $permit=$request->user()->tokenCan('create:course');
+//            if (!$permit) {
+//                throw new \Exception('Permission denied', 403);
+//            }
             $this->validate($request->only(['name', 'description','intro_url', 'thumbnail_url','price','subjects']), [
                 'name' => 'required',
                 'intro_url' => 'required',
@@ -71,10 +71,10 @@ class CourseController extends Controller
     public function update(Request $request,Course $course)
     {
         try {
-            $permit=$request->user()->tokenCan('update:course');
-            if (!$permit) {
-                throw new \Exception('Permission denied', 403);
-            }
+//            $permit=$request->user()->tokenCan('update:course');
+//            if (!$permit) {
+//                throw new \Exception('Permission denied', 403);
+//            }
             $this->validate($request->only(['name', 'description','intro_url', 'price','subjects']), [
                 'name' => 'required',
                 'intro_url' => 'required',
@@ -102,10 +102,10 @@ class CourseController extends Controller
     public function delete(Request $request,Course $course)
     {
         try {
-            $permit=$request->user()->tokenCan('delete:course');
-            if (!$permit) {
-                throw new \Exception('Permission denied', 403);
-            }
+//            $permit=$request->user()->tokenCan('delete:course');
+//            if (!$permit) {
+//                throw new \Exception('Permission denied', 403);
+//            }
             $course->delete();
 
             return $this->handleResponse(Course::all(), 'Course deleted successfully');
