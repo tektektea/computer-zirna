@@ -18,6 +18,6 @@ class Subject extends Model
     }
     public function videos(): BelongsToMany
     {
-        return $this->belongsToMany(Video::class,'');
+        return $this->belongsToMany(Video::class,);
     }
 }
