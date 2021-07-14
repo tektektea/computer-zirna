@@ -35,7 +35,7 @@ class SubjectController extends Controller
             $this->validate($request->only(['title', 'description']), [
                 'title' => 'required',
             ]);
-            $videos = $request->only('videos');
+            $videos = $request->get('videos');
 
             $subject=Subject::create($request->only(['title', 'description']));
             $subject->videos()->sync($videos);
@@ -52,7 +52,7 @@ class SubjectController extends Controller
             $this->validate($request->only(['title', 'description']), [
                 'title' => 'required',
             ]);
-            $videos = $request->only('video_id');
+            $videos = $request->get('video_id');
             $subject->update($request->only(['title', 'description']));
             $subject->videos()->sync($videos);
 
