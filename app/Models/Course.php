@@ -17,9 +17,9 @@ class Course extends Model
     {
         return $this->hasMany(Course::class);
     }
-    public function videos(): BelongsToMany
+    public function subjects(): BelongsToMany
     {
-        return $this->belongsToMany(Video::class);
+        return $this->belongsToMany(Subject::class);
     }
 
     public function materials(): BelongsToMany

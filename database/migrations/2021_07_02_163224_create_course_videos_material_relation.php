@@ -27,19 +27,7 @@ class CreateCourseVideosMaterialRelation extends Migration
                 ->on('materials')
                 ->cascadeOnDelete();
         });
-        Schema::create('course_video', function (Blueprint $table) {
-            $table->unsignedBigInteger('course_id');
-            $table->unsignedBigInteger('video_id');
 
-            $table->foreign('course_id')
-                ->references('id')
-                ->on('courses')
-                ->cascadeOnDelete();
-            $table->foreign('video_id')
-                ->references('id')
-                ->on('videos')
-                ->cascadeOnDelete();
-        });
     }
 
     /**
@@ -50,6 +38,5 @@ class CreateCourseVideosMaterialRelation extends Migration
     public function down()
     {
         Schema::dropIfExists('course_material');
-        Schema::dropIfExists('course_video');
     }
 }

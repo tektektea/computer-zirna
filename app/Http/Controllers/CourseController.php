@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Material;
+use App\Models\Subject;
 use App\Models\Video;
 use Illuminate\Http\Request;
 
@@ -49,18 +50,18 @@ class CourseController extends Controller
             if (!$permit) {
                 throw new \Exception('Permission denied', 403);
             }
-            $this->validate($request->only(['name', 'description','intro_url', 'thumbnail_url','price','videos']), [
+            $this->validate($request->only(['name', 'description','intro_url', 'thumbnail_url','price','subjects']), [
                 'name' => 'required',
                 'intro_url' => 'required',
                 'price' => 'required|numeric',
-                'videos'=>'required'
+                'subjects'=>'required'
             ]);
 
-            $videos = Video::query()->findMany($request->get('videos'));
+            $subjects = Subject::query()->findMany($request->get('subjects'));
             $materials = Material::query()->findMany($request->get('materials'));
 
             $course = Course::create($request->only(['name', 'description', 'intro_url', 'thumbnail_url', 'price']));
-            $course->videos()->sync($videos);
+            $course->videos()->sync($subjects);
             $course->materials()->sync($materials);
             return $this->handleResponse($course, 'Course created successfully');
         } catch (\Exception $exception) {
@@ -74,11 +75,11 @@ class CourseController extends Controller
             if (!$permit) {
                 throw new \Exception('Permission denied', 403);
             }
-            $this->validate($request->only(['name', 'description','intro_url', 'price','videos']), [
+            $this->validate($request->only(['name', 'description','intro_url', 'price','subjects']), [
                 'name' => 'required',
                 'intro_url' => 'required',
                 'price' => 'required|numeric',
-                'videos'=>'required'
+                'subjects'=>'required'
             ]);
             $course->name = $request->get('name');
             $course->description = $request->get('description');
@@ -87,9 +88,10 @@ class CourseController extends Controller
             $course->thumbnail_url = $request->get('thumbnail_url');
             $course->save();
 
-            $videos = Video::query()->findMany($request->get('videos'));
+            $subjects = Subject::query()->findMany($request->get('subjects'));
             $materials = Material::query()->findMany($request->get('materials'));
-            $course->videos()->sync($videos);
+//            $course->videos()->sync($videos);
+            $course->subjects()->sync($subjects);
             $course->materials()->sync($materials);
 
             return $this->handleResponse($course, 'Course updated successfully');

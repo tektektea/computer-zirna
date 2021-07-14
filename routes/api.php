@@ -8,6 +8,7 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OtpController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
@@ -41,6 +42,14 @@ Route::group(['prefix' => 'courses', 'middleware' => 'auth:sanctum'], function (
     Route::delete('{course}', [CourseController::class, 'delete']);
     Route::put('{course}', [CourseController::class, 'update']);
 });
+Route::group(['prefix' => 'subjects', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('index', [SubjectController::class, 'all']);
+    Route::get('{subject}/show', [SubjectController::class, 'show']);
+    Route::post('create', [SubjectController::class, 'create']);
+    Route::delete('{subject}', [SubjectController::class, 'delete']);
+    Route::put('{subject}', [SubjectController::class, 'update']);
+});
+
 Route::group(['prefix' => 'videos','middleware' => 'auth:sanctum'], function () {
     Route::get('all', [VideoController::class, 'all']);
     Route::get('index', [VideoController::class, 'index']);

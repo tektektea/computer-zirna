@@ -14,9 +14,9 @@ class Video extends Model
 
     protected $fillable = ['title', 'description', 'video_url','course_id'];
 
-    public function courses(): BelongsToMany
+    public function subjects(): BelongsToMany
     {
-        return $this->belongsToMany(Course::class);
+        return $this->belongsToMany(Subject::class);
     }
 }
 
