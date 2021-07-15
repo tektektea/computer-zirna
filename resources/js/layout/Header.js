@@ -56,11 +56,11 @@ const Header = ({handleDrawer, classes}) => {
                         {/*<Grid item container={true} direction={"row"}>*/}
                         <Hidden mdDown={true}>
                             <Grid style={{display: 'flex', cursor: 'pointer'}} item={true}>
-                                <Typography variant={"h6"} color={"primary"}>City computer</Typography>
+                                <Typography variant={"h6"} color={"primary"}>CITY COMPUTER</Typography>
                             </Grid>
                         </Hidden>
                         <Hidden mdUp={true}>
-                            <IconButton onClick={e => history.push('/admin/profile')}>
+                            <IconButton onClick={handleDrawer}>
                                 <Icon color={"primary"}>menu</Icon>
                             </IconButton>
                         </Hidden>
