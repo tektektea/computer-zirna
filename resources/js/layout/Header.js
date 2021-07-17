@@ -1,8 +1,6 @@
 import React from "react";
 import {AppBar, Avatar, Container, Grid, Hidden, Icon, IconButton, Toolbar, withStyles} from "@material-ui/core";
 import {useHistory} from 'react-router-dom';
-import Logo from "../components/Logo";
-import Typography from "@material-ui/core/Typography";
 
 const styles = (theme) => ({
     toolbar: {
