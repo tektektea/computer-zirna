@@ -115,6 +115,45 @@ class SubscriptionController extends Controller
 
     }
 
+    public function renew(Request $request,Subscription $subscription)
+    {
+        try {
+            $this->validate($request->only(['expired_at']), [
+                'expired_at' => 'required',
+            ]);
+            $subscription->expired_at = new Carbon($request->get('expired_at'));
+            $subscription->save();
+
+            return $this->handleResponse($subscription, 'Subscription renewed successfully');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
+    public function unblock(Request $request,Subscription $subscription)
+    {
+        try {
+
+            $subscription->status = 'subscribe';
+            $subscription->save();
+
+            return $this->handleResponse($subscription, 'Subscription unblocked successfully');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
+    public function block(Request $request,Subscription $subscription)
+    {
+        try {
+
+            $subscription->status = 'cancelled';
+            $subscription->save();
+
+            return $this->handleResponse($subscription, 'Subscription blocked successfully');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
+
     public function subscribers(Request $request)
     {
         try {

@@ -1,5 +1,5 @@
 // export const BASE_URL = 'http://127.0.0.1:8000/api';
-export const BASE_URL = 'http://computerzirna.in/api';
+export const BASE_URL = 'https://computerzirna.in/api';
 
 export const FETCH_ADMIN_API='admin/index'
 export const CREATE_ADMIN_API='admin/create'
@@ -34,6 +34,9 @@ export const DOWNLOAD_MATERIAL_API=id=>`material/${id}`
 
 export const FETCH_SUBSCRIPTION_API='subscription/index'
 export const CREATE_SUBSCRIPTION_API='subscription/create'
+export const RENEW_SUBSCRIPTION_API=id=>`subscription/${id}/renew`
+export const BLOCK_SUBSCRIPTION_API=id=>`subscription/${id}/block`
+export const UNBLOCK_SUBSCRIPTION_API=id=>`subscription/${id}/unblock`
 export const CREATE_SUBSCRIBER_API='subscription/subscriber/create'
 export const DELETE_SUBSCRIPTION_API=id=>`subscription/${id}`
 

@@ -56,7 +56,7 @@ const Header = ({handleDrawer, classes}) => {
                         {/*<Grid item container={true} direction={"row"}>*/}
                         <Hidden mdDown={true}>
                             <Grid style={{display: 'flex', cursor: 'pointer'}} item={true}>
-                                <Typography variant={"h6"} color={"primary"}>City computer</Typography>
+                                <img height={60} width={'auto'} src={'../storage/icons/city.png'}/>
                             </Grid>
                         </Hidden>
                         <Hidden mdUp={true}>

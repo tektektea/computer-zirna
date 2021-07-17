@@ -1,8 +1,8 @@
 import React from "react";
 import {
     Card,
-    CardActions,
-    CardHeader, Hidden,
+    CardHeader,
+    Hidden,
     Icon,
     IconButton,
     Table,
@@ -14,58 +14,118 @@ import {
     Typography
 } from "@material-ui/core";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
 import ContextMenu from "./ContextMenu";
 import ConfirmDialog from "../components/ConfirmDialog";
-import {CREATE_SUBSCRIBER_API, DELETE_SUBSCRIPTION_API} from "../utils/ApiRoutes";
+import {
+    BLOCK_SUBSCRIPTION_API,
+    DELETE_SUBSCRIPTION_API,
+    RENEW_SUBSCRIPTION_API,
+    UNBLOCK_SUBSCRIPTION_API
+} from "../utils/ApiRoutes";
 import {MESSAGE} from "../utils/Action";
 import {AppContext} from "../context/AppContextProvider";
+import RenewDialog from "./RenewDialog";
 
-const SubscriptionDetail = ({item}) => {
+const SubscriptionDetail = ({item, refetch}) => {
     const [selectedItem, setSelectedItem] = React.useState(null);
     const [menuOpen, setMenuOpen] = React.useState(false);
-    const [openConfirm, setOpenConfirm] = React.useState(false);
+    const [confirmData, setConfirmData] = React.useState({
+        open: false,
+        mode: 'delete',
+        title: null
+    });
+    const [openRenew, setOpenRenew] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [subscriptions, setSubscriptions] = React.useState(item?.subscriptions);
     const [state, dispatch] = React.useContext(AppContext);
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         setSubscriptions(item?.subscriptions)
-    },[item])
-    const handleMenuItem = menuItem => {
-        switch (menuItem) {
-            case 'renew':
-                break;
-            case 'cancel':
-                break;
+    }, [item || refetch])
+
+    const handleConfirm = mode => {
+        setConfirmData(prevState => ({...prevState,open:false}))
+        switch (mode) {
             case 'delete':
-                setOpenConfirm(true);
+                deleteSub()
+                break;
+            case 'unblock':
+                unblockSub();
+                break;
+            case 'block':
+                blockSub()
+            default:
                 break;
         }
     }
-    const deleteSub=()=>{
+    const handleMenuItem = menuItem => {
+        switch (menuItem) {
+            case 'renew':
+                setOpenRenew(true);
+                break;
+            case 'block':
+                axios.post(BLOCK_SUBSCRIPTION_API(selectedItem?.id))
+                    .then(res => {
+                        handleToast(res.data?.message, 'success');
+                        !!refetch && refetch();
+                    })
+                    .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
+                break;
+            case 'unblock':
+                axios.post(UNBLOCK_SUBSCRIPTION_API(selectedItem?.id))
+                    .then(res => {
+                        handleToast(res.data?.message, 'success');
+                        !!refetch && refetch();
+                    })
+                    .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
+                break;
+            case 'delete':
+                setConfirmData(prevState => ({...prevState, open: true}));
+                break;
+        }
+    }
+
+    const handleToast = (msg, type) => {
+        dispatch({
+            type: MESSAGE,
+            payload: {
+                message_type: type,
+                message: msg
+            }
+        })
+    }
+    const blockSub = () => {
+        axios.post(BLOCK_SUBSCRIPTION_API(selectedItem.id))
+            .then(res => {
+                handleToast(res.data.message, 'success');
+                refetch();
+            })
+            .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
+    }
+    const unblockSub = () => {
+        axios.post(UNBLOCK_SUBSCRIPTION_API(selectedItem.id))
+            .then(res => {
+                handleToast(res.data.message, 'success');
+                refetch();
+            })
+            .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
+    }
+    const renewSub = dateTime => {
+        axios.post(RENEW_SUBSCRIPTION_API(selectedItem.id), {expired_at: dateTime})
+            .then(res => {
+                handleToast(res.data.message, 'success');
+            })
+            .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
+            .finally(()=>setOpenRenew(false))
+    }
+    const deleteSub = () => {
         axios.delete(DELETE_SUBSCRIPTION_API(selectedItem.id))
-            .then(res=>{
-                setSubscriptions(prevState=>prevState.filter(i=>i.id!==selectedItem.id))
-                dispatch({
-                    type: MESSAGE,
-                    payload: {
-                        message_type: 'success',
-                        message: res?.data?.message
-                    }
-                })
+            .then(res => {
+                setSubscriptions(prevState => prevState.filter(i => i.id !== selectedItem.id));
+                handleToast(res.data.message, 'success');
+
             })
-            .catch(err=>{
-                const errMsg = !!err?.response ? err?.response?.data.error : err.toString();
-                console.log('error', errMsg)
-                dispatch({
-                    type: MESSAGE,
-                    payload: {
-                        message_type: 'error',
-                        message: errMsg
-                    }
-                })
-            })
+            .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
     }
 
     return (
@@ -81,6 +141,7 @@ const SubscriptionDetail = ({item}) => {
                                             <TableCell>Payment id</TableCell>
                                         </Hidden>
                                         <TableCell>Course</TableCell>
+                                        <TableCell>Validity</TableCell>
                                         <TableCell>Status</TableCell>
                                         <TableCell>Action</TableCell>
                                     </TableRow>
@@ -92,6 +153,7 @@ const SubscriptionDetail = ({item}) => {
                                                 <TableCell>{sub?.receipt}</TableCell>
                                             </Hidden>
                                             <TableCell>{sub?.course_name}</TableCell>
+                                            <TableCell>{sub?.expired_at}</TableCell>
                                             <TableCell>{sub?.status}</TableCell>
                                             <TableCell>
                                                 <IconButton onClick={event => {
@@ -109,20 +171,28 @@ const SubscriptionDetail = ({item}) => {
                         </TableContainer>
 
                     </CardContent>
-                    <CardActions>
-                        <Button color={"primary"} variant={'outlined'}>action</Button>
-                    </CardActions>
+
                     <ContextMenu open={menuOpen}
                                  anchorEl={anchorEl}
                                  onClose={() => setMenuOpen(false)}
                                  onMenuItemClick={handleMenuItem}
                     />
-                    {openConfirm && <ConfirmDialog open={openConfirm}
-                                                   confirmDelete={data => deleteSub()}
-                                                   onClose={() => setOpenConfirm(false)}/>}
+                    {confirmData?.open && <ConfirmDialog open={confirmData.open}
+                                                         confirmDelete={handleConfirm}
+                                                         title={confirmData?.message}
+                                                         mode={confirmData?.mode}
+                                                         onClose={() => setConfirmData(prevState => ({
+                                                             ...prevState,
+                                                             open: true
+                                                         }))}/>}
+                    {openRenew && <RenewDialog open={openRenew}
+                                               defaultDate={selectedItem?.update}
+                                               onRenew={date => renewSub(date)}
+                                               onClose={() => setOpenRenew(false)}/>}
 
                 </Card> :
-                <Typography variant={"caption"}>Select subscriber from the list and see course subscriptions</Typography>}
+                <Typography variant={"caption"}>Select subscriber from the list and see course
+                    subscriptions</Typography>}
         </>
     )
 }

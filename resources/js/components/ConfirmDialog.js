@@ -17,17 +17,17 @@ const styles = theme => ({
         borderRight: `3px solid ${theme.palette.primary.light} !important`,
     }
 })
-const ConfirmDialog = ({data,open,confirmDelete,onClose}) => {
+const ConfirmDialog = ({open,confirmDelete,onClose,mode='delete',title=null}) => {
 
     return (
         <Dialog fullWidth={true} maxWidth={"sm"} open={open} onClose={onClose}>
             <DialogContent>
-                <Typography variant={"h6"}>Do you want to delete?</Typography>
+                <Typography variant={"h6"}>{!!title?title:'Do you want to delete?'}</Typography>
             </DialogContent>
             <DialogActions>
                 <Button onClick={event => {
                     onClose()
-                    confirmDelete(data)
+                    confirmDelete(mode)
                 }}
                         color={"primary"}
                         variant={"contained"}>Yes</Button>

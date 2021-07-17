@@ -11,7 +11,8 @@ const ContextMenu=({onClose,open,anchorEl,onMenuItemClick})=>{
                   anchorEl={anchorEl}
                   onClose={onClose}>
                 <MenuItem onClick={event => handleMenuItem('renew')}>Renew</MenuItem>
-                <MenuItem onClick={event => handleMenuItem('cancel')}>Cancel</MenuItem>
+                <MenuItem onClick={event => handleMenuItem('block')}>Block</MenuItem>
+                <MenuItem onClick={event => handleMenuItem('unblock')}>Unblock</MenuItem>
                 <MenuItem onClick={event => handleMenuItem('delete')}>Delete</MenuItem>
             </Menu>
 

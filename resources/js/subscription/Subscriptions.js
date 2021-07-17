@@ -52,7 +52,7 @@ const Subscriptions = props => {
                 </Grid>
                 <Grid item={true} xs={12} md={8}>
                     <div className={'my-card'}>
-                        {!!selectedItem && <SubscriptionDetail item={selectedItem}/>}
+                        {!!selectedItem && <SubscriptionDetail item={selectedItem} refetch={fetchData}/>}
                     </div>
                 </Grid>
 

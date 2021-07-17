@@ -91,6 +91,9 @@ Route::group(['prefix' => 'subscription', 'middleware' => 'auth:sanctum'], funct
     Route::get('index', [SubscriptionController::class, 'index']);
     Route::post('create', [SubscriptionController::class, 'createOrder']);
     Route::post('verify', [SubscriptionController::class, 'verify']);
+    Route::post('{subscription}/renew', [SubscriptionController::class, 'renew']);
+    Route::post('{subscription}/block', [SubscriptionController::class, 'block']);
+    Route::post('{subscription}/unblock', [SubscriptionController::class, 'unblock']);
     Route::get('subscribers', [SubscriptionController::class, 'subscribers']);
     Route::delete('{subscription}', [SubscriptionController::class, 'deleteSubscription']);
     Route::post('subscriber/create', [SubscriptionController::class, 'createSubscriber']);

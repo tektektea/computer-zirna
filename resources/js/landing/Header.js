@@ -53,7 +53,8 @@ const Header = ({classes}) => {
                 <Toolbar>
                     <Grid container={true} direction={"row"} justify={"space-between"} alignItems={"center"}>
                         <div>
-                            <Typography color={"primary"} variant={"button"}>Computer zirna</Typography>
+                            {/*<Typography color={"primary"} variant={"button"}>Computer zirna</Typography>*/}
+                            <img height={60} width={'auto'} src={'../storage/icons/city.png'}/>
                         </div>
                         <div>
                             <Button onClick={e => history.push('/')} variant={"outlined"} color={"primary"}>Get
