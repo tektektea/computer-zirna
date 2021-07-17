@@ -75,7 +75,7 @@ class SubscriptionController extends Controller
                 ->where('status', SubscriptionEnum::SUBSCRIBE)
                 ->pluck('course_id');
             $courses=Course::query()
-                ->with(['videos','materials'])
+                ->with(['subjects','materials'])
                 ->findMany($courses_ids);
 
             return$this->handleResponse($courses, '');
