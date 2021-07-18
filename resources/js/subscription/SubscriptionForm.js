@@ -54,13 +54,31 @@ const SubscriptionForm=({formik,handleNext})=>{
                                margin={"dense"}
                                required={true}
                                type={'date'}
-                               name={'expired_at'}
-                               value={formik?.values?.expired_at}
+                               name={'expired_date'}
+                               value={formik?.values?.expired_date}
                                onChange={formik.handleChange}
-                               error={formik?.touched?.expired_at && formik?.errors?.expired_at}
-                               helperText={formik?.touched?.expired_at && formik?.errors?.expired_at}
+                               error={formik?.touched?.expired_date && formik?.errors?.expired_date}
+                               helperText={formik?.touched?.expired_date && formik?.errors?.expired_date}
                 />
             </Grid>
+            <Grid item={true} xs={4}>
+                <FormLabel required={true}>Time</FormLabel>
+            </Grid>
+            <Grid item={true} xs={8}>
+                <OutlinedInput fullWidth={true}
+                               margin={"dense"}
+                               required={true}
+                               type={'time'}
+                               name={'expired_time'}
+                               value={formik?.values?.expired_time}
+                               onChange={formik.handleChange}
+                               error={formik?.touched?.expired_time && formik?.errors?.expired_time}
+                               helperText={formik?.touched?.expired_time && formik?.errors?.expired_time}
+                />
+            </Grid>
+            <br/>
+            <br/>
+            <br/>
             <Grid item={true} xs={12}>
                 <Divider light={true}/>
             </Grid>

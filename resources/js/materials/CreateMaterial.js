@@ -6,15 +6,18 @@ import CardHeader from '@material-ui/core/CardHeader'
 import Icon from '@material-ui/core/Icon'
 import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
-import {DialogActions, TextField} from "@material-ui/core";
+import {DialogActions, FormControl, FormControlLabel, Radio, RadioGroup, TextField} from "@material-ui/core";
 import * as Yup from 'yup';
 import {useFormik} from "formik";
 import {AppContext} from "../context/AppContextProvider";
 import {Alert} from "@material-ui/lab";
+import FormLabel from "@material-ui/core/FormLabel";
 
 const validationSchema = Yup.object().shape({
     title: Yup.string()
         .required('Title is required'),
+    category: Yup.string()
+        .required('Category is required'),
     file: Yup.mixed()
         .required('File is required'),
 });
@@ -24,6 +27,7 @@ const CreateMaterial = ({ create, open, onClose, ...rest}) => {
         initialValues: {
             title: '',
             description: '',
+            category: 'general',
             file: undefined
         },
         validationSchema,
@@ -83,6 +87,16 @@ const CreateMaterial = ({ create, open, onClose, ...rest}) => {
                                        error={touched?.description && errors?.description}
                                        helperText={touched?.description && errors?.description}
                             />
+                        </Grid>
+
+                        <Grid item={true} xs={12}>
+                            <FormControl  component="fieldset">
+                                <FormLabel component="legend">Category</FormLabel>
+                                <RadioGroup  aria-label="gender" name="category" value={values?.category} onChange={handleChange}>
+                                    <FormControlLabel value="general" control={<Radio color={"primary"}/>} label="General" />
+                                    <FormControlLabel value="material" control={<Radio color={"primary"} />} label="Material" />
+                                </RadioGroup>
+                            </FormControl>
                         </Grid>
 
                         <Grid item={true} xs={12}>

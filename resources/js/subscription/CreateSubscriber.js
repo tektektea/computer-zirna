@@ -19,10 +19,16 @@ const validationSchema = Yup.object().shape({
         .required('Courses is required'),
     name: Yup.string()
         .required('Name is required'),
+    email: Yup.string().email()
+        .required('Email is required'),
+    dob: Yup.string()
+        .required('dob is required'),
     phone_no: Yup.string()
         .required('Phone no is required'),
-    expired_at: Yup.string()
-        .required('Expiration date is required')
+    expired_date: Yup.string()
+        .required('Expiration date is required'),
+    expired_time: Yup.string()
+        .required('Expiration time is required')
 
 });
 
@@ -34,9 +40,12 @@ const CreateSubscriber = ({open, onClose, onSelects}) => {
             courses: [],
             name: '',
             father_name: '',
+            email: '',
+            dob: '',
             address: '',
             phone_no: undefined,
-            expired_at: null
+            expired_date: new Date().toDateString(),
+            expired_time: '12:00:00'
         },
         validationSchema,
         onSubmit(values, e) {

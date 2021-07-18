@@ -37,6 +37,21 @@ const PersonalForm=({formik,handleBack,handleNext})=>{
             </Grid>
 
             <Grid item={true} xs={4}>
+                <FormLabel required={true}>Email</FormLabel>
+            </Grid>
+            <Grid item={true} xs={8}>
+                <OutlinedInput fullWidth={true}
+                               margin={"dense"}
+                               required={true}
+                               name={'email'}
+                               value={formik?.values?.email}
+                               onChange={formik.handleChange}
+                               error={formik?.touched?.email && formik?.errors?.email}
+                               helperText={formik?.touched?.email && formik?.errors?.email}
+                />
+            </Grid>
+
+            <Grid item={true} xs={4}>
                 <FormLabel required={true}>Father's Name</FormLabel>
             </Grid>
             <Grid item={true} xs={8}>
@@ -48,6 +63,22 @@ const PersonalForm=({formik,handleBack,handleNext})=>{
                                onChange={formik.handleChange}
                                error={formik?.touched?.father_name && formik?.errors?.father_name}
                                helperText={formik?.touched?.father_name && formik?.errors?.father_name}
+                />
+            </Grid>
+
+            <Grid item={true} xs={4}>
+                <FormLabel required={true}>DOB</FormLabel>
+            </Grid>
+            <Grid item={true} xs={8}>
+                <OutlinedInput fullWidth={true}
+                               type={'date'}
+                               margin={"dense"}
+                               required={true}
+                               name={'dob'}
+                               value={formik?.values?.dob}
+                               onChange={formik.handleChange}
+                               error={formik?.touched?.dob && formik?.errors?.dob}
+                               helperText={formik?.touched?.dob && formik?.errors?.dob}
                 />
             </Grid>
 

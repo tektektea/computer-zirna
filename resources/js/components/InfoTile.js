@@ -21,7 +21,7 @@ const styles = theme => ({
         color:theme.palette.primary.main
     }
 })
-const InfoTile = ({classes, title, caption, children}) => {
+const InfoTile = ({classes, title, caption,onClick, children}) => {
     return (
         <Grid className={classes.container} container={true} direction={"column"}>
             <Grid item={true}>
@@ -30,8 +30,8 @@ const InfoTile = ({classes, title, caption, children}) => {
             <Grid item={true}>
                 {children}
             </Grid>
-            <Grid item={true}>
-                <p className={classes.caption}>{caption}</p>
+            <Grid  item={true}>
+                <p onClick={onClick} className={classes.caption}>{caption}</p>
             </Grid>
         </Grid>
     )

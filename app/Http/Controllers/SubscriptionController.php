@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-use App\Models\Material;
 use App\Models\Subscription;
 use App\Models\User;
-use App\Models\Video;
 use App\utils\SubscriptionEnum;
-use App\utils\Util;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
@@ -29,38 +26,38 @@ class SubscriptionController extends Controller
         }
     }
 
-    public function videos(Request $request,Course $course)
+    public function videos(Request $request, Course $course)
     {
         try {
             $user = $request->user();
-            $sub=Subscription::query()->where('user_id', $user->id)
-                ->where('course_id',$course->id)
-                ->where('status','subscribe')
+            $sub = Subscription::query()->where('user_id', $user->id)
+                ->where('course_id', $course->id)
+                ->where('status', 'subscribe')
                 ->get();
             if (!$sub) {
                 throw new \Exception('Permission denied', 403);
             }
-            $videos=$course->videos()->get();
-            return $this->handleResponse($videos,'');
+            $videos = $course->videos()->get();
+            return $this->handleResponse($videos, '');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
     }
 
-    public function materials(Request $request,Course $course)
+    public function materials(Request $request, Course $course)
     {
         try {
             $user = $request->user();
-            $sub=Subscription::query()->where('user_id', $user->id)
-                ->where('course_id',$course->id)
-                ->where('status','subscribe')
+            $sub = Subscription::query()->where('user_id', $user->id)
+                ->where('course_id', $course->id)
+                ->where('status', 'subscribe')
                 ->get();
             if (!$sub) {
                 throw new \Exception('Permission denied', 403);
             }
-            $materials=$course->materials()->get();
+            $materials = $course->materials()->get();
 
-            return $this->handleResponse($materials,'');
+            return $this->handleResponse($materials, '');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
@@ -70,15 +67,15 @@ class SubscriptionController extends Controller
     {
         try {
             $user = $request->user();
-            $courses_ids=Subscription::query()
+            $courses_ids = Subscription::query()
                 ->where('user_id', $user->id)
                 ->where('status', SubscriptionEnum::SUBSCRIBE)
                 ->pluck('course_id');
-            $courses=Course::query()
-                ->with(['subjects','materials'])
+            $courses = Course::query()
+                ->with(['subjects', 'materials'])
                 ->findMany($courses_ids);
 
-            return$this->handleResponse($courses, '');
+            return $this->handleResponse($courses, '');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
@@ -87,7 +84,7 @@ class SubscriptionController extends Controller
     public function verify(Request $request)
     {
         try {
-            $this->validate($request->only(['razorpay_order_id', 'subscription_id','razorpay_payment_id', 'razorpay_signature']), [
+            $this->validate($request->only(['razorpay_order_id', 'subscription_id', 'razorpay_payment_id', 'razorpay_signature']), [
                 'razorpay_payment_id' => 'required',
                 'razorpay_order_id' => 'required',
                 'razorpay_signature' => 'required',
@@ -101,7 +98,7 @@ class SubscriptionController extends Controller
             $generated_signature = hash_hmac('sha256', $message, env('RAZOR_SECRET_KEY'));
 
             if ($signature === $generated_signature) {
-                $subscription=Subscription::query()->find($request->get('subscription_id'));
+                $subscription = Subscription::query()->find($request->get('subscription_id'));
                 $subscription->status = 'subscribe';
                 //$subscription->purchase_at = Carbon::now();
                 $subscription->save();
@@ -115,7 +112,7 @@ class SubscriptionController extends Controller
 
     }
 
-    public function renew(Request $request,Subscription $subscription)
+    public function renew(Request $request, Subscription $subscription)
     {
         try {
             $this->validate($request->only(['expired_at']), [
@@ -129,7 +126,8 @@ class SubscriptionController extends Controller
             return $this->handlingException($exception);
         }
     }
-    public function unblock(Request $request,Subscription $subscription)
+
+    public function unblock(Request $request, Subscription $subscription)
     {
         try {
 
@@ -141,7 +139,8 @@ class SubscriptionController extends Controller
             return $this->handlingException($exception);
         }
     }
-    public function block(Request $request,Subscription $subscription)
+
+    public function block(Request $request, Subscription $subscription)
     {
         try {
 
@@ -158,7 +157,7 @@ class SubscriptionController extends Controller
     {
         try {
             $search = $request->get('search');
-            $data=User::subscribers()
+            $data = User::subscribers()
                 ->when($search, function (Builder $builder) use ($search) {
                     $builder->where('name', 'LIKE', "%$search%");
                 })
@@ -169,11 +168,11 @@ class SubscriptionController extends Controller
         }
     }
 
-    public function deleteSubscription(Request $request,Subscription $subscription)
+    public function deleteSubscription(Request $request, Subscription $subscription)
     {
         try {
             $subscription->delete();
-            $user=$request->user();
+            $user = $request->user();
 
             return $this->handleResponse($user,
                 'Subscription deleted successfully');
@@ -181,33 +180,46 @@ class SubscriptionController extends Controller
             return $this->handlingException($exception);
         }
     }
+
     public function createSubscriber(Request $request): JsonResponse
     {
         try {
             $this->validate($request->only([
-                'courses','name','phone_no','father_name','address'
+                'courses', 'name', 'phone_no', 'father_name', 'address', 'email', 'dob','expired_date','expired_time'
             ]), [
                 'courses' => 'required',
-                'name'=>'required',
-                'phone_no'=>'required',
-                'father_name'=>'required',
-                'address'=>'required',
+                'name' => 'required',
+                'phone_no' => 'required',
+                'father_name' => 'required',
+                'address' => 'required',
+                'dob' => 'required',
+                'email' => 'required|unique:users',
+                'expired_date'=>'required',
+                'expired_time'=>'required'
             ]);
             $courses = array_values($request->get('courses'));
 
             DB::transaction(function () use ($courses, $request) {
 
-                $user=User::query()->updateOrCreate($request->only(['name', 'phone_no']));
+                $user = User::query()->updateOrCreate([
+                    'name' => $request->get('name'),
+                    'phone_no' => $request->get('phone_no'),
+                    'email' => $request->get('email'),
+                    'dob' => $request->get('dob')
+                ]);
 
-                $subscriptions = collect($courses)->map(function ($course_id) use ($user, $request) {
+                $date = $request->get('expired_date');
+                $time = $request->get('expired_time');
+
+                $subscriptions = collect($courses)->map(function ($course_id) use ($time, $date, $user, $request) {
                     return new Subscription([
                         'father_name' => $request->get('father_name'),
                         'address' => $request->get('address'),
                         'course_id' => $course_id,
-                        'expired_at'=>$request->get('expired_at'),
+                        'expired_at' => Carbon::createFromFormat('Y-m-d H:i:s',$date.' '.$time),
                         'user_id' => $request->user()->id,
-                        'order_id'=>"MANUALLY ADDED",
-                        'receipt'=>"MANUALLY ADDED",
+                        'order_id' => "MANUALLY ADDED",
+                        'receipt' => "MANUALLY ADDED",
                         'status' => SubscriptionEnum::SUBSCRIBE,
                     ]);
                 });
@@ -221,6 +233,7 @@ class SubscriptionController extends Controller
             return $this->handlingException($exception);
         }
     }
+
     public function createOrder(Request $request): JsonResponse
     {
         try {
@@ -251,7 +264,7 @@ class SubscriptionController extends Controller
                 $currentUser->save();
 
                 $sub = Subscription::create([
-                    'user_id' =>$currentUser->id,
+                    'user_id' => $currentUser->id,
                     'father_name' => $request->get('father_name'),
                     'address' => $request->get('address'),
                     'course_id' => $course->id,
@@ -263,8 +276,8 @@ class SubscriptionController extends Controller
 
                 DB::commit();
                 return $this->handleResponse($sub, 'Order created successfully');
-            }else{
-                Log::error('error '.$response->body());
+            } else {
+                Log::error('error ' . $response->body());
                 throw new \Exception('Opps! Something wrong');
             }
         } catch (\Exception $exception) {

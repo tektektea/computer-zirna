@@ -58,14 +58,14 @@ const Header = ({handleDrawer, classes}) => {
                             </Grid>
                         </Hidden>
                         <Hidden mdUp={true}>
-                            <IconButton onClick={e => history.push('/admin/profile')}>
+                            <IconButton onClick={handleDrawer}>
                                 <Icon color={"primary"}>menu</Icon>
                             </IconButton>
                         </Hidden>
 
                         <Grid item>
                             <div>
-                                <IconButton onClick={handleDrawer} name={'notification'}>
+                                <IconButton onClick={event => history.push('profile')} name={'notification'}>
                                     <Avatar variant={'circular'}>T</Avatar>
                                 </IconButton>
                                 {/*{logged && <IconButton name={'notification'} onClick={event => history.push("/csc/setting")}>*/}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Video;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class VideoController extends Controller
@@ -15,7 +16,12 @@ class VideoController extends Controller
             if (!$permit) {
                 throw  new \Exception('Permission denied', 403);
             }
-            return $this->handleResponse(Video::query()->paginate(), '');
+            $search = $request->get('search');
+            $data = Video::query()
+                ->when($request->has('search'), function (Builder $builder) use ($search) {
+                    $builder->where('name', "LIKE", "%$search%");
+                })->paginate();
+            return $this->handleResponse($data, '');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Material;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -20,7 +22,13 @@ class MaterialController extends Controller
     public function index(Request $request)
     {
         try {
-            return $this->handleResponse(Material::query()->paginate());
+            $search = $request->get('search');
+            $data=Material::query()
+            ->when($request->has('search'),function (Builder $builder){
+                $builder->where('name', 'LIKE', "%@search%");
+            })->paginate();
+
+            return $this->handleResponse($data,'');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
@@ -38,6 +46,12 @@ class MaterialController extends Controller
             $path = Storage::disk('local')->put("materials", $file);
 
             $material=Material::create(array_merge($request->only(['title', 'description']),['path'=>$path,'mime'=>$mime]));
+            if ($request->has('category')) {
+                $material->category()->save(new Category([
+                    'name' => $request->get('category')
+                ]));
+            }
+
             return $this->handleResponse(Material::query()->paginate(), 'Material created successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);

@@ -94,13 +94,16 @@ const Videos = props => {
     }
 
     React.useEffect(() => {
-        fetchUsers(1);
+        fetchVideos(1);
     }, [])
 
     const handleSearch = e => {
+        if (e.which) {
+            fetchVideos(1, e.target.value);
+        }
     }
 
-    const fetchUsers = (page = 1, search) => {
+    const fetchVideos = (page = 1, search) => {
         // load(true)
         axios.get(FETCH_VIDEO_API, {params: {page, search}})
             .then(res => {

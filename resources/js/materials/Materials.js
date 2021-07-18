@@ -82,6 +82,9 @@ const Materials = props => {
     }, [])
 
     const handleSearch = e => {
+        if (e.which === 13) {
+            fetchMaterials(1, e.target.value);
+        }
     }
 
     const handleDownload=item=>{
