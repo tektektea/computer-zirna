@@ -65,7 +65,7 @@ const Header = ({handleDrawer, classes}) => {
 
                         <Grid item>
                             <div>
-                                <IconButton onClick={event => history.push('profile')} name={'notification'}>
+                                <IconButton onClick={handleDrawer} name={'notification'}>
                                     <Avatar variant={'circular'}>T</Avatar>
                                 </IconButton>
                                 {/*{logged && <IconButton name={'notification'} onClick={event => history.push("/csc/setting")}>*/}

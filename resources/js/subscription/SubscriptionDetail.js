@@ -99,6 +99,7 @@ const SubscriptionDetail = ({item, refetch}) => {
             .then(res => {
                 handleToast(res.data.message, 'success');
                 refetch();
+                setSubscriptions([]);
             })
             .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
     }
@@ -107,6 +108,8 @@ const SubscriptionDetail = ({item, refetch}) => {
             .then(res => {
                 handleToast(res.data.message, 'success');
                 refetch();
+                setSubscriptions([]);
+
             })
             .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
     }
@@ -114,6 +117,8 @@ const SubscriptionDetail = ({item, refetch}) => {
         axios.post(RENEW_SUBSCRIPTION_API(selectedItem.id), {expired_at: dateTime})
             .then(res => {
                 handleToast(res.data.message, 'success');
+                setSubscriptions([]);
+
             })
             .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
             .finally(()=>setOpenRenew(false))
@@ -123,6 +128,7 @@ const SubscriptionDetail = ({item, refetch}) => {
             .then(res => {
                 setSubscriptions(prevState => prevState.filter(i => i.id !== selectedItem.id));
                 handleToast(res.data.message, 'success');
+                setSubscriptions([]);
 
             })
             .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
