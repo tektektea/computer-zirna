@@ -19,7 +19,7 @@ class VideoController extends Controller
             $search = $request->get('search');
             $data = Video::query()
                 ->when($request->has('search'), function (Builder $builder) use ($search) {
-                    $builder->where('name', "LIKE", "%$search%");
+                    $builder->where('title', "LIKE", "%$search%");
                 })->paginate();
             return $this->handleResponse($data, '');
         } catch (\Exception $exception) {
