@@ -27,7 +27,7 @@ const CreateMaterial = ({ create, open, onClose, ...rest}) => {
         initialValues: {
             title: '',
             description: '',
-            category: 'general',
+            category: 'study material',
             file: undefined
         },
         validationSchema,
@@ -90,11 +90,11 @@ const CreateMaterial = ({ create, open, onClose, ...rest}) => {
                         </Grid>
 
                         <Grid item={true} xs={12}>
-                            <FormControl  component="fieldset">
+                            <FormControl fullWidth={true}  component="fieldset">
                                 <FormLabel component="legend">Category</FormLabel>
                                 <RadioGroup  aria-label="gender" name="category" value={values?.category} onChange={handleChange}>
-                                    <FormControlLabel value="general" control={<Radio color={"primary"}/>} label="General" />
-                                    <FormControlLabel value="material" control={<Radio color={"primary"} />} label="Material" />
+                                    <FormControlLabel value="study material" control={<Radio color={"primary"}/>} label="Study material" />
+                                    <FormControlLabel value="practical assignment" control={<Radio color={"primary"} />} label="Practical Assignment" />
                                 </RadioGroup>
                             </FormControl>
                         </Grid>

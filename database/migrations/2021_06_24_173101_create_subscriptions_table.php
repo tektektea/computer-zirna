@@ -15,8 +15,6 @@ class CreateSubscriptionsTable extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('father_name')->nullable();
-            $table->text('address')->nullable();
             $table->string('order_id')->nullable();
             $table->string('receipt')->nullable();
             $table->dateTime('expired_at')->nullable();

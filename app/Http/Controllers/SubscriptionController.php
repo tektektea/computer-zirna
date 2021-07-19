@@ -203,9 +203,11 @@ class SubscriptionController extends Controller
 
                 $user = User::query()->updateOrCreate([
                     'name' => $request->get('name'),
+                    'father_name' => $request->get('father_name'),
                     'phone_no' => $request->get('phone_no'),
                     'email' => $request->get('email'),
-                    'dob' => $request->get('dob')
+                    'dob' => $request->get('dob'),
+                    'address' => $request->get('address')
                 ]);
 
                 $date = $request->get('expired_date');
@@ -213,8 +215,6 @@ class SubscriptionController extends Controller
 
                 $subscriptions = collect($courses)->map(function ($course_id) use ($time, $date, $user, $request) {
                     return new Subscription([
-                        'father_name' => $request->get('father_name'),
-                        'address' => $request->get('address'),
                         'course_id' => $course_id,
                         'expired_at' => Carbon::createFromFormat('Y-m-d H:i:s',$date.' '.$time),
                         'user_id' => $request->user()->id,
@@ -261,12 +261,13 @@ class SubscriptionController extends Controller
 
                 $currentUser = Auth::user();
                 $currentUser->name = $request->get('full_name');
+                $currentUser->father_name = $request->get('father_name');
+                $currentUser->dob = $request->get('dob');
+                $currentUser->address = $request->get('address');
                 $currentUser->save();
 
                 $sub = Subscription::create([
                     'user_id' => $currentUser->id,
-                    'father_name' => $request->get('father_name'),
-                    'address' => $request->get('address'),
                     'course_id' => $course->id,
                     'order_id' => $result['id'],
                     'receipt' => $result['receipt'],

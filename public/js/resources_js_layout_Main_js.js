@@ -29940,6 +29940,7 @@ var CreateMaterial = function CreateMaterial(_ref) {
             item: true,
             xs: 12,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__.default, {
+              fullWidth: true,
               component: "fieldset",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_FormLabel__WEBPACK_IMPORTED_MODULE_14__.default, {
                 component: "legend",
@@ -29950,17 +29951,23 @@ var CreateMaterial = function CreateMaterial(_ref) {
                 value: values === null || values === void 0 ? void 0 : values.category,
                 onChange: handleChange,
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
-                  value: "general",
+                  style: {
+                    width: '100%'
+                  },
+                  value: "study material",
                   control: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__.default, {
                     color: "primary"
                   }),
-                  label: "General"
+                  label: "Study material"
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
-                  value: "material",
+                  style: {
+                    width: '100%'
+                  },
+                  value: "practical assignment",
                   control: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__.default, {
                     color: "primary"
                   }),
-                  label: "Material"
+                  label: "Practical Assignment"
                 })]
               })]
             })
