@@ -243,10 +243,13 @@ const Content = props => {
                     <Grid container={true} direction={"column"} alignItems={"center"} justify={"center"} spacing={4}
                           item={true}>
                         <Grid item={true}>
+                            <TextField variant={"outlined"} label={"Name"}/>
+                        </Grid>
+                        <Grid item={true}>
                             <TextField variant={"outlined"} label={"Email"}/>
                         </Grid>
                         <Grid item={true}>
-                            <TextField variant={"outlined"} label={"Subject"}/>
+                            <TextField variant={"outlined"} label={"Phone"}/>
                         </Grid>
                         <Grid item={true}>
                             <TextField multiline={true} rows={5} variant={"outlined"} label={"Message"}/>

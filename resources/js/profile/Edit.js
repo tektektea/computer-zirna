@@ -101,10 +101,10 @@ const ProfileEdit = ({classes, setMessage, user}) => {
                         <Grid item={true} xs={12}>
                             <Typography className={classes.subtitle}>Profile details</Typography>
                         </Grid>
-                        <Grid item={true} md={4}>
+                        <Grid item={true} xs={4}>
                             <FormLabel>Username</FormLabel>
                         </Grid>
-                        <Grid item={true} md={8}>
+                        <Grid item={true} xs={8}>
                             <TextField
                                 id="full_name"
                                 fullWidth={true}
@@ -118,10 +118,10 @@ const ProfileEdit = ({classes, setMessage, user}) => {
                                 helperText={formik.touched?.full_name ? formik.errors?.full_name : ''}
                             />
                         </Grid>
-                        <Grid item={true} md={4}>
+                        <Grid item={true} xs={4}>
                             <FormLabel>Email</FormLabel>
                         </Grid>
-                        <Grid item={true} md={8}>
+                        <Grid item={true} xs={8}>
                             <TextField
                                 id="email"
                                 fullWidth={true}
@@ -136,10 +136,10 @@ const ProfileEdit = ({classes, setMessage, user}) => {
                                 helperText={formik.touched?.email ? formik.errors?.email : ''}
                             />
                         </Grid>
-                        <Grid item={true} md={4}>
+                        <Grid item={true} xs={4}>
                             <FormLabel>Password</FormLabel>
                         </Grid>
-                        <Grid item={true} md={8}>
+                        <Grid item={true} xs={8}>
                             <TextField
                                 id="password"
                                 type={"password"}
@@ -154,10 +154,10 @@ const ProfileEdit = ({classes, setMessage, user}) => {
                                 helperText={formik.touched?.password ? formik.errors?.password : ''}
                             />
                         </Grid>
-                        <Grid item={true} md={4}>
+                        <Grid item={true} xs={4}>
                             <FormLabel>Confirm Password</FormLabel>
                         </Grid>
-                        <Grid item={true} md={8}>
+                        <Grid item={true} xs={8}>
                             <TextField
                                 id="password"
                                 type={"password"}
@@ -173,10 +173,10 @@ const ProfileEdit = ({classes, setMessage, user}) => {
                             />
                         </Grid>
 
-                        <Grid item={true} md={4}>
+                        <Grid item={true} xs={4}>
                             <FormLabel>Phone</FormLabel>
                         </Grid>
-                        <Grid item={true} md={8}>
+                        <Grid item={true} xs={8}>
                             <TextField
                                 id="phone_no"
                                 fullWidth={true}
@@ -190,7 +190,7 @@ const ProfileEdit = ({classes, setMessage, user}) => {
                                 helperText={formik.touched?.phone_no ? formik.errors?.phone_no : ''}
                             />
                         </Grid>
-                        <Grid item={true} md={12}>
+                        <Grid item={true} xs={12}>
                             <Button onClick={formik.handleSubmit} color={"primary"} variant={"outlined"}>Confirm</Button>
                         </Grid>
 

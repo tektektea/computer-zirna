@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\MediaController;
@@ -87,6 +88,11 @@ Route::group(['prefix' => 'banner', 'middleware' => 'auth:sanctum'], function ()
     Route::delete('{banner}', [BannerController::class, 'destroy']);
 });
 
+Route::group(['prefix' => 'contacts', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('index', [ContactController::class, 'index']);
+    Route::delete('{banner}', [ContactController::class, 'delete']);
+});
+
 Route::group(['prefix' => 'subscription', 'middleware' => 'auth:sanctum'], function () {
     Route::get('index', [SubscriptionController::class, 'index']);
     Route::post('create', [SubscriptionController::class, 'createOrder']);
@@ -114,3 +120,4 @@ Route::group(['prefix' => 'profile','middleware' => 'auth:sanctum'], function ()
 });
 
 Route::get('test/{course}', [SubscriptionController::class, 'videos']);
+Route::post('contacts/create}', [ContactController::class, 'create']);

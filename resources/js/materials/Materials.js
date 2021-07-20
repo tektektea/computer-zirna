@@ -53,6 +53,7 @@ const Materials = props => {
         formData.append('title', values?.title);
         formData.append('description', values?.description);
         formData.append('file', values?.file);
+        formData.append('category', values?.category);
         axios.post(CREATE_MATERIAL_API, formData)
             .then(res => {
                 setMaterials(res.data.data);

@@ -90,6 +90,8 @@ const PersonalForm=({formik,handleBack,handleNext})=>{
                                margin={"dense"}
                                required={true}
                                name={'address'}
+                               multiline={true}
+                               rows={3}
                                value={formik?.values?.address}
                                onChange={formik.handleChange}
                                error={formik?.touched?.address && formik?.errors?.address}

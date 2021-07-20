@@ -189,7 +189,7 @@ const SubscriptionDetail = ({item, refetch}) => {
                                                          mode={confirmData?.mode}
                                                          onClose={() => setConfirmData(prevState => ({
                                                              ...prevState,
-                                                             open: true
+                                                             open: false
                                                          }))}/>}
                     {openRenew && <RenewDialog open={openRenew}
                                                defaultDate={selectedItem?.update}

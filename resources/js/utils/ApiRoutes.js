@@ -1,10 +1,13 @@
-export const BASE_URL = 'http://127.0.0.1:8001/api';
-// export const BASE_URL = 'https://computerzirna.in/api';
+// export const BASE_URL = 'http://127.0.0.1:8000/api';
+export const BASE_URL = 'https://computerzirna.in/api';
 
 export const FETCH_ADMIN_API='admin/index'
 export const CREATE_ADMIN_API='admin/create'
 export const UDPATE_ADMIN_API=id=>`admin/${id}`
 export const DELETE_ADMIN_API=id=>`admin/${id}`
+
+export const FETCH_CONTACT_API=`contacts/index`
+export const DELETE_CONTACT_API=id=>`contacts/${id}`
 
 export const FETCH_COURSE_API='courses/index'
 export const SHOW_COURSE_API=id=>`courses/${id}/show`

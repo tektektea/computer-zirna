@@ -22,6 +22,7 @@ import ProfileEdit from "../profile/Edit";
 import SubjectList from "../subjects/Subjects";
 import CreateSubject from "../subjects/CreateSubject";
 import EditSubject from "../subjects/EditSubject";
+import Contacts from "../contact/Contacts";
 
 
 const drawerWidth = 256;
@@ -79,6 +80,7 @@ const Main=({classes})=>{
                         </Hidden>
                         <div style={{flex:1}}>
                             <Route exact path={'/admin'} component={Dashboard}/>
+                            <Route exact path={'/admin/contacts'} component={Contacts}/>
                             <Route exact path={'/admin/profile'} component={Profile}/>
                             <Route exact path={'/admin/profile/:id'} component={ProfileEdit}/>
                             <Route exact path={'/admin/Dashboard'} component={Dashboard}/>

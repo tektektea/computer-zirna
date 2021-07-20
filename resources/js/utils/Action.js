@@ -47,7 +47,8 @@ export const getPublicData= (dispatch)=>{
                     courses:data?.courses,
                     corousel: data?.corousel,
                     images: data?.images,
-                    testimony: data?.testimony
+                    testimony: data?.testimony,
+                    categories: data?.categories,
                 }
             })
         })

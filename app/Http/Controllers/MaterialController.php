@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Material;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class MaterialController extends Controller
 {
@@ -19,20 +17,23 @@ class MaterialController extends Controller
             return $this->handlingException($exception);
         }
     }
+
     public function index(Request $request)
     {
         try {
             $search = $request->get('search');
-            $data=Material::query()
-            ->when($request->has('search'),function (Builder $builder){
-                $builder->where('name', 'LIKE', "%@search%");
-            })->paginate();
+            $data = Material::query()
+                ->with(['categories'])
+                ->when($request->has('search'), function (Builder $builder) {
+                    $builder->where('title', 'LIKE', "%@search%");
+                })->paginate();
 
-            return $this->handleResponse($data,'');
+            return $this->handleResponse($data, '');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
     }
+
     public function create(Request $request)
     {
         try {
@@ -40,16 +41,14 @@ class MaterialController extends Controller
                 'title' => 'required',
                 'file' => 'required',
             ]);
-            $file=$request->file('file');
+            $file = $request->file('file');
             $mime = $file->getMimeType();
 
             $path = Storage::disk('local')->put("materials", $file);
 
-            $material=Material::create(array_merge($request->only(['title', 'description']),['path'=>$path,'mime'=>$mime]));
+            $material = Material::create(array_merge($request->only(['title', 'description']), ['path' => $path, 'mime' => $mime]));
             if ($request->has('category')) {
-                $material->category()->save(new Category([
-                    'name' => $request->get('category')
-                ]));
+                $material->categories()->attach($request->get('category'));
             }
 
             return $this->handleResponse(Material::query()->paginate(), 'Material created successfully');
@@ -58,7 +57,7 @@ class MaterialController extends Controller
         }
     }
 
-    public function delete(Request $request,Material $material)
+    public function delete(Request $request, Material $material)
     {
         try {
             $material->forceDelete();
@@ -68,10 +67,11 @@ class MaterialController extends Controller
             return $this->handlingException($exception);
         }
     }
-    public function download(Request $request,Material $material)
+
+    public function download(Request $request, Material $material)
     {
         try {
-            $material=Storage::disk('local')->get($material->path);
+            $material = Storage::disk('local')->get($material->path);
             return $material;
         } catch (\Exception $exception) {
             return $this->handlingException($exception);

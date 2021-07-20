@@ -15,6 +15,7 @@ class CreateCategorizablesTable extends Migration
     {
         Schema::create('categorizables', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('category_id');
             $table->morphs('categorizable');
             $table->timestamps();
         });

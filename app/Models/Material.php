@@ -17,14 +17,14 @@ class Material extends Model
 
     public function getCategoryAttribute()
     {
-        $cat = $this->category()->first();
+        $cat = $this->categories()->first();
 
         return $cat ? $cat->name : '';
     }
 
-    public function category(): MorphToMany
+    public function categories(): MorphToMany
     {
-        return $this->morphToMany(Category::class, 'categorizable', 'categorizables');
+        return $this->morphToMany(Category::class, 'categorizable','categorizables');
     }
 
     public function courses(): BelongsToMany

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\Category;
 use App\Models\Course;
 use App\Models\Media;
 use App\Models\Setting;
@@ -40,6 +41,7 @@ class PublicController extends Controller
             return $this->handleResponse([
                 'testimony' => self::testimony,
                 'courses' => $courses,
+                'categories' => Category::all(['id','name']),
                 'corousel' => json_decode($setting->setting, true)['corousel'],
                 'images' => Media::query()->pluck('url'),
                 'banners' => Banner::query()->get(['url']),

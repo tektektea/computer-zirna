@@ -10,6 +10,7 @@ const initState = {
     courses:[],
     testimony: [],
     corousel:[],
+    categories:[],
     images:[],
 };
 
@@ -33,7 +34,8 @@ const reducer = (state, action) => {
         case SET_COROUSEL:
             return {...state, corousel: payload};
         case GET_PUBLIC_DATA:
-            return {...state,testimony:payload.testimony,courses: payload?.courses,corousel:payload?.corousel,images: payload?.images}
+            return {...state,testimony:payload.testimony,categories:payload?.categories,
+                courses: payload?.courses,corousel:payload?.corousel,images: payload?.images}
         default:
             return state;
     }

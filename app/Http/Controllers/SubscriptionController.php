@@ -189,7 +189,7 @@ class SubscriptionController extends Controller
             ]), [
                 'courses' => 'required',
                 'name' => 'required',
-                'phone_no' => 'required',
+                'phone_no' => 'required|unique:users',
                 'father_name' => 'required',
                 'address' => 'required',
                 'dob' => 'required',

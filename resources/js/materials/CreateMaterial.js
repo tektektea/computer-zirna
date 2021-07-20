@@ -16,18 +16,18 @@ import FormLabel from "@material-ui/core/FormLabel";
 const validationSchema = Yup.object().shape({
     title: Yup.string()
         .required('Title is required'),
-    category: Yup.string()
+    category: Yup.number()
         .required('Category is required'),
     file: Yup.mixed()
         .required('File is required'),
 });
-const CreateMaterial = ({ create, open, onClose, ...rest}) => {
+const CreateMaterial = ({create, open, onClose, ...rest}) => {
     const [state, dispatch] = React.useContext(AppContext);
-    const {handleChange,setFieldValue, errors, values, touched, handleSubmit} = useFormik({
+    const {handleChange, setFieldValue, errors, values, touched, handleSubmit} = useFormik({
         initialValues: {
             title: '',
             description: '',
-            category: 'study material',
+            category: 1,
             file: undefined
         },
         validationSchema,
@@ -36,9 +36,9 @@ const CreateMaterial = ({ create, open, onClose, ...rest}) => {
             onClose();
         }
     });
-    const handleFile=file=>{
+    const handleFile = file => {
         if (file) {
-            setFieldValue('file',file[0])
+            setFieldValue('file', file[0])
         }
     }
     React.useEffect(() => {
@@ -90,13 +90,46 @@ const CreateMaterial = ({ create, open, onClose, ...rest}) => {
                         </Grid>
 
                         <Grid item={true} xs={12}>
-                            <FormControl fullWidth={true}  component="fieldset">
+                            <FormControl fullWidth={true} component="fieldset">
                                 <FormLabel component="legend">Category</FormLabel>
-                                <RadioGroup  aria-label="gender" name="category" value={values?.category} onChange={handleChange}>
-                                    <FormControlLabel value="study material" control={<Radio color={"primary"}/>} label="Study material" />
-                                    <FormControlLabel value="practical assignment" control={<Radio color={"primary"} />} label="Practical Assignment" />
+                                <RadioGroup aria-label="category"
+                                            name="category"
+                                            value={values?.category}
+                                            onChange={((event, value) => {
+                                                console.log(value)
+                                                setFieldValue('category',value)
+                                            })}>
+                                    {state?.categories?.map((item) =>
+                                        <FormControlLabel key={item.id}
+                                                          style={{minWidth: 400}}
+                                                          value={item.id}
+                                                          control={<Radio color={"primary"}/>}
+                                                          label={item?.name}/>
+                                    )}
                                 </RadioGroup>
                             </FormControl>
+                            {/*<FormControl fullWidth={true}>*/}
+                            {/*    <InputLabel id={'category'}>Category</InputLabel>*/}
+                            {/*    <Select*/}
+                            {/*        variant={"outlined"}*/}
+                            {/*        margin={"dense"}*/}
+                            {/*        labelId="category"*/}
+                            {/*        id="category"*/}
+                            {/*        value={values?.category}*/}
+                            {/*        onChange={handleChange}*/}
+                            {/*        multiple={true}*/}
+                            {/*        input={<Input/>}*/}
+                            {/*        renderValue={selected=>(*/}
+                            {/*            <div>*/}
+                            {/*                {selected.map((value) => (*/}
+                            {/*                    <Chip key={value.id} label={value.name}/>*/}
+                            {/*                ))}*/}
+                            {/*            </div>*/}
+                            {/*        )}*/}
+                            {/*    >*/}
+                            {/*        {state?.categories?.map((item)=><MenuItem value={item.id}>{item.name}</MenuItem>)}*/}
+                            {/*    </Select>*/}
+                            {/*</FormControl>*/}
                         </Grid>
 
                         <Grid item={true} xs={12}>
@@ -105,7 +138,7 @@ const CreateMaterial = ({ create, open, onClose, ...rest}) => {
                                        variant={"outlined"}
                                        margin={"dense"}
                                        label={"File"}
-                                       InputLabelProps={{shrink:true}}
+                                       InputLabelProps={{shrink: true}}
                                        required={true}
                                        name={'file'}
                                        onChange={event => handleFile(event.target.files)}

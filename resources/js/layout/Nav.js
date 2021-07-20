@@ -65,7 +65,7 @@ const AdminMenu = {
 const AppMenu = {
     id: 'app',
     label: 'App config',
-    icon: 'manage_accounts',
+    icon: 'smartphone',
     open: false,
     items: [
         {key: 'corousel', label: 'Corousel', active: true},
@@ -75,7 +75,7 @@ const AppMenu = {
 const ResourceMenu = {
     id: 'resource',
     label: 'Resources',
-    icon: 'manage_accounts',
+    icon: 'view_list',
     open: false,
     items: [
         {key: 'subject', label: 'Subjects', active: false},
