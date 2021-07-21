@@ -80,9 +80,9 @@ theme = {
             root: {
                 fontSize: 16
             },
-            label:{
-                width:120
-            }
+            // label:{
+            //     width:120
+            // }
         },
         MuiPaper: {},
         MuiFormLabel: {

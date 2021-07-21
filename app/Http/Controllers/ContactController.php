@@ -11,8 +11,14 @@ class ContactController extends Controller
     public function create(Request $request)
     {
         try {
+            $this->validate($request->only(['name','email','phone','message']),[
+                'name'=>'required',
+                'email'=>'required',
+                'phone'=>'required',
+                'message'=>'required',
+            ]);
             $contact=Contact::query()->create($request->only(['name', 'email', 'phone', 'message']));
-            return $this->handleResponse($contact, 'Contact created successfully');
+            return $this->handleResponse($contact, 'Message submitted successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }

@@ -3,10 +3,12 @@ import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/cor
 import IconButton from "@material-ui/core/IconButton";
 import Icon from "@material-ui/core/Icon";
 import Grid from "@material-ui/core/Grid";
-import {FETCH_ADMIN_API} from "../utils/ApiRoutes";
+import {FETCH_ADMIN_API, FETCH_CONTACT_API} from "../utils/ApiRoutes";
 import {MESSAGE} from "../utils/Action";
+import {AppContext} from "../context/AppContextProvider";
 
 const Contacts=props=>{
+    const [state, dispatch] = React.useContext(AppContext);
     const [contacts,setContacts]=React.useState({
         data:[]
     })
@@ -18,8 +20,8 @@ const Contacts=props=>{
         setContacts(prevState => ({...prevState, page}))
     };
     const fetchContacts=(page=1)=>{
-        axios.get(FETCH_ADMIN_API)
-            .then(res=>setUsers(res.data.data))
+        axios.get(FETCH_CONTACT_API)
+            .then(res=>setContacts(res.data.data))
             .catch(err=>{
                 const errMsg = !!err.response ? err.response.data.error : err.toString();
                 dispatch({

@@ -80,7 +80,6 @@ const Main=({classes})=>{
                         </Hidden>
                         <div style={{flex:1}}>
                             <Route exact path={'/admin'} component={Dashboard}/>
-                            <Route exact path={'/admin/contacts'} component={Contacts}/>
                             <Route exact path={'/admin/profile'} component={Profile}/>
                             <Route exact path={'/admin/profile/:id'} component={ProfileEdit}/>
                             <Route exact path={'/admin/Dashboard'} component={Dashboard}/>
@@ -97,6 +96,8 @@ const Main=({classes})=>{
                             <Route exact path={'/admin/subscriptions'} component={Subscriptions}/>
                             <Route exact path={'/admin/app/corousel'} component={Corousel}/>
                             <Route exact path={'/admin/app/banner'} component={Banner}/>
+                            <Route exact path={'/admin/app/contacts'} component={Contacts}/>
+
                         </div>
 
                     </Grid>

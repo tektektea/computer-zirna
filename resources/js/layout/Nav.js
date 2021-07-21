@@ -68,6 +68,7 @@ const AppMenu = {
     icon: 'smartphone',
     open: false,
     items: [
+        {key: 'contact', label: 'Queries', active: false},
         {key: 'corousel', label: 'Corousel', active: true},
         {key: 'banner', label: 'Banner', active: false},
     ]
@@ -130,10 +131,13 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
         switch (index) {
             //Documents
             case 0:
+                history.push('/admin/app/contacts')
+                break;
+            case 1:
                 history.push('/admin/app/corousel')
                 break;
             //verify
-            case 1:
+            case 2:
                 history.push('/admin/app/banner')
                 break;
             default:

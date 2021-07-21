@@ -1,6 +1,16 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import {Grid, List, ListItem, ListItemSecondaryAction, ListItemText, OutlinedInput} from "@material-ui/core";
+import {
+    FormControl,
+    FormControlLabel,
+    Grid,
+    List,
+    ListItem,
+    ListItemSecondaryAction,
+    ListItemText,
+    OutlinedInput, Radio,
+    RadioGroup
+} from "@material-ui/core";
 import {AppContext} from "../context/AppContextProvider";
 import axios from "axios";
 import {
@@ -21,6 +31,7 @@ const Materials = props => {
     const [state, dispatch] = React.useContext(AppContext);
     const [materials, setMaterials] = React.useState([]);
     const [open, setOpen] = React.useState(false);
+    const [filter, setFilter] = React.useState('');
     const [confirm, setConfirm] = React.useState(false);
 
     const handleDelete = (id) => {
@@ -139,10 +150,23 @@ const Materials = props => {
                         <Grid container justify={'space-between'}>
                             <Button onClick={event => setOpen(true)}
                                     color={"primary"}
-                                    variant={"contained"}>New material</Button>
-                            <OutlinedInput onKeyPress={handleSearch}
-                                           margin={"dense"}
-                                           placeholder={"Search"}/>
+                                    variant={"outlined"}>New material</Button>
+                            {/*<OutlinedInput onKeyPress={handleSearch}*/}
+                            {/*               margin={"dense"}*/}
+                            {/*               placeholder={"Search"}/>*/}
+                            <RadioGroup aria-label="category"
+                                        name="category"
+                                        row={true}
+                                        value={filter}
+                                        onChange={((event, value) => {
+                                            setFilter(value)
+                                            fetchMaterials(1,value)
+                                        })}>
+                                <FormControlLabel value="" control={<Radio color={"primary"}/>} label="All"/>
+                                <FormControlLabel value="study material" control={<Radio color={"primary"}/>} label="Study material"/>
+                                <FormControlLabel value="practical assignment" control={<Radio color={"primary"}/>} label="Practical Assignment"/>
+
+                            </RadioGroup>
 
                         </Grid>
 

@@ -6,19 +6,56 @@ import Typography from "@material-ui/core/Typography";
 import Qoute from "../landing/Qoute";
 import SimpleCourseCard from "../landing/SimpleCourseCard";
 import Button from "@material-ui/core/Button";
-import Footer from "../landing/Footer";
+import {useFormik} from "formik";
+import * as Yup from "yup";
+import {CREATE_CONTACT_API} from "../utils/ApiRoutes";
+import {MESSAGE} from "../utils/Action";
+import axios from 'axios';
 
-const qoutes = [
-    'tha hle mai , kal zel rawh u',
-    'oi chutia law ava lawmawm ve',
-    'An fel teh ania, lo lut ve rawh u',
-    'An fel teh ania, lo lut ve rawh u',
-    'An fel teh ania, lo lut ve rawh u',
-]
+const validationSchema = Yup.object().shape({
+    name: Yup.string()
+        .required('Name is required'),
+    email: Yup.string()
+        .email()
+        .required('Email is required'),
+    phone: Yup.number()
+        .required('Phone no is required'),
+    message: Yup.string()
+        .required('Message is required'),
+});
 const Content = props => {
     const [state, dispatch] = React.useContext(AppContext);
-    const [images, setImages] = React.useState([]);
-
+    const {handleChange, errors, values, touched, handleSubmit} = useFormik({
+        initialValues: {
+            name: '',
+            email: '',
+            message: '',
+            phone: ''
+        },
+        validationSchema,
+        onSubmit(values) {
+            axios.post(CREATE_CONTACT_API, values)
+                .then(res=>{
+                    dispatch({
+                        type: MESSAGE,
+                        payload: {
+                            message_type: 'success',
+                            message: res.data.message
+                        }
+                    })
+                })
+                .catch(err=>{
+                    const errMsg = !!err.response ? err.response.data.error : err.toString();
+                    dispatch({
+                        type: MESSAGE,
+                        payload: {
+                            message_type: 'error',
+                            message: errMsg
+                        }
+                    })
+                })
+        }
+    });
     React.useEffect(() => {
     }, [])
     return (
@@ -229,33 +266,75 @@ const Content = props => {
                 <Typography variant={"h6"}>Course offered</Typography>
             </Grid>
             <Grid container={true} item={true} spacing={2}>
-                    {state?.courses?.map(item =>
-                        <Grid key={item.id} xs={12} md={4} item={true}>
-                            <SimpleCourseCard course={item}/>
-                        </Grid>
-                    )}
+                {state?.courses?.map(item =>
+                    <Grid key={item.id} xs={12} md={4} item={true}>
+                        <SimpleCourseCard course={item}/>
+                    </Grid>
+                )}
             </Grid>
             <Grid container={true} alignItems={"center"} justify={'center'} item={true}>
                 <Typography variant={'h6'}>Contact us</Typography>
             </Grid>
             <Grid container={true} item={true}>
                 <div className={'my-card'}>
-                    <Grid container={true} direction={"column"} alignItems={"center"} justify={"center"} spacing={4}
+                    <Grid style={{flex:1}} container={true}  alignItems={"center"} justify={"center"} spacing={4}
                           item={true}>
-                        <Grid item={true}>
-                            <TextField variant={"outlined"} label={"Name"}/>
+                        <Grid item={true} xs={12}>
+                            <TextField fullWidth={true}
+                                       variant={"outlined"}
+                                       margin={"dense"}
+                                       label={"Name"}
+                                       placeholder={""}
+                                       required={true}
+                                       name={'name'}
+                                       onChange={handleChange}
+                                       error={!!touched?.name && !!errors?.name}
+                                       helperText={errors?.name}
+                            />
                         </Grid>
-                        <Grid item={true}>
-                            <TextField variant={"outlined"} label={"Email"}/>
+                        <Grid item={true} xs={12}>
+                            <TextField fullWidth={true}
+                                       variant={"outlined"}
+                                       margin={"dense"}
+                                       label={"Email"}
+                                       placeholder={""}
+                                       required={true}
+                                       name={'email'}
+                                       onChange={handleChange}
+                                       error={!!touched?.email && !!errors?.email}
+                                       helperText={(touched?.email && errors?.email) ? errors?.email : ''}
+                            />
                         </Grid>
-                        <Grid item={true}>
-                            <TextField variant={"outlined"} label={"Phone"}/>
+                        <Grid item={true} xs={12}>
+                            <TextField fullWidth={true}
+                                       variant={"outlined"}
+                                       margin={"dense"}
+                                       label={"Phone"}
+                                       placeholder={""}
+                                       required={true}
+                                       name={'phone'}
+                                       onChange={handleChange}
+                                       error={!!touched?.phone && !!errors?.phone}
+                                       helperText={(touched?.phone && errors?.phone) ? errors?.phone : ''}
+                            />
                         </Grid>
-                        <Grid item={true}>
-                            <TextField multiline={true} rows={5} variant={"outlined"} label={"Message"}/>
+                        <Grid item={true} xs={12}>
+                            <TextField fullWidth={true}
+                                       variant={"outlined"}
+                                       margin={"dense"}
+                                       label={"Message"}
+                                       rows={3}
+                                       multiline={true}
+                                       placeholder={""}
+                                       required={true}
+                                       name={'message'}
+                                       onChange={handleChange}
+                                       error={!!touched?.message && !!errors?.message}
+                                       helperText={(touched?.message && errors?.message) ? errors?.message : ''}
+                            />
                         </Grid>
-                        <Grid item={true}>
-                            <Button variant={"outlined"} color={'primary'}>Submit</Button>
+                        <Grid item={true} xs={12}>
+                            <Button onClick={handleSubmit} variant={"outlined"} color={'primary'}>Submit</Button>
                         </Grid>
                     </Grid>
                 </div>

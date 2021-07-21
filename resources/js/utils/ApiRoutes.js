@@ -7,6 +7,7 @@ export const UDPATE_ADMIN_API=id=>`admin/${id}`
 export const DELETE_ADMIN_API=id=>`admin/${id}`
 
 export const FETCH_CONTACT_API=`contacts/index`
+export const CREATE_CONTACT_API=`contacts/create`
 export const DELETE_CONTACT_API=id=>`contacts/${id}`
 
 export const FETCH_COURSE_API='courses/index'

@@ -26,6 +26,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('test/{course}', [SubscriptionController::class, 'videos']);
+Route::post('contacts/create}', [ContactController::class, 'create']);
+
 Route::group(['prefix' => 'auth'], function () {
     Route::get('otp/send', [OtpController::class, 'send']);
     Route::post('otp/verify', [OtpController::class, 'verify']);
@@ -88,10 +91,7 @@ Route::group(['prefix' => 'banner', 'middleware' => 'auth:sanctum'], function ()
     Route::delete('{banner}', [BannerController::class, 'destroy']);
 });
 
-Route::group(['prefix' => 'contacts', 'middleware' => 'auth:sanctum'], function () {
-    Route::get('index', [ContactController::class, 'index']);
-    Route::delete('{banner}', [ContactController::class, 'delete']);
-});
+
 
 Route::group(['prefix' => 'subscription', 'middleware' => 'auth:sanctum'], function () {
     Route::get('index', [SubscriptionController::class, 'index']);
@@ -118,6 +118,8 @@ Route::group(['prefix' => 'profile','middleware' => 'auth:sanctum'], function ()
     Route::get('courses/{course}/videos', [SubscriptionController::class, 'videos']);
     Route::get('courses/{course}/materials', [SubscriptionController::class, 'materials']);
 });
+Route::group(['prefix' => 'contacts', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('index', [ContactController::class, 'index']);
+    Route::delete('{contact}', [ContactController::class, 'delete']);
+});
 
-Route::get('test/{course}', [SubscriptionController::class, 'videos']);
-Route::post('contacts/create}', [ContactController::class, 'create']);

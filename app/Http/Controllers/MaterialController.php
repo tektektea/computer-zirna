@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Material;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -22,11 +23,18 @@ class MaterialController extends Controller
     {
         try {
             $search = $request->get('search');
-            $data = Material::query()
-                ->with(['categories'])
-                ->when($request->has('search'), function (Builder $builder) {
-                    $builder->where('title', 'LIKE', "%@search%");
-                })->paginate();
+            if ($search) {
+                $category=Category::query()->where('name', 'LIKE', "$search%")
+                    ->first();
+                if ($category) {
+                    $data=$category->materials()
+                        ->paginate();
+                }
+            }else{
+                $data = Material::query()->paginate();
+            }
+
+
 
             return $this->handleResponse($data, '');
         } catch (\Exception $exception) {

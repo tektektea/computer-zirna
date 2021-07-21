@@ -15,6 +15,6 @@ class Category extends Model
 
     public function materials(): MorphToMany
     {
-        return $this->morphedByMany(Material::class, 'categorizable','categorizables','categorizale_id','id');
+        return $this->morphedByMany(Material::class, 'categorizable','categorizables');
     }
 }

@@ -27193,16 +27193,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Table/Table.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TableHead/TableHead.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TableRow/TableRow.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TableCell/TableCell.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TableBody/TableBody.js");
-/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/IconButton */ "./node_modules/@material-ui/core/esm/IconButton/IconButton.js");
-/* harmony import */ var _material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Icon */ "./node_modules/@material-ui/core/esm/Icon/Icon.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Table/Table.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TableHead/TableHead.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TableRow/TableRow.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TableCell/TableCell.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TableBody/TableBody.js");
+/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/IconButton */ "./node_modules/@material-ui/core/esm/IconButton/IconButton.js");
+/* harmony import */ var _material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/Icon */ "./node_modules/@material-ui/core/esm/Icon/Icon.js");
 /* harmony import */ var _utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/ApiRoutes */ "./resources/js/utils/ApiRoutes.js");
 /* harmony import */ var _utils_Action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/Action */ "./resources/js/utils/Action.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _context_AppContextProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/AppContextProvider */ "./resources/js/context/AppContextProvider.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -27231,7 +27232,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var Contacts = function Contacts(props) {
+  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_0__.useContext(_context_AppContextProvider__WEBPACK_IMPORTED_MODULE_3__.AppContext),
+      _React$useContext2 = _slicedToArray(_React$useContext, 2),
+      state = _React$useContext2[0],
+      dispatch = _React$useContext2[1];
+
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState({
     data: []
   }),
@@ -27251,8 +27258,8 @@ var Contacts = function Contacts(props) {
 
   var fetchContacts = function fetchContacts() {
     var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    axios.get(_utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_1__.FETCH_ADMIN_API).then(function (res) {
-      return setUsers(res.data.data);
+    axios.get(_utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_1__.FETCH_CONTACT_API).then(function (res) {
+      return setContacts(res.data.data);
     })["catch"](function (err) {
       var errMsg = !!err.response ? err.response.data.error : err.toString();
       dispatch({
@@ -27268,46 +27275,46 @@ var Contacts = function Contacts(props) {
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     fetchContacts(1);
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: 'maincontent',
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
       className: 'title',
       children: "Contact requests"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       className: 'my-card',
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__.default, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__.default, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__.default, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__.default, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__.default, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
               children: "Requester"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
               children: "Phone"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
               children: "Email"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
               children: "Message"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
               children: "Action"
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_9__.default, {
           children: Boolean(contacts === null || contacts === void 0 ? void 0 : contacts.data) && (contacts === null || contacts === void 0 ? void 0 : contacts.data.map(function (user, index) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__.default, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
                 children: user === null || user === void 0 ? void 0 : user.name
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
                 children: user === null || user === void 0 ? void 0 : user.phone_no
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
                 children: user === null || user === void 0 ? void 0 : user.email
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
                 children: user === null || user === void 0 ? void 0 : user.message
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_7__.default, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_9__.default, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_10__.default, {
                   onClick: function onClick(e) {
                     return handleView(user);
                   },
                   color: "primary",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_10__.default, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_11__.default, {
                     children: "eye"
                   })
                 })
@@ -29241,10 +29248,6 @@ var Main = function Main(_ref) {
               component: _dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_10__.default
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_28__.Route, {
               exact: true,
-              path: '/admin/contacts',
-              component: _contact_Contacts__WEBPACK_IMPORTED_MODULE_21__.default
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_28__.Route, {
-              exact: true,
               path: '/admin/profile',
               component: _profile_Profile__WEBPACK_IMPORTED_MODULE_16__.default
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_28__.Route, {
@@ -29307,6 +29310,10 @@ var Main = function Main(_ref) {
               exact: true,
               path: '/admin/app/banner',
               component: _apps_Banner__WEBPACK_IMPORTED_MODULE_12__.default
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_28__.Route, {
+              exact: true,
+              path: '/admin/app/contacts',
+              component: _contact_Contacts__WEBPACK_IMPORTED_MODULE_21__.default
             })]
           })]
         })
@@ -29439,9 +29446,13 @@ var AdminMenu = {
 var AppMenu = {
   id: 'app',
   label: 'App config',
-  icon: 'manage_accounts',
+  icon: 'smartphone',
   open: false,
   items: [{
+    key: 'contact',
+    label: 'Queries',
+    active: false
+  }, {
     key: 'corousel',
     label: 'Corousel',
     active: true
@@ -29454,7 +29465,7 @@ var AppMenu = {
 var ResourceMenu = {
   id: 'resource',
   label: 'Resources',
-  icon: 'manage_accounts',
+  icon: 'view_list',
   open: false,
   items: [{
     key: 'subject',
@@ -29546,11 +29557,15 @@ var Nav = function Nav(_ref) {
     switch (index) {
       //Documents
       case 0:
+        history.push('/admin/app/contacts');
+        break;
+
+      case 1:
         history.push('/admin/app/corousel');
         break;
       //verify
 
-      case 1:
+      case 2:
         history.push('/admin/app/banner');
         break;
 
@@ -29975,13 +29990,11 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 var validationSchema = yup__WEBPACK_IMPORTED_MODULE_1__.object().shape({
   title: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Title is required'),
-  category: yup__WEBPACK_IMPORTED_MODULE_1__.number().required('Category is required'),
+  category: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Category is required'),
   file: yup__WEBPACK_IMPORTED_MODULE_1__.mixed().required('File is required')
 });
 
 var CreateMaterial = function CreateMaterial(_ref) {
-  var _state$categories;
-
   var create = _ref.create,
       open = _ref.open,
       onClose = _ref.onClose,
@@ -29996,7 +30009,7 @@ var CreateMaterial = function CreateMaterial(_ref) {
     initialValues: {
       title: '',
       description: '',
-      category: 1,
+      category: '1',
       file: undefined
     },
     validationSchema: validationSchema,
@@ -30068,7 +30081,7 @@ var CreateMaterial = function CreateMaterial(_ref) {
               name: 'title',
               onChange: handleChange,
               error: (touched === null || touched === void 0 ? void 0 : touched.title) && (errors === null || errors === void 0 ? void 0 : errors.title),
-              helperText: (touched === null || touched === void 0 ? void 0 : touched.title) && (errors === null || errors === void 0 ? void 0 : errors.title)
+              helperText: touched !== null && touched !== void 0 && touched.title ? errors === null || errors === void 0 ? void 0 : errors.title : ''
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__.default, {
             item: true,
@@ -30085,7 +30098,7 @@ var CreateMaterial = function CreateMaterial(_ref) {
               name: 'description',
               onChange: handleChange,
               error: (touched === null || touched === void 0 ? void 0 : touched.description) && (errors === null || errors === void 0 ? void 0 : errors.description),
-              helperText: (touched === null || touched === void 0 ? void 0 : touched.description) && (errors === null || errors === void 0 ? void 0 : errors.description)
+              helperText: touched !== null && touched !== void 0 && touched.description ? errors === null || errors === void 0 ? void 0 : errors.description : ''
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__.default, {
             item: true,
@@ -30096,7 +30109,7 @@ var CreateMaterial = function CreateMaterial(_ref) {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_FormLabel__WEBPACK_IMPORTED_MODULE_14__.default, {
                 component: "legend",
                 children: "Category"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__.default, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__.default, {
                 "aria-label": "category",
                 name: "category",
                 value: values === null || values === void 0 ? void 0 : values.category,
@@ -30104,18 +30117,19 @@ var CreateMaterial = function CreateMaterial(_ref) {
                   console.log(value);
                   setFieldValue('category', value);
                 },
-                children: state === null || state === void 0 ? void 0 : (_state$categories = state.categories) === null || _state$categories === void 0 ? void 0 : _state$categories.map(function (item) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
-                    style: {
-                      minWidth: 400
-                    },
-                    value: item.id,
-                    control: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__.default, {
-                      color: "primary"
-                    }),
-                    label: item === null || item === void 0 ? void 0 : item.name
-                  }, item.id);
-                })
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
+                  value: '1',
+                  control: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__.default, {
+                    color: "primary"
+                  }),
+                  label: "Study material"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
+                  value: '2',
+                  control: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__.default, {
+                    color: "primary"
+                  }),
+                  label: "Practical Assignment"
+                })]
               })]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__.default, {
@@ -30136,7 +30150,7 @@ var CreateMaterial = function CreateMaterial(_ref) {
                 return handleFile(event.target.files);
               },
               error: (touched === null || touched === void 0 ? void 0 : touched.file) && (errors === null || errors === void 0 ? void 0 : errors.file),
-              helperText: (touched === null || touched === void 0 ? void 0 : touched.file) && (errors === null || errors === void 0 ? void 0 : errors.file)
+              helperText: touched !== null && touched !== void 0 && touched.file ? errors === null || errors === void 0 ? void 0 : errors.file : ''
             })
           })]
         })
@@ -30175,19 +30189,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/Button.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Grid/Grid.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/OutlinedInput/OutlinedInput.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/List/List.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItem/ListItem.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemText/ListItemText.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemSecondaryAction/ListItemSecondaryAction.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/RadioGroup/RadioGroup.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/FormControlLabel/FormControlLabel.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Radio/Radio.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/List/List.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItem/ListItem.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemText/ListItemText.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemSecondaryAction/ListItemSecondaryAction.js");
 /* harmony import */ var _context_AppContextProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContextProvider */ "./resources/js/context/AppContextProvider.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/ApiRoutes */ "./resources/js/utils/ApiRoutes.js");
 /* harmony import */ var _utils_Action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/Action */ "./resources/js/utils/Action.js");
-/* harmony import */ var _material_ui_lab__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/lab */ "./node_modules/@material-ui/lab/esm/Pagination/Pagination.js");
-/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/core/IconButton */ "./node_modules/@material-ui/core/esm/IconButton/IconButton.js");
-/* harmony import */ var _material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/core/Icon */ "./node_modules/@material-ui/core/esm/Icon/Icon.js");
+/* harmony import */ var _material_ui_lab__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @material-ui/lab */ "./node_modules/@material-ui/lab/esm/Pagination/Pagination.js");
+/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/core/IconButton */ "./node_modules/@material-ui/core/esm/IconButton/IconButton.js");
+/* harmony import */ var _material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @material-ui/core/Icon */ "./node_modules/@material-ui/core/esm/Icon/Icon.js");
 /* harmony import */ var _CreateMaterial__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CreateMaterial */ "./resources/js/materials/CreateMaterial.js");
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -30240,10 +30256,15 @@ var Materials = function Materials(props) {
       open = _React$useState4[0],
       setOpen = _React$useState4[1];
 
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(''),
       _React$useState6 = _slicedToArray(_React$useState5, 2),
-      confirm = _React$useState6[0],
-      setConfirm = _React$useState6[1];
+      filter = _React$useState6[0],
+      setFilter = _React$useState6[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      confirm = _React$useState8[0],
+      setConfirm = _React$useState8[1];
 
   var handleDelete = function handleDelete(id) {
     axios__WEBPACK_IMPORTED_MODULE_2___default().delete((0,_utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_3__.DELETE_MATERIAL_API)(id)).then(function (res) {
@@ -30382,40 +30403,64 @@ var Materials = function Materials(props) {
                 return setOpen(true);
               },
               color: "primary",
-              variant: "contained",
+              variant: "outlined",
               children: "New material"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__.default, {
-              onKeyPress: handleSearch,
-              margin: "dense",
-              placeholder: "Search"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__.default, {
+              "aria-label": "category",
+              name: "category",
+              row: true,
+              value: filter,
+              onChange: function onChange(event, value) {
+                setFilter(value);
+                fetchMaterials(1, value);
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
+                value: "",
+                control: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
+                  color: "primary"
+                }),
+                label: "All"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
+                value: "study material",
+                control: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
+                  color: "primary"
+                }),
+                label: "Study material"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
+                value: "practical assignment",
+                control: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
+                  color: "primary"
+                }),
+                label: "Practical Assignment"
+              })]
             })]
           })
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
         item: true,
         className: 'my-card',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__.default, {
           children: Boolean(materials === null || materials === void 0 ? void 0 : materials.data) ? materials === null || materials === void 0 ? void 0 : materials.data.map(function (item, i) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__.default, {
               divider: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__.default, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__.default, {
                 primary: item === null || item === void 0 ? void 0 : item.title,
                 secondary: item === null || item === void 0 ? void 0 : item.description
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__.default, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_15__.default, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_17__.default, {
                   onClick: function onClick(event) {
                     return handleDownload(item);
                   },
                   color: "primary",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_16__.default, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_18__.default, {
                     children: "cloud_download"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_15__.default, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_17__.default, {
                   onClick: function onClick(event) {
                     return handleDelete(item.id);
                   },
                   color: "secondary",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_16__.default, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_18__.default, {
                     children: "delete"
                   })
                 })]
@@ -30428,7 +30473,7 @@ var Materials = function Materials(props) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__.default, {
         xs: 12,
         item: true,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_lab__WEBPACK_IMPORTED_MODULE_17__.default, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_lab__WEBPACK_IMPORTED_MODULE_19__.default, {
           count: Math.floor((materials === null || materials === void 0 ? void 0 : materials.total) / (materials === null || materials === void 0 ? void 0 : materials.per_page)),
           onChange: handlePagination
         })

@@ -42,7 +42,7 @@ class AuthController extends Controller
     {
         try {
             $user = $request->user();
-            $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
+            $user->tokens()->delete();
             return $this->handleResponse(['logged' => false], '');
         } catch (Exception $exception) {
             return $this->handlingException($exception);

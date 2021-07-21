@@ -16,7 +16,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 const validationSchema = Yup.object().shape({
     title: Yup.string()
         .required('Title is required'),
-    category: Yup.number()
+    category: Yup.string()
         .required('Category is required'),
     file: Yup.mixed()
         .required('File is required'),
@@ -27,7 +27,7 @@ const CreateMaterial = ({create, open, onClose, ...rest}) => {
         initialValues: {
             title: '',
             description: '',
-            category: 1,
+            category: '1',
             file: undefined
         },
         validationSchema,
@@ -69,7 +69,7 @@ const CreateMaterial = ({create, open, onClose, ...rest}) => {
                                        name={'title'}
                                        onChange={handleChange}
                                        error={touched?.title && errors?.title}
-                                       helperText={touched?.title && errors?.title}
+                                       helperText={touched?.title ? errors?.title:''}
                             />
                         </Grid>
 
@@ -85,27 +85,23 @@ const CreateMaterial = ({create, open, onClose, ...rest}) => {
                                        name={'description'}
                                        onChange={handleChange}
                                        error={touched?.description && errors?.description}
-                                       helperText={touched?.description && errors?.description}
+                                       helperText={touched?.description ? errors?.description:''}
                             />
                         </Grid>
 
                         <Grid item={true} xs={12}>
-                            <FormControl fullWidth={true} component="fieldset">
+                            <FormControl  fullWidth={true} component="fieldset">
                                 <FormLabel component="legend">Category</FormLabel>
-                                <RadioGroup aria-label="category"
+                                <RadioGroup  aria-label="category"
                                             name="category"
                                             value={values?.category}
                                             onChange={((event, value) => {
                                                 console.log(value)
                                                 setFieldValue('category',value)
                                             })}>
-                                    {state?.categories?.map((item) =>
-                                        <FormControlLabel key={item.id}
-                                                          style={{minWidth: 400}}
-                                                          value={item.id}
-                                                          control={<Radio color={"primary"}/>}
-                                                          label={item?.name}/>
-                                    )}
+                                    <FormControlLabel value={'1'} control={<Radio color={"primary"}/>} label="Study material"/>
+                                    <FormControlLabel value={'2'} control={<Radio color={"primary"}/>} label="Practical Assignment"/>
+
                                 </RadioGroup>
                             </FormControl>
                             {/*<FormControl fullWidth={true}>*/}
@@ -143,7 +139,7 @@ const CreateMaterial = ({create, open, onClose, ...rest}) => {
                                        name={'file'}
                                        onChange={event => handleFile(event.target.files)}
                                        error={touched?.file && errors?.file}
-                                       helperText={touched?.file && errors?.file}
+                                       helperText={touched?.file ? errors?.file:''}
                             />
                         </Grid>
 
