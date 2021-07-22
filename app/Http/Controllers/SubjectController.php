@@ -62,7 +62,11 @@ class SubjectController extends Controller
             $videos = $request->get('videos');
 
             $subject=Subject::create($request->only(['title', 'description']));
-            $subject->videos()->sync($videos);
+            collect($videos)->map(function ($video) use ($subject) {
+                $v = new Video($video);
+                $subject->videos()->save($v);
+                return $v;
+            });
 
             return$this->handleResponse($subject, 'Subject created successfully');
         } catch (\Exception $exception) {
@@ -78,8 +82,12 @@ class SubjectController extends Controller
             ]);
             $videos = $request->get('videos');
             $subject->update($request->only(['title', 'description']));
-            $subject->videos()->sync($videos);
-
+            $subject->videos()->delete();
+            collect($videos)->map(function ($video) use ($subject) {
+                $v = new Video($video);
+                $subject->videos()->save($v);
+                return $v;
+            });
             return $this->handleResponse($subject, 'Subject updated successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);

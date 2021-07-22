@@ -6,13 +6,11 @@ import CardHeader from '@material-ui/core/CardHeader'
 import Icon from '@material-ui/core/Icon'
 import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
-import {DialogActions, FormControl, InputLabel, MenuItem, Select, TextField} from "@material-ui/core";
+import {DialogActions, TextField} from "@material-ui/core";
 import * as Yup from 'yup';
 import {useFormik} from "formik";
-import {CREATE_VIDEO_API} from "../utils/ApiRoutes";
 import {AppContext} from "../context/AppContextProvider";
 import {Alert} from "@material-ui/lab";
-import {MESSAGE} from "../utils/Action";
 
 const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -20,9 +18,9 @@ const validationSchema = Yup.object().shape({
     video_url: Yup.string()
         .required('Video url is required'),
 });
-const CreateDialog = ({video,createVideo, open, onClose, ...rest}) => {
+const CreateDialog = ({video, createVideo, open, onClose, ...rest}) => {
     const [state, dispatch] = React.useContext(AppContext);
-    const {handleChange, errors, values, touched, handleSubmit} = useFormik({
+    const {handleChange, setValues, errors, values, touched, handleSubmit} = useFormik({
         initialValues: {
             title: video?.name,
             description: video?.description,
@@ -36,8 +34,8 @@ const CreateDialog = ({video,createVideo, open, onClose, ...rest}) => {
     });
 
     React.useEffect(() => {
-        console.log(state);
-    }, [])
+        setValues({...video})
+    }, [video])
     return (
         <Dialog {...rest} fullWidth={true} maxWidth={"sm"} open={open} onClose={onClose}>
             <DialogContent>
@@ -45,7 +43,7 @@ const CreateDialog = ({video,createVideo, open, onClose, ...rest}) => {
 
                     <Grid container={true} spacing={1}>
                         <Grid item={true} xs={12}>
-                            <CardHeader style={{padding: 0}} title={'New video'}
+                            <CardHeader style={{padding: 0}} title={!!video ? "Edit video" : "New Video"}
                                         action={<IconButton
                                             onClick={event => onClose()}><Icon>close</Icon></IconButton>}/>
                         </Grid>

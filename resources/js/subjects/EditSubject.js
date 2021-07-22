@@ -19,6 +19,7 @@ import Typography from "@material-ui/core/Typography";
 import ReactPlayer from "react-player";
 import {MESSAGE} from "../utils/Action";
 import {CREATE_SUBJECTS_API, SHOW_SUBJECTS_API, UPDATE_SUBJECTS_API} from "../utils/ApiRoutes";
+import CreateDialog from "../videos/CreateDialog";
 
 
 const validationSchema = Yup.object().shape({
@@ -41,9 +42,6 @@ const EditSubject = ({defaultValue}) => {
         },
         validationSchema,
         onSubmit(values) {
-            console.log(values)
-            const temp = values?.videos?.map(item => item.id);
-            values['videos'] = temp;
             axios.put(UPDATE_SUBJECTS_API(values?.id), values)
                 .then(res => {
                     dispatch({
@@ -93,10 +91,10 @@ const EditSubject = ({defaultValue}) => {
             })
     }
 
-    const handleSelectVideos = v => {
-        setOpenVideo(false)
-        formik.setFieldValue('videos', v);
-
+    const handleCreateVideo=video=>{
+        const videos = formik.values?.videos;
+        videos.push(video);
+        formik.setFieldValue('videos',videos);
     }
 
     const handleDelete = subject => {
@@ -179,11 +177,9 @@ const EditSubject = ({defaultValue}) => {
                     </DialogActions>
                 </div>
             </form>
-
-            {openVideo && <SelectVideo open={open}
-                                       onClose={() => setOpenVideo(false)}
-                                       defaultVideos={formik.values?.videos}
-                                       onSelects={handleSelectVideos}/>}
+            {openVideo && <CreateDialog open={openVideo}
+                                        createVideo={handleCreateVideo}
+                                        onClose={e=>setOpenVideo(false)}/>}
         </div>
     );
 }

@@ -30,9 +30,9 @@ class UserController extends Controller
             if (!$permit) {
                 throw new \Exception('Permission denied', 403);
             }
-            $this->validate($request->only(['name','phone_no', 'email', 'password']), [
+            $this->validate($request->only(['name','phone_no', 'email', 'password','password_confirmation']), [
                 'name'=>'required',
-                'phone_no' => 'required|digit:10',
+                'phone_no' => 'required|unique:users',
                 'email' => 'required|email|unique:users',
                 'password' => 'required|confirmed|min:6'
             ]);
@@ -40,10 +40,13 @@ class UserController extends Controller
                 'name' => $request->get('name'),
                 'phone_no' => $request->get('phone_no'),
                 'email' => $request->get('email'),
-                'password' => Hash::make('password')
+                'father_name' => $request->get('father_name'),
+                'address' => $request->get('address'),
+                'password' => Hash::make('password'),
+                'type'=>'admin'
             ]);
 
-            return $this->handleResponse($user, 'User created successfully');
+            return $this->handleResponse(User::query()->where('type','admin')->paginate(), 'User created successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
@@ -81,7 +84,8 @@ class UserController extends Controller
             }
             $user->delete();
 
-            return $this->handleResponse($user, 'User deleted successfully');
+            return $this->handleResponse(User::query()->where('type','admin')->paginate(),
+                'User deleted successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }

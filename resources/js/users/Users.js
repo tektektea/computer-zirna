@@ -6,18 +6,42 @@ import {AppContext} from "../context/AppContextProvider";
 import {Table, TableBody, TableCell, TableHead, TableRow} from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import Icon from "@material-ui/core/Icon";
-import {FETCH_ADMIN_API, FETCH_IMAGES_API} from "../utils/ApiRoutes";
+import {CREATE_ADMIN_API, DELETE_ADMIN_API, FETCH_ADMIN_API, FETCH_IMAGES_API} from "../utils/ApiRoutes";
 import {MESSAGE} from "../utils/Action";
+import CreateUser from "./CreateUser";
 
 const Users=props=>{
     const [state, dispatch] = React.useContext(AppContext);
     const [users,setUsers]=React.useState({});
+    const [openCreate, setOpenCreate] = React.useState(false);
 
-    const handleEdit=user=>{
-
-    }
     const handleDelete=user=>{
-
+        axios.get(DELETE_ADMIN_API(user.id))
+            .then(res=>setUsers(res.data.data))
+            .catch(err=>{
+                const errMsg = !!err.response ? err.response.data.error : err.toString();
+                dispatch({
+                    type: MESSAGE,
+                    payload: {
+                        message: errMsg,
+                        message_type: 'error'
+                    }
+                })
+            })
+    }
+    const handleCreate=user=>{
+        axios.post(CREATE_ADMIN_API,user)
+            .then(res=>setUsers(res.data.data))
+            .catch(err=>{
+                const errMsg = !!err.response ? err.response.data.error : err.toString();
+                dispatch({
+                    type: MESSAGE,
+                    payload: {
+                        message: errMsg,
+                        message_type: 'error'
+                    }
+                })
+            })
     }
     const handlePagination = (event, page) => {
         setUsers(prevState => ({...prevState, page}))
@@ -44,7 +68,7 @@ const Users=props=>{
             <h1 className={'title'}>Admins</h1>
             <Grid container={true} spacing={2}>
                 <div className={'my-card'}>
-                    <Button color={"primary"} variant={"contained"}>New admin</Button>
+                    <Button onClick={event => setOpenCreate(true)} color={"primary"} variant={"contained"}>New admin</Button>
                 </div>
                 <Grid className={'my-card'} item={true} xs={12}>
                     <Table>
@@ -64,7 +88,6 @@ const Users=props=>{
                                 <TableCell>{user?.email}</TableCell>
                                 <TableCell>{user?.created_at}</TableCell>
                                 <TableCell>
-                                    <IconButton onClick={e=>handleEdit(user)} color={"primary"}><Icon>edit</Icon></IconButton>
                                     <IconButton onClick={e=>handleDelete(user)} color={"secondary"}><Icon>delete</Icon></IconButton>
                                 </TableCell>
                             </TableRow>)}
@@ -75,7 +98,9 @@ const Users=props=>{
                     <Pagination count={Math.floor(users?.total / users?.per_page)} onChange={(handlePagination)}/>
                 </Grid>
             </Grid>
-
+            {openCreate && <CreateUser open={openCreate}
+                                       create={handleCreate}
+                                       onClose={e=>setOpenCreate(false)}/>}
         </div>
     )
 }

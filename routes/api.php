@@ -40,7 +40,12 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('admin/login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 });
-
+Route::group(['prefix' => 'admin','middleware' => 'auth:sanctum'], function () {
+    Route::get('index', [UserController::class, 'all']);
+    Route::post('create', [UserController::class, 'create']);
+    Route::delete('{user}', [UserController::class, 'delete']);
+    Route::put('{user}/update', [UserController::class, 'update']);
+});
 
 Route::group(['prefix' => 'courses', 'middleware' => 'auth:sanctum'], function () {
     Route::get('index', [CourseController::class, 'all']);
@@ -76,12 +81,7 @@ Route::group(['prefix' => 'material','middleware' => 'auth:sanctum'], function (
     Route::get('{material}', [MaterialController::class, 'download']);
 });
 
-Route::group(['prefix' => 'admin','middleware' => 'auth:sanctum'], function () {
-    Route::get('index', [UserController::class, 'all']);
-    Route::post('create', [UserController::class, 'create']);
-    Route::delete('{user}/delete', [UserController::class, 'delete']);
-    Route::put('{user}/update', [UserController::class, 'update']);
-});
+
 Route::group(['prefix' => 'media', 'middleware' => 'auth:sanctum'], function () {
     Route::get('index', [MediaController::class, 'all']);
     Route::post('upload', [MediaController::class, 'upload']);

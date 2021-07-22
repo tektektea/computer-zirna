@@ -18,6 +18,7 @@ import SelectVideo from "../videos/SelectVideo";
 import Typography from "@material-ui/core/Typography";
 import ReactPlayer from "react-player";
 import {MESSAGE} from "../utils/Action";
+import CreateDialog from "../videos/CreateDialog";
 
 
 const validationSchema = Yup.object().shape({
@@ -38,9 +39,6 @@ const CreateSubject = props => {
         },
         validationSchema,
         onSubmit(values) {
-            console.log(values)
-            const temp = values?.videos?.map(item => item.id);
-            values['videos'] = temp;
             axios.post('subjects/create', values)
                 .then(res => {
                     dispatch({
@@ -81,6 +79,11 @@ const CreateSubject = props => {
 
     }
 
+    const handleCreateVideo=video=>{
+        const videos = formik.values?.videos;
+        videos.push(video);
+        formik.setFieldValue('videos',videos);
+    }
     const handleDelete = subject => {
         formik.setFieldValue('videos', formik.values?.videos?.filter(s => s.id != subject.id));
     }
@@ -159,10 +162,13 @@ const CreateSubject = props => {
                 </div>
             </form>
 
-            {openVideo && <SelectVideo open={open}
-                                       onClose={() => setOpenVideo(false)}
-                                       defaultVideos={formik.values?.videos}
-                                       onSelects={handleSelectVideos}/>}
+            {openVideo && <CreateDialog open={openVideo}
+                                        createVideo={handleCreateVideo}
+                                        onClose={e=>setOpenVideo(false)}/>}
+            {/*{openVideo && <SelectVideo open={open}*/}
+            {/*                           onClose={() => setOpenVideo(false)}*/}
+            {/*                           defaultVideos={formik.values?.videos}*/}
+            {/*                           onSelects={handleSelectVideos}/>}*/}
         </div>
     );
 }
