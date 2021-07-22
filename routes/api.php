@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\OtpController;
@@ -28,6 +29,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('test/{course}', [SubscriptionController::class, 'videos']);
 Route::post('contacts/create}', [ContactController::class, 'create']);
+
+Route::get('dashboard', [DashboardController::class, 'dashboard'])->middleware(['auth:sanctum']);
 
 Route::group(['prefix' => 'auth'], function () {
     Route::get('otp/send', [OtpController::class, 'send']);

@@ -9,7 +9,23 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+@media print {
+    body * {
+        visibility: hidden;
+    }
 
+    #printContent * {
+        visibility: visible;
+    }
+
+    #printContent {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        left: 0;
+        top: 0;
+    }
+}
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

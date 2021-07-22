@@ -185,7 +185,7 @@ class SubscriptionController extends Controller
     {
         try {
             $this->validate($request->only([
-                'courses', 'name', 'phone_no', 'father_name', 'address', 'email', 'dob','expired_date','expired_time'
+                'courses', 'name', 'phone_no', 'father_name', 'address', 'email', 'dob', 'expired_date', 'expired_time'
             ]), [
                 'courses' => 'required',
                 'name' => 'required',
@@ -194,8 +194,8 @@ class SubscriptionController extends Controller
                 'address' => 'required',
                 'dob' => 'required',
                 'email' => 'required|unique:users',
-                'expired_date'=>'required',
-                'expired_time'=>'required'
+                'expired_date' => 'required',
+                'expired_time' => 'required'
             ]);
             $courses = array_values($request->get('courses'));
 
@@ -214,10 +214,26 @@ class SubscriptionController extends Controller
                 $time = $request->get('expired_time');
 
                 $subscriptions = collect($courses)->map(function ($course_id) use ($time, $date, $user, $request) {
+                    $subscription = Subscription::query()
+                        ->where('user_id', $user->id)
+                        ->where('course_id', $request->get('course_id'))
+                        ->latest()
+                        ->first();
+                    if ($subscription) {
+                        return $subscription->update([
+                            'course_id' => $course_id,
+                            'expired_at' => Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . $time),
+                            'user_id' => $user->id,
+                            'order_id' => "MANUALLY ADDED",
+                            'receipt' => "MANUALLY ADDED",
+                            'status' => SubscriptionEnum::SUBSCRIBE,
+                        ]);
+
+                    }
                     return new Subscription([
                         'course_id' => $course_id,
-                        'expired_at' => Carbon::createFromFormat('Y-m-d H:i:s',$date.' '.$time),
-                        'user_id' => $request->user()->id,
+                        'expired_at' => Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . $time),
+                        'user_id' => $user->id,
                         'order_id' => "MANUALLY ADDED",
                         'receipt' => "MANUALLY ADDED",
                         'status' => SubscriptionEnum::SUBSCRIBE,
@@ -237,13 +253,33 @@ class SubscriptionController extends Controller
     public function createOrder(Request $request): JsonResponse
     {
         try {
-            $this->validate($request->all(), [
+            $currentUser = Auth::user();
+            $this->validate($request->only(['full_name', 'father_name', 'address', 'course_id']), [
                 'full_name' => 'required',
                 'father_name' => 'required',
                 'address' => 'required',
                 'course_id' => 'required',
             ]);
 
+            $subscription = Subscription::query()
+                ->where('user_id', $currentUser->id)
+                ->where('course_id', $request->get('course_id'))
+                ->latest()
+            ->first();
+
+            if ($subscription) {
+                switch ($subscription->status) {
+                    case SubscriptionEnum::DRAFT:
+                        return $this->handleResponse($subscription, '');
+                    case SubscriptionEnum::SUBSCRIBE:
+                        throw new \Exception('Course purchased already');
+                    case SubscriptionEnum::CANCELLED:
+                        throw new \Exception('Your subscription is cancelled, You are unable to purchase this course right now.Please contact us');
+                    default:
+                        break;
+                }
+
+            }
             $course = Course::query()->find($request->get('course_id'));
             $username = env('RAZOR_KEY_ID');
             $password = env('RAZOR_SECRET_KEY');
@@ -257,32 +293,29 @@ class SubscriptionController extends Controller
 
                 $result = json_decode($response->body(), true);
 
-                DB::beginTransaction();
+                $sub = DB::transaction(function () use ($result, $subscription, $course, $request, $currentUser) {
+                    $currentUser->name = $request->get('full_name');
+                    $currentUser->father_name = $request->get('father_name');
+                    $currentUser->dob = $request->get('dob');
+                    $currentUser->address = $request->get('address');
+                    $currentUser->save();
 
-                $currentUser = Auth::user();
-                $currentUser->name = $request->get('full_name');
-                $currentUser->father_name = $request->get('father_name');
-                $currentUser->dob = $request->get('dob');
-                $currentUser->address = $request->get('address');
-                $currentUser->save();
-
-                $sub = Subscription::create([
-                    'user_id' => $currentUser->id,
-                    'course_id' => $course->id,
-                    'order_id' => $result['id'],
-                    'receipt' => $result['receipt'],
-                    'status' => 'draft',
-                    'expired_at' => Carbon::now()->addDays(365),
-                ]);
-
-                DB::commit();
+                    return Subscription::create([
+                        'user_id' => $currentUser->id,
+                        'course_id' => $course->id,
+                        'order_id' => $result['id'],
+                        'receipt' => $result['receipt'],
+                        'status' => 'draft',
+                        'expired_at' => Carbon::now()->addDays(365),
+                    ]);
+                });
                 return $this->handleResponse($sub, 'Order created successfully');
             } else {
                 Log::error('error ' . $response->body());
                 throw new \Exception('Opps! Something wrong');
             }
+
         } catch (\Exception $exception) {
-            DB::rollBack();
             return $this->handlingException($exception);
         }
     }
