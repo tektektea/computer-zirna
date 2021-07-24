@@ -14,12 +14,11 @@ import {AppContext} from "../context/AppContextProvider";
 import {useHistory, useParams} from "react-router-dom";
 import * as Yup from "yup";
 import {useFormik} from "formik";
-import SelectVideo from "../videos/SelectVideo";
 import Typography from "@material-ui/core/Typography";
 import ReactPlayer from "react-player";
 import {MESSAGE} from "../utils/Action";
 import {CREATE_SUBJECTS_API, SHOW_SUBJECTS_API, UPDATE_SUBJECTS_API} from "../utils/ApiRoutes";
-import CreateDialog from "../videos/CreateDialog";
+import EditDialog from "../videos/EditDialog";
 
 
 const validationSchema = Yup.object().shape({
@@ -32,6 +31,8 @@ const validationSchema = Yup.object().shape({
 const EditSubject = ({defaultValue}) => {
     const history = useHistory();
     const params = useParams();
+    const [selected, setSelected] = React.useState();
+    const [index, setIndex] = React.useState(0);
     const [state, dispatch] = React.useContext(AppContext);
     const formik = useFormik({
         initialValues: {
@@ -47,7 +48,7 @@ const EditSubject = ({defaultValue}) => {
                     dispatch({
                         type: MESSAGE,
                         payload: {
-                            message: res?.data.message,
+                            message: res?.data?.message,
                             message_type: 'success'
                         }
                     })
@@ -56,7 +57,7 @@ const EditSubject = ({defaultValue}) => {
                    },2000)
                 })
                 .catch(err => {
-                    const errMsg = !!err.response ? err.response.data.error : err.toString();
+                    const errMsg = !!err.response ? err.response?.data.error : err.toString();
                     dispatch({
                         type: MESSAGE,
                         payload: {
@@ -91,9 +92,9 @@ const EditSubject = ({defaultValue}) => {
             })
     }
 
-    const handleCreateVideo=video=>{
-        const videos = formik.values?.videos;
-        videos.push(video);
+    const handleUpdateVideo=video=>{
+        let videos = formik.values?.videos;
+        videos[index]=video
         formik.setFieldValue('videos',videos);
     }
 
@@ -163,6 +164,11 @@ const EditSubject = ({defaultValue}) => {
                                 </ListItemAvatar>
                                 <ListItemText primary={video?.title} secondary={video?.description}/>
                                 <ListItemSecondaryAction>
+                                    <Button onClick={event => {
+                                        setSelected(video);
+                                        setIndex(i)
+                                        setOpenVideo(true)
+                                    }} color={"primary"}>Edit</Button>
                                     <Button onClick={event => handleDelete(video)} color={"secondary"}>Remove</Button>
                                 </ListItemSecondaryAction>
                             </ListItem>
@@ -177,9 +183,11 @@ const EditSubject = ({defaultValue}) => {
                     </DialogActions>
                 </div>
             </form>
-            {openVideo && <CreateDialog open={openVideo}
-                                        createVideo={handleCreateVideo}
+            {openVideo && <EditDialog open={openVideo}
+                                      video={selected}
+                                        updateVideo={handleUpdateVideo}
                                         onClose={e=>setOpenVideo(false)}/>}
+
         </div>
     );
 }

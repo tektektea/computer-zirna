@@ -6,13 +6,11 @@ import CardHeader from '@material-ui/core/CardHeader'
 import Icon from '@material-ui/core/Icon'
 import IconButton from '@material-ui/core/IconButton'
 import Button from '@material-ui/core/Button'
-import {DialogActions, FormControl, InputLabel, MenuItem, Select, TextField} from "@material-ui/core";
+import {DialogActions, TextField} from "@material-ui/core";
 import * as Yup from 'yup';
 import {useFormik} from "formik";
-import {CREATE_VIDEO_API} from "../utils/ApiRoutes";
 import {AppContext} from "../context/AppContextProvider";
 import {Alert} from "@material-ui/lab";
-import {MESSAGE} from "../utils/Action";
 
 const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -20,11 +18,11 @@ const validationSchema = Yup.object().shape({
     video_url: Yup.string()
         .required('Video url is required'),
 });
-const EditDialog = ({video,updateVideo, open, onClose, ...rest}) => {
+const EditDialog = ({video, updateVideo, open, onClose, ...rest}) => {
     const [state, dispatch] = React.useContext(AppContext);
-    const {handleChange,setValues, errors, values, touched, handleSubmit} = useFormik({
+    const {handleChange, setValues, errors, values, touched, handleSubmit} = useFormik({
         initialValues: {
-            id:video?.id,
+            id: video?.id,
             title: video?.title,
             description: video?.description,
             video_url: video?.video_url
@@ -37,17 +35,17 @@ const EditDialog = ({video,updateVideo, open, onClose, ...rest}) => {
     });
 
     React.useEffect(() => {
-         setValues({
-             id:video?.id,
-             title: video?.title,
-             description: video?.description,
-             video_url: video?.video_url
-         })
+        setValues({
+            id: video?.id,
+            title: video?.title,
+            description: video?.description,
+            video_url: video?.video_url
+        })
     }, [video])
     return (
         <Dialog {...rest} fullWidth={true} maxWidth={"sm"} open={open} onClose={onClose}>
             <form onSubmit={handleSubmit}>
-            <DialogContent>
+                <DialogContent>
                     <Grid container={true} spacing={1}>
                         <Grid item={true} xs={12}>
                             <CardHeader style={{padding: 0}} title={'Edit video'}
@@ -104,14 +102,14 @@ const EditDialog = ({video,updateVideo, open, onClose, ...rest}) => {
 
 
                     </Grid>
-            </DialogContent>
+                </DialogContent>
 
-            <DialogActions>
-                <Button onClick={handleSubmit} variant={"contained"} color={"primary"}>Update</Button>
-                <Button onClick={onClose} variant={"outlined"} color={"secondary"}>Cancel</Button>
-            </DialogActions>
-        </form>
-</Dialog>
+                <DialogActions>
+                    <Button onClick={handleSubmit} variant={"contained"} color={"primary"}>Update</Button>
+                    <Button onClick={onClose} variant={"outlined"} color={"secondary"}>Cancel</Button>
+                </DialogActions>
+            </form>
+        </Dialog>
     )
 }
 

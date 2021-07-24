@@ -155,9 +155,9 @@ const Toc=props=>{
                                 consumption as a pay-per-view model. Contents are priced by individual course as follow:
                             </div>
                             <div><br/></div>
-                                <div>1. BCA ₹ 3500.00</div>
-                                <div>2. DCA ₹ 4400.00</div>
-                                <div>3. CCC ₹&nbsp; 3500.00</div>
+                                <div>1. DCA 1/CCA ₹ 4900.00</div>
+                                <div>2. Office Automation software ₹ 2999.00</div>
+                                <div>3. CCC ₹&nbsp; 2999.00</div>
                             </div>
                             <div>User can choose based on their convenience.</div>
                             <div><br/></div>

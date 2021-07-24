@@ -15941,11 +15941,11 @@ var Toc = function Toc(props) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              children: "1. BCA \u20B9 3500.00"
+              children: "1. DCA 1/CCA \u20B9 4900.00"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              children: "2. DCA \u20B9 4400.00"
+              children: "2. Office Automation software \u20B9 2999.00"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              children: "3. CCC \u20B9\xA0 3500.00"
+              children: "3. CCC \u20B9\xA0 2999.00"
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             children: "User can choose based on their convenience."

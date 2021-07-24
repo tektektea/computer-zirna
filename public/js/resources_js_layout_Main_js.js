@@ -31924,26 +31924,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/Grid.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TextField/TextField.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/List/List.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItem/ListItem.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemAvatar/ListItemAvatar.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemText/ListItemText.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemSecondaryAction/ListItemSecondaryAction.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/DialogActions/DialogActions.js");
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/Button.js");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/Grid.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TextField/TextField.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/List/List.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItem/ListItem.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemAvatar/ListItemAvatar.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemText/ListItemText.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemSecondaryAction/ListItemSecondaryAction.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/DialogActions/DialogActions.js");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/Button.js");
 /* harmony import */ var _context_AppContextProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContextProvider */ "./resources/js/context/AppContextProvider.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var _videos_SelectVideo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../videos/SelectVideo */ "./resources/js/videos/SelectVideo.js");
-/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/Typography.js");
-/* harmony import */ var react_player__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-player */ "./node_modules/react-player/lib/index.js");
-/* harmony import */ var _utils_Action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/Action */ "./resources/js/utils/Action.js");
-/* harmony import */ var _utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/ApiRoutes */ "./resources/js/utils/ApiRoutes.js");
-/* harmony import */ var _videos_CreateDialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../videos/CreateDialog */ "./resources/js/videos/CreateDialog.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/Typography.js");
+/* harmony import */ var react_player__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-player */ "./node_modules/react-player/lib/index.js");
+/* harmony import */ var _utils_Action__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/Action */ "./resources/js/utils/Action.js");
+/* harmony import */ var _utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/ApiRoutes */ "./resources/js/utils/ApiRoutes.js");
+/* harmony import */ var _videos_EditDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../videos/EditDialog */ "./resources/js/videos/EditDialog.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -31971,7 +31970,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
   title: yup__WEBPACK_IMPORTED_MODULE_2__.string().required('Title is required'),
   videos: yup__WEBPACK_IMPORTED_MODULE_2__.array().required('Videos is required')
@@ -31981,8 +31979,18 @@ var EditSubject = function EditSubject(_ref) {
   var _formik$values3, _formik$touched, _formik$errors, _formik$touched2, _formik$errors2, _formik$values4, _formik$touched3, _formik$errors3, _formik$touched4, _formik$errors4, _formik$values5, _formik$values5$video;
 
   var defaultValue = _ref.defaultValue;
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useHistory)();
-  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useParams)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useParams)();
+
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      selected = _React$useState2[0],
+      setSelected = _React$useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0__.useState(0),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      index = _React$useState4[0],
+      setIndex = _React$useState4[1];
 
   var _React$useContext = react__WEBPACK_IMPORTED_MODULE_0__.useContext(_context_AppContextProvider__WEBPACK_IMPORTED_MODULE_1__.AppContext),
       _React$useContext2 = _slicedToArray(_React$useContext, 2),
@@ -31998,11 +32006,13 @@ var EditSubject = function EditSubject(_ref) {
     },
     validationSchema: validationSchema,
     onSubmit: function onSubmit(values) {
-      axios.put((0,_utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_7__.UPDATE_SUBJECTS_API)(values === null || values === void 0 ? void 0 : values.id), values).then(function (res) {
+      axios.put((0,_utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_6__.UPDATE_SUBJECTS_API)(values === null || values === void 0 ? void 0 : values.id), values).then(function (res) {
+        var _res$data;
+
         dispatch({
-          type: _utils_Action__WEBPACK_IMPORTED_MODULE_6__.MESSAGE,
+          type: _utils_Action__WEBPACK_IMPORTED_MODULE_5__.MESSAGE,
           payload: {
-            message: res === null || res === void 0 ? void 0 : res.data.message,
+            message: res === null || res === void 0 ? void 0 : (_res$data = res.data) === null || _res$data === void 0 ? void 0 : _res$data.message,
             message_type: 'success'
           }
         });
@@ -32010,9 +32020,11 @@ var EditSubject = function EditSubject(_ref) {
           history.goBack();
         }, 2000);
       })["catch"](function (err) {
-        var errMsg = !!err.response ? err.response.data.error : err.toString();
+        var _err$response;
+
+        var errMsg = !!err.response ? (_err$response = err.response) === null || _err$response === void 0 ? void 0 : _err$response.data.error : err.toString();
         dispatch({
-          type: _utils_Action__WEBPACK_IMPORTED_MODULE_6__.MESSAGE,
+          type: _utils_Action__WEBPACK_IMPORTED_MODULE_5__.MESSAGE,
           payload: {
             message: errMsg,
             message_type: 'error'
@@ -32022,15 +32034,15 @@ var EditSubject = function EditSubject(_ref) {
     }
   });
 
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      openVideo = _React$useState2[0],
-      setOpenVideo = _React$useState2[1];
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      openVideo = _React$useState6[0],
+      setOpenVideo = _React$useState6[1];
 
   var fetchData = function fetchData() {
     var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
     var filter = arguments.length > 1 ? arguments[1] : undefined;
-    axios.get((0,_utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_7__.SHOW_SUBJECTS_API)(params.id)).then(function (res) {
+    axios.get((0,_utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_6__.SHOW_SUBJECTS_API)(params.id)).then(function (res) {
       var data = res.data.data;
       formik.setValues({
         id: data === null || data === void 0 ? void 0 : data.id,
@@ -32041,7 +32053,7 @@ var EditSubject = function EditSubject(_ref) {
     })["catch"](function (err) {
       var errMsg = !!err.response ? err.response.data.error : err.toString();
       dispatch({
-        type: _utils_Action__WEBPACK_IMPORTED_MODULE_6__.MESSAGE,
+        type: _utils_Action__WEBPACK_IMPORTED_MODULE_5__.MESSAGE,
         payload: {
           message_type: 'error',
           message: errMsg
@@ -32050,11 +32062,11 @@ var EditSubject = function EditSubject(_ref) {
     });
   };
 
-  var handleCreateVideo = function handleCreateVideo(video) {
+  var handleUpdateVideo = function handleUpdateVideo(video) {
     var _formik$values;
 
     var videos = (_formik$values = formik.values) === null || _formik$values === void 0 ? void 0 : _formik$values.videos;
-    videos.push(video);
+    videos[index] = video;
     formik.setFieldValue('videos', videos);
   };
 
@@ -32069,24 +32081,24 @@ var EditSubject = function EditSubject(_ref) {
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     fetchData();
   }, [params.id]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
     className: 'maincontent',
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h1", {
       className: 'title',
       children: "Edit subject"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("form", {
       onSubmit: formik.handleSubmit,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: 'my-card',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_11__.default, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_10__.default, {
           container: true,
           spacing: 2,
           alignItems: "center",
           justify: "space-between",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_11__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_10__.default, {
             item: true,
             xs: 12,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
               fullWidth: true,
               required: true,
               variant: "outlined",
@@ -32098,10 +32110,10 @@ var EditSubject = function EditSubject(_ref) {
               error: ((_formik$touched = formik.touched) === null || _formik$touched === void 0 ? void 0 : _formik$touched.title) && ((_formik$errors = formik.errors) === null || _formik$errors === void 0 ? void 0 : _formik$errors.title),
               helperText: ((_formik$touched2 = formik.touched) === null || _formik$touched2 === void 0 ? void 0 : _formik$touched2.title) && ((_formik$errors2 = formik.errors) === null || _formik$errors2 === void 0 ? void 0 : _formik$errors2.title)
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_11__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_10__.default, {
             item: true,
             xs: 12,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
               fullWidth: true,
               variant: "outlined",
               margin: "dense",
@@ -32116,56 +32128,64 @@ var EditSubject = function EditSubject(_ref) {
             })
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: 'my-card',
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__.default, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_12__.default, {
           onClick: function onClick(event) {
             return setOpenVideo(true);
           },
           variant: "outlined",
           color: 'primary',
           children: "Add video"
-        }), "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_14__.default, {
+        }), "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_13__.default, {
           variant: "caption",
           children: "Click here to add videos"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: 'my-card',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__.default, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__.default, {
           children: (_formik$values5 = formik.values) === null || _formik$values5 === void 0 ? void 0 : (_formik$values5$video = _formik$values5.videos) === null || _formik$values5$video === void 0 ? void 0 : _formik$values5$video.map(function (video, i) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__.default, {
               divider: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__.default, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_player__WEBPACK_IMPORTED_MODULE_5__.default, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_player__WEBPACK_IMPORTED_MODULE_4__.default, {
                   className: "react-player",
                   url: video === null || video === void 0 ? void 0 : video.video_url,
                   width: "80",
                   height: "60"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_18__.default, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__.default, {
                 primary: video === null || video === void 0 ? void 0 : video.title,
                 secondary: video === null || video === void 0 ? void 0 : video.description
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__.default, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__.default, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_18__.default, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_12__.default, {
+                  onClick: function onClick(event) {
+                    setSelected(video);
+                    setIndex(i);
+                    setOpenVideo(true);
+                  },
+                  color: "primary",
+                  children: "Edit"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_12__.default, {
                   onClick: function onClick(event) {
                     return handleDelete(video);
                   },
                   color: "secondary",
                   children: "Remove"
-                })
+                })]
               })]
             }, i);
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: 'my-card',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_20__.default, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__.default, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_12__.default, {
             onClick: formik.handleSubmit,
             variant: "contained",
             color: "primary",
             children: "Update"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_12__.default, {
             onClick: formik.handleReset,
             variant: "outlined",
             color: "secondary",
@@ -32173,9 +32193,10 @@ var EditSubject = function EditSubject(_ref) {
           })]
         })
       })]
-    }), openVideo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_videos_CreateDialog__WEBPACK_IMPORTED_MODULE_8__.default, {
+    }), openVideo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_videos_EditDialog__WEBPACK_IMPORTED_MODULE_7__.default, {
       open: openVideo,
-      createVideo: handleCreateVideo,
+      video: selected,
+      updateVideo: handleUpdateVideo,
       onClose: function onClose(e) {
         return setOpenVideo(false);
       }
@@ -34831,22 +34852,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/Grid.js");
-/* harmony import */ var _material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Dialog */ "./node_modules/@material-ui/core/esm/Dialog/Dialog.js");
-/* harmony import */ var _material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/DialogContent */ "./node_modules/@material-ui/core/esm/DialogContent/DialogContent.js");
-/* harmony import */ var _material_ui_core_CardHeader__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/CardHeader */ "./node_modules/@material-ui/core/esm/CardHeader/CardHeader.js");
-/* harmony import */ var _material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/Icon */ "./node_modules/@material-ui/core/esm/Icon/Icon.js");
-/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/IconButton */ "./node_modules/@material-ui/core/esm/IconButton/IconButton.js");
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/Button.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TextField/TextField.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/DialogActions/DialogActions.js");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/Grid.js");
+/* harmony import */ var _material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/Dialog */ "./node_modules/@material-ui/core/esm/Dialog/Dialog.js");
+/* harmony import */ var _material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/DialogContent */ "./node_modules/@material-ui/core/esm/DialogContent/DialogContent.js");
+/* harmony import */ var _material_ui_core_CardHeader__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/CardHeader */ "./node_modules/@material-ui/core/esm/CardHeader/CardHeader.js");
+/* harmony import */ var _material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Icon */ "./node_modules/@material-ui/core/esm/Icon/Icon.js");
+/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @material-ui/core/IconButton */ "./node_modules/@material-ui/core/esm/IconButton/IconButton.js");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/Button.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TextField/TextField.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/DialogActions/DialogActions.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var _utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/ApiRoutes */ "./resources/js/utils/ApiRoutes.js");
-/* harmony import */ var _context_AppContextProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../context/AppContextProvider */ "./resources/js/context/AppContextProvider.js");
-/* harmony import */ var _material_ui_lab__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/lab */ "./node_modules/@material-ui/lab/esm/Alert/Alert.js");
-/* harmony import */ var _utils_Action__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/Action */ "./resources/js/utils/Action.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _context_AppContextProvider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/AppContextProvider */ "./resources/js/context/AppContextProvider.js");
+/* harmony import */ var _material_ui_lab__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/lab */ "./node_modules/@material-ui/lab/esm/Alert/Alert.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 var _excluded = ["video", "updateVideo", "open", "onClose"];
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -34886,8 +34905,6 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
-
-
 var validationSchema = yup__WEBPACK_IMPORTED_MODULE_1__.object().shape({
   title: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Title is required'),
   video_url: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Video url is required')
@@ -34900,7 +34917,7 @@ var EditDialog = function EditDialog(_ref) {
       onClose = _ref.onClose,
       rest = _objectWithoutProperties(_ref, _excluded);
 
-  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_0__.useContext(_context_AppContextProvider__WEBPACK_IMPORTED_MODULE_4__.AppContext),
+  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_0__.useContext(_context_AppContextProvider__WEBPACK_IMPORTED_MODULE_3__.AppContext),
       _React$useContext2 = _slicedToArray(_React$useContext, 2),
       state = _React$useContext2[0],
       dispatch = _React$useContext2[1];
@@ -34933,44 +34950,44 @@ var EditDialog = function EditDialog(_ref) {
       video_url: video === null || video === void 0 ? void 0 : video.video_url
     });
   }, [video]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_7__.default, _objectSpread(_objectSpread({}, rest), {}, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_5__.default, _objectSpread(_objectSpread({}, rest), {}, {
     fullWidth: true,
     maxWidth: "sm",
     open: open,
     onClose: onClose,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("form", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
       onSubmit: handleSubmit,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_8__.default, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9__.default, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_6__.default, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__.default, {
           container: true,
           spacing: 1,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__.default, {
             item: true,
             xs: 12,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core_CardHeader__WEBPACK_IMPORTED_MODULE_10__.default, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_CardHeader__WEBPACK_IMPORTED_MODULE_8__.default, {
               style: {
                 padding: 0
               },
               title: 'Edit video',
-              action: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_11__.default, {
+              action: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_9__.default, {
                 onClick: function onClick(event) {
                   return onClose();
                 },
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_12__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_Icon__WEBPACK_IMPORTED_MODULE_10__.default, {
                   children: "close"
                 })
               })
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__.default, {
             item: true,
-            children: Boolean(state === null || state === void 0 ? void 0 : state.message) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_lab__WEBPACK_IMPORTED_MODULE_13__.default, {
+            children: Boolean(state === null || state === void 0 ? void 0 : state.message) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_lab__WEBPACK_IMPORTED_MODULE_11__.default, {
               severity: state === null || state === void 0 ? void 0 : state.message_type,
               children: state === null || state === void 0 ? void 0 : state.message
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__.default, {
             item: true,
             xs: 12,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__.default, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
               fullWidth: true,
               variant: "outlined",
               margin: "dense",
@@ -34983,10 +35000,10 @@ var EditDialog = function EditDialog(_ref) {
               error: (touched === null || touched === void 0 ? void 0 : touched.title) && (errors === null || errors === void 0 ? void 0 : errors.title),
               helperText: (touched === null || touched === void 0 ? void 0 : touched.title) && (errors === null || errors === void 0 ? void 0 : errors.title)
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__.default, {
             item: true,
             xs: 12,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__.default, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
               fullWidth: true,
               variant: "outlined",
               margin: "dense",
@@ -34998,10 +35015,10 @@ var EditDialog = function EditDialog(_ref) {
               value: values === null || values === void 0 ? void 0 : values.description,
               onChange: handleChange
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_9__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_7__.default, {
             item: true,
             xs: 12,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__.default, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
               fullWidth: true,
               variant: "outlined",
               margin: "dense",
@@ -35016,13 +35033,13 @@ var EditDialog = function EditDialog(_ref) {
             })
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__.default, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_16__.default, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_13__.default, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_14__.default, {
           onClick: handleSubmit,
           variant: "contained",
           color: "primary",
           children: "Update"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_16__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_14__.default, {
           onClick: onClose,
           variant: "outlined",
           color: "secondary",
@@ -35341,12 +35358,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ConfirmDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/ConfirmDialog */ "./resources/js/components/ConfirmDialog.js");
 /* harmony import */ var _EditDialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./EditDialog */ "./resources/js/videos/EditDialog.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -35406,7 +35417,7 @@ var Videos = function Videos(props) {
       setConfirm = _React$useState10[1];
 
   var handleDelete = function handleDelete(id) {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().delete((0,_utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_3__.DELETE_VIDEO_API)(id)).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().delete((0,_utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_3__.DELETE_VIDEO_API)(selected)).then(function (res) {
       setVideos(res.data.data);
       dispatch({
         type: _utils_Action__WEBPACK_IMPORTED_MODULE_4__.MESSAGE,
@@ -35508,11 +35519,7 @@ var Videos = function Videos(props) {
   };
 
   var handlePagination = function handlePagination(event, page) {
-    setVideos(function (prevState) {
-      return _objectSpread(_objectSpread({}, prevState), {}, {
-        page: page
-      });
-    });
+    fetchVideos(page);
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {

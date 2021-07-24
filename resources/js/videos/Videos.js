@@ -20,7 +20,7 @@ const Videos = props => {
     const [confirm, setConfirm] = React.useState(false);
 
     const handleDelete = (id) => {
-        axios.delete(DELETE_VIDEO_API(id))
+        axios.delete(DELETE_VIDEO_API(selected))
             .then(res => {
                 setVideos(res.data.data);
                 dispatch({
@@ -121,7 +121,7 @@ const Videos = props => {
             })
     }
     const handlePagination = (event, page) => {
-        setVideos(prevState => ({...prevState, page}))
+        fetchVideos(page)
     };
     return (
         <div className={'maincontent'}>
