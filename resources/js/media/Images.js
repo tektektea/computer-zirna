@@ -123,7 +123,7 @@ const Images = props => {
                     <p>Not found application</p>
                 }
                 <Grid xs={12} item={true}>
-                    <Pagination count={Math.floor(images?.total / images?.per_page)} onChange={handlePagination}/>
+                    <Pagination count={Math.ceil(images?.total / images?.per_page)} onChange={handlePagination}/>
                 </Grid>
             </Grid>
 

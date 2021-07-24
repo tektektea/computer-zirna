@@ -95,7 +95,7 @@ const Users=props=>{
                     </Table>
                 </Grid>
                 <Grid xs={12} item={true}>
-                    <Pagination count={Math.floor(users?.total / users?.per_page)} onChange={(handlePagination)}/>
+                    <Pagination count={Math.ceil(users?.total / users?.per_page)} onChange={(handlePagination)}/>
                 </Grid>
             </Grid>
             {openCreate && <CreateUser open={openCreate}

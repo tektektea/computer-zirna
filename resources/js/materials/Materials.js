@@ -194,7 +194,7 @@ const Materials = props => {
 
 
                 <Grid xs={12} item={true}>
-                    <Pagination count={Math.floor(materials?.total / materials?.per_page)} onChange={handlePagination}/>
+                    <Pagination count={Math.ceil(materials?.total / materials?.per_page)} onChange={handlePagination}/>
                 </Grid>
 
                 {open && <CreateMaterial open={open}
