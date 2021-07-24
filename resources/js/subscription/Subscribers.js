@@ -34,7 +34,7 @@ const Subscribers=({fetchData,data,onItemClick})=>{
                                   </Icon>
                               </ListItemSecondaryAction>
             </ListItem>)}
-            <Pagination count={Math.floor(data?.total / data?.per_page)} onChange={(handlePagination)}/>
+            <Pagination count={Math.ceil(data?.total / data?.per_page)} onChange={(handlePagination)}/>
         </List>
     )
 }
