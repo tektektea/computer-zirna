@@ -32609,7 +32609,7 @@ var SubjectList = function SubjectList(props) {
         }))
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_material_ui_lab__WEBPACK_IMPORTED_MODULE_17__.default, {
-          count: Math.floor((subjects === null || subjects === void 0 ? void 0 : subjects.total) / (subjects === null || subjects === void 0 ? void 0 : subjects.per_page)),
+          count: Math.ceil((subjects === null || subjects === void 0 ? void 0 : subjects.total) / (subjects === null || subjects === void 0 ? void 0 : subjects.per_page)),
           onChange: handlePagination
         })
       })]
@@ -35256,10 +35256,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
 var styles = function styles(theme) {
   return {
     root: {
@@ -35291,9 +35287,16 @@ var VideoCard = function VideoCard(_ref) {
     className: classes.root,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_player__WEBPACK_IMPORTED_MODULE_1__.default, {
       className: "react-player",
-      url: video === null || video === void 0 ? void 0 : video.video_url,
+      url: "https://www.youtube.com/watch?v=".concat(video === null || video === void 0 ? void 0 : video.video_url),
       width: "120",
-      height: "120"
+      height: "120",
+      config: {
+        youtube: {
+          playerVars: {
+            showinfo: 1
+          }
+        }
+      }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_4__.default, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_5__.default, {
         style: {
@@ -35578,7 +35581,7 @@ var Videos = function Videos(props) {
         xs: 12,
         item: true,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_lab__WEBPACK_IMPORTED_MODULE_13__.default, {
-          count: Math.floor((videos === null || videos === void 0 ? void 0 : videos.total) / (videos === null || videos === void 0 ? void 0 : videos.per_page)),
+          count: Math.ceil((videos === null || videos === void 0 ? void 0 : videos.total) / (videos === null || videos === void 0 ? void 0 : videos.per_page)),
           onChange: handlePagination
         })
       }), edit && selected && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_EditDialog__WEBPACK_IMPORTED_MODULE_8__.default, {

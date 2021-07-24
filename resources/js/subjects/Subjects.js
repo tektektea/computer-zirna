@@ -111,7 +111,7 @@ const SubjectList=props=>{
                     )}
                 </List>
                 <div>
-                    <Pagination count={Math.floor(subjects?.total / subjects?.per_page)} onChange={handlePagination}/>
+                    <Pagination count={Math.ceil(subjects?.total / subjects?.per_page)} onChange={handlePagination}/>
                 </div>
             </div>
             {confirm && <ConfirmDialog open={confirm}

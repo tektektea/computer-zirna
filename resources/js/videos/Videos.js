@@ -159,7 +159,7 @@ const Videos = props => {
                     <p>Not found application</p>
                 }
                 <Grid xs={12} item={true}>
-                    <Pagination count={Math.floor(videos?.total / videos?.per_page)} onChange={handlePagination}/>
+                    <Pagination count={Math.ceil(videos?.total / videos?.per_page)} onChange={handlePagination}/>
                 </Grid>
 
                 {edit && selected && <EditDialog updateVideo={handleUpdate}
