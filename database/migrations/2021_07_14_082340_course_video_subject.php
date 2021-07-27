@@ -31,7 +31,6 @@ class CourseVideoSubject extends Migration
         Schema::create('subject_video', function (Blueprint $table) {
             $table->unsignedBigInteger('subject_id');
             $table->unsignedBigInteger('video_id');
-            $table->softDeletes();
 //
         });
     }

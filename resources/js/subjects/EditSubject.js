@@ -166,7 +166,7 @@ const EditSubject = ({defaultValue}) => {
                                 <ListItemAvatar>
                                     <ReactPlayer
                                         className='react-player'
-                                        url={video?.video_url}
+                                        url={`https://www.youtube.com/watch?v=${video?.video_url}`}
                                         width='80'
                                         height='60'
                                     />
