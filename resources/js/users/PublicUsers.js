@@ -98,7 +98,7 @@ const PublicUsers = props => {
         fetchUser(page);
     };
     const fetchUser = (page = 1) => {
-        axios.get(FETCH_APP_USER_API)
+        axios.get(FETCH_APP_USER_API, {params:{page}})
             .then(res => setUsers(res.data.data))
             .catch(err => {
                 const errMsg = !!err.response ? err.response.data.error : err.toString();
