@@ -61,6 +61,9 @@ class AuthController extends Controller
 
             $user = Auth::user();
 
+            if ($user->type === 'appuser') {
+                throw new Exception("Permission denied: User portal is coming soon!");
+            }
             $perms = $user->type === 'admin' ? PermissionUtil::adminPerms() : PermissionUtil::userPerms();
 
             $token = $user->createToken('access-token', $perms)->plainTextToken;

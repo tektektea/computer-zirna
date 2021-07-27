@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="description" content="Mizotawng a computer zirna, provided with care by City Computer center, Aizawl, Mizoram">
-    <meta name="keywords" content="Computerzirna,computerzirna.in, Mizo, city computer center, ">
+    <meta name="keywords" content="Computerzirna, computerzirna.in, Mizo, city computer center, ">
     <meta name="author" content="Thangtea">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mizoram computer</title>

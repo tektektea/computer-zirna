@@ -40,6 +40,13 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('admin/login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 });
+Route::group(['prefix' => 'user','middleware' => 'auth:sanctum'], function () {
+    Route::get('index', [UserController::class, 'appUser']);
+    Route::post('create', [UserController::class, 'createUser']);
+    Route::delete('{user}', [UserController::class, 'deleteUser']);
+    Route::put('{user}', [UserController::class, 'updateUser']);
+});
+
 Route::group(['prefix' => 'admin','middleware' => 'auth:sanctum'], function () {
     Route::get('index', [UserController::class, 'all']);
     Route::post('create', [UserController::class, 'create']);
@@ -104,6 +111,7 @@ Route::group(['prefix' => 'subscription', 'middleware' => 'auth:sanctum'], funct
     Route::post('{subscription}/block', [SubscriptionController::class, 'block']);
     Route::post('{subscription}/unblock', [SubscriptionController::class, 'unblock']);
     Route::get('subscribers', [SubscriptionController::class, 'subscribers']);
+    Route::get('{user}/detail', [SubscriptionController::class, 'getSubscriptions']);
     Route::delete('{subscription}', [SubscriptionController::class, 'deleteSubscription']);
     Route::post('subscriber/create', [SubscriptionController::class, 'createSubscriber']);
 });

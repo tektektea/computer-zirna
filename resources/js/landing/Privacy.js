@@ -68,9 +68,9 @@ const Privacy=props=>{
                             <div>Otherwise operate our business.</div>
                             <div>&nbsp;</div>
                             <div><b>5. DISCLOSURES TO THIRD PARTIES</b></div>
-                            <div>Lersia may disclose information about you as follows:</div>
+                            <div>Computerzirna may disclose information about you as follows:</div>
                             <div>Authorized Service Providers: We may disclose your information to service providers
-                                involved in operating the Lersia Play Service. This includes payment providers, email
+                                involved in operating the Computerzirna Service. This includes payment providers, email
                                 service providers, content delivery networks, cloud storage providers, analytics
                                 companies, and professionals such as accountants and lawyers.
                             </div>
@@ -87,7 +87,7 @@ const Privacy=props=>{
                             <div>Affiliates and Corporate Transactions: We may disclose your information to our parent
                                 companies in connection with operating our business. In the event Vimeo or its parent
                                 companies are involved in a business transition that involves the sale, merger, or
-                                divestment of Lersia or its parent companies, we may disclose any information about you
+                                divestment of Computerzirna or its parent companies, we may disclose any information about you
                                 to the acquiring entities. The transferred information will remain subject to the
                                 provisions of this Privacy Policy, as updated.
                             </div>

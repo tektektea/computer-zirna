@@ -15552,13 +15552,13 @@ var Privacy = function Privacy(props) {
                 children: "5. DISCLOSURES TO THIRD PARTIES"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              children: "Lersia may disclose information about you as follows:"
+              children: "Computerzirna may disclose information about you as follows:"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              children: "Authorized Service Providers: We may disclose your information to service providers involved in operating the Lersia Play Service. This includes payment providers, email service providers, content delivery networks, cloud storage providers, analytics companies, and professionals such as accountants and lawyers."
+              children: "Authorized Service Providers: We may disclose your information to service providers involved in operating the Computerzirna Service. This includes payment providers, email service providers, content delivery networks, cloud storage providers, analytics companies, and professionals such as accountants and lawyers."
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
               children: "Legal Situations: We may disclose your information when we believe in good faith that (i) disclosure is required by a search warrant, subpoena (whether criminal or civil), civil investigative demand, court order, or a request for cooperation from a law enforcement or other government agency; (ii) disclosure is appropriate and necessary to report a suspected crime (including any case of suspected child exploitation) or prevent physical harm to an individual or property; (iii) disclosure is appropriate and necessary to enforce our rights; and (iv) disclosure is required by law. Nothing in this Privacy Policy shall be deemed to create any third-party right, and we reserve the right to object to any third-party requests for information in appropriate circumstances."
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              children: "Affiliates and Corporate Transactions: We may disclose your information to our parent companies in connection with operating our business. In the event Vimeo or its parent companies are involved in a business transition that involves the sale, merger, or divestment of Lersia or its parent companies, we may disclose any information about you to the acquiring entities. The transferred information will remain subject to the provisions of this Privacy Policy, as updated."
+              children: "Affiliates and Corporate Transactions: We may disclose your information to our parent companies in connection with operating our business. In the event Vimeo or its parent companies are involved in a business transition that involves the sale, merger, or divestment of Computerzirna or its parent companies, we may disclose any information about you to the acquiring entities. The transferred information will remain subject to the provisions of this Privacy Policy, as updated."
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
               children: "To the Public: We may publicly disclose aggregated user statistics and other information, which is not considered personal information."
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -15956,7 +15956,7 @@ var Toc = function Toc(props) {
               children: "PAYMENT OPTIONS"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            children: "There are several options to pay for contents in Lersia Play"
+            children: "There are several options to pay for contents in Computerzirna apps"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {

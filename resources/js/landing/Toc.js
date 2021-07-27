@@ -162,7 +162,7 @@ const Toc=props=>{
                             <div>User can choose based on their convenience.</div>
                             <div><br/></div>
                             <div><b>PAYMENT OPTIONS</b></div>
-                            <div>There are several options to pay for contents in Lersia Play</div>
+                            <div>There are several options to pay for contents in Computerzirna apps</div>
                             <div><br/></div>
                             <div>We accept the locally issued credit, debit and ATM cards from major banks national and
                                 international.<br/></div>

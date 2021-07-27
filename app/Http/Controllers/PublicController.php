@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class PublicController extends Controller
 {
     const testimony = [
-        ['qoute' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        ['qoute' => 'Computerzirna ipsum dolor sit amet, Computer zirna adipiscing elit, sed do eiusmod tempor incididunt ut
         labore et dolore magna aliqua. Egestas diam in arcu cursus euismod quis viverra nibh. Luctus accumsan tortor posuere',
             'avatar' => 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg'
         ],
@@ -21,11 +21,11 @@ class PublicController extends Controller
         labore et dolore magna aliqua. Egestas diam in arcu cursus euismod quis viverra nibh. Luctus accumsan tortor posuere',
             'avatar' => 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg'
         ],
-        ['qoute' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        ['qoute' => 'Computerzirna ipsum dolor sit amet, consectetur computer zirna elit, sed do eiusmod tempor incididunt ut
         ac ut consequat semper viverra. Ac turpis egestas maecenas pharetra convallis.',
             'avatar' => 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg'
         ],
-        ['qoute' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        ['qoute' => 'Computer zirna ipsum dolor sit amet, Computer zirna adipiscing elit, sed do eiusmod tempor incididunt ut
         ac ut consequat semper viverra. Ac turpis egestas maecenas pharetra convallis.',
             'avatar' => 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg'
         ],

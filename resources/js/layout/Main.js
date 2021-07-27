@@ -23,6 +23,7 @@ import SubjectList from "../subjects/Subjects";
 import CreateSubject from "../subjects/CreateSubject";
 import EditSubject from "../subjects/EditSubject";
 import Contacts from "../contact/Contacts";
+import PublicUsers from "../users/PublicUsers";
 
 
 const drawerWidth = 256;
@@ -93,6 +94,7 @@ const Main=({classes})=>{
                             <Route exact path={'/admin/media'} component={Images}/>
                             <Route exact path={'/admin/materials'} component={Materials}/>
                             <Route exact path={'/admin/users'} component={Users}/>
+                            <Route exact path={'/admin/app-users'} component={PublicUsers}/>
                             <Route exact path={'/admin/subscriptions'} component={Subscriptions}/>
                             <Route exact path={'/admin/app/corousel'} component={Corousel}/>
                             <Route exact path={'/admin/app/banner'} component={Banner}/>

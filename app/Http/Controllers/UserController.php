@@ -10,6 +10,18 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 
 class UserController extends Controller
 {
+    public function appUser(Request $request)
+    {
+        try {
+            $permit=$request->user()->tokenCan('view:user');
+            if (!$permit) {
+                throw  new \Exception('Permission denied', 403);
+            }
+            return $this->handleResponse(User::query()->where('type','appuser')->paginate(), '');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
     public function all(Request $request)
     {
         try {
@@ -18,6 +30,35 @@ class UserController extends Controller
                 throw  new \Exception('Permission denied', 403);
             }
             return $this->handleResponse(User::query()->where('type','admin')->paginate(), '');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
+
+    public function createUser(Request $request)
+    {
+        try {
+            $permit=$request->user()->tokenCan('create:user');
+            if (!$permit) {
+                throw new \Exception('Permission denied', 403);
+            }
+            $this->validate($request->only(['name','phone_no', 'email', 'password','password_confirmation']), [
+                'name'=>'required',
+                'phone_no' => 'required|unique:users',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|confirmed|min:6'
+            ]);
+            $user=User::create([
+                'name' => $request->get('name'),
+                'phone_no' => $request->get('phone_no'),
+                'email' => $request->get('email'),
+                'father_name' => $request->get('father_name'),
+                'address' => $request->get('address'),
+                'password' => Hash::make('password'),
+                'type'=>'appuser'
+            ]);
+
+            return $this->handleResponse(User::query()->where('type','appuser')->paginate(), 'User created successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }
@@ -51,6 +92,8 @@ class UserController extends Controller
             return $this->handlingException($exception);
         }
     }
+
+
     public function update(Request $request,User $user)
     {
         try {
@@ -71,6 +114,45 @@ class UserController extends Controller
             $user->save();
 
             return $this->handleResponse($user, 'User updated successfully');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
+    public function updateUser(Request $request,User $user)
+    {
+        try {
+            $permit=$request->user()->tokenCan('update:user');
+            if (!$permit) {
+                throw new \Exception('Permission denied', 403);
+            }
+            $this->validate($request->only(['name','phone_no', 'email', 'password']), [
+                'name'=>'required',
+                'phone_no' => 'required',
+                'email' => 'required',
+            ]);
+            $user->name = $request->get('name');
+            $user->email = $request->get('email');
+            $user->phone_no = $request->get('phone_no');
+            $user->father_name = $request->get('father_name');
+            $user->address = $request->get('address');
+            $user->save();
+
+            return $this->handleResponse(User::query()->where('type','appuser')->paginate(), 'User updated successfully');
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
+    public function deleteUser(Request $request,User $user)
+    {
+        try {
+            $permit=$request->user()->tokenCan('delete:user');
+            if (!$permit) {
+                throw new \Exception('Permission denied', 403);
+            }
+            $user->delete();
+
+            return $this->handleResponse(User::query()->where('type','appuser')->paginate(),
+                'User deleted successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
         }

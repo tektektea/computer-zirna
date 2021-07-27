@@ -168,13 +168,21 @@ class SubscriptionController extends Controller
         }
     }
 
+    public function getSubscriptions(Request $request, User $user)
+    {
+        try {
+            return $this->handleResponse($user->subscriptions()->get());
+        } catch (\Exception $exception) {
+            return $this->handlingException($exception);
+        }
+    }
+
     public function deleteSubscription(Request $request, Subscription $subscription)
     {
         try {
             $subscription->delete();
             $user = $request->user();
-
-            return $this->handleResponse($user,
+            return $this->handleResponse($subscription,
                 'Subscription deleted successfully');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
@@ -189,11 +197,9 @@ class SubscriptionController extends Controller
             ]), [
                 'courses' => 'required',
                 'name' => 'required',
-                'phone_no' => 'required|unique:users',
                 'father_name' => 'required',
                 'address' => 'required',
                 'dob' => 'required',
-                'email' => 'required|unique:users',
                 'expired_date' => 'required',
                 'expired_time' => 'required'
             ]);
@@ -201,15 +207,29 @@ class SubscriptionController extends Controller
 
             DB::transaction(function () use ($courses, $request) {
 
-                $user = User::query()->updateOrCreate([
-                    'name' => $request->get('name'),
-                    'father_name' => $request->get('father_name'),
-                    'phone_no' => $request->get('phone_no'),
-                    'email' => $request->get('email'),
-                    'dob' => $request->get('dob'),
-                    'address' => $request->get('address')
-                ]);
-
+                $user = User::query()->where('phone_no', $request->get('phone_no'))
+                    ->orWhere('email', $request->get('email'))
+                ->first();
+                if ($user) {
+                    $user->update([
+                        'name' => $request->get('name'),
+                        'father_name' => $request->get('father_name'),
+                        'dob' => $request->get('dob'),
+                        'phone_no' => $request->get('phone_no'),
+                        'email' => $request->get('email'),
+                        'address' => $request->get('address')
+                    ]);
+                    $user->save();
+                }else{
+                    $user = User::query()->create([
+                        'name' => $request->get('name'),
+                        'father_name' => $request->get('father_name'),
+                        'dob' => $request->get('dob'),
+                        'phone_no' => $request->get('phone_no'),
+                        'email' => $request->get('email'),
+                        'address' => $request->get('address')
+                    ]);
+                }
                 $date = $request->get('expired_date');
                 $time = $request->get('expired_time');
 
@@ -220,7 +240,7 @@ class SubscriptionController extends Controller
                         ->latest()
                         ->first();
                     if ($subscription) {
-                        return $subscription->update([
+                         return $subscription->update([
                             'course_id' => $course_id,
                             'expired_at' => Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . $time),
                             'user_id' => $user->id,
@@ -230,7 +250,7 @@ class SubscriptionController extends Controller
                         ]);
 
                     }
-                    return new Subscription([
+                    return  Subscription::query()->create([
                         'course_id' => $course_id,
                         'expired_at' => Carbon::createFromFormat('Y-m-d H:i:s', $date . ' ' . $time),
                         'user_id' => $user->id,
@@ -239,7 +259,6 @@ class SubscriptionController extends Controller
                         'status' => SubscriptionEnum::SUBSCRIBE,
                     ]);
                 });
-                $user->subscriptions()->saveMany($subscriptions);
             });
 
             return $this->handleResponse(User::subscribers()->paginate(),

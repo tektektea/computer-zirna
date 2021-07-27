@@ -1,7 +1,7 @@
 import React from "react";
 import {
     Card,
-    CardHeader,
+    CardHeader, Chip,
     Divider,
     Hidden,
     Icon,
@@ -20,7 +20,7 @@ import ContextMenu from "./ContextMenu";
 import ConfirmDialog from "../components/ConfirmDialog";
 import {
     BLOCK_SUBSCRIPTION_API,
-    DELETE_SUBSCRIPTION_API,
+    DELETE_SUBSCRIPTION_API, GET_SUBSCRIPTION_API,
     RENEW_SUBSCRIPTION_API,
     UNBLOCK_SUBSCRIPTION_API
 } from "../utils/ApiRoutes";
@@ -40,12 +40,17 @@ const SubscriptionDetail = ({item, refetch}) => {
     });
     const [openRenew, setOpenRenew] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [subscriptions, setSubscriptions] = React.useState(item?.subscriptions);
+    const [subscriptions, setSubscriptions] = React.useState([]);
     const [state, dispatch] = React.useContext(AppContext);
     const matchPrint = useMediaQuery('print');
 
+    const fetchdetail=()=>{
+        axios.get(GET_SUBSCRIPTION_API(item.id))
+            .then(res => setSubscriptions(res.data?.data))
+            .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
+    }
     React.useEffect(() => {
-        setSubscriptions(item?.subscriptions)
+        fetchdetail();
     }, [item || refetch])
 
     const handleConfirm = mode => {
@@ -69,20 +74,10 @@ const SubscriptionDetail = ({item, refetch}) => {
                 setOpenRenew(true);
                 break;
             case 'block':
-                axios.post(BLOCK_SUBSCRIPTION_API(selectedItem?.id))
-                    .then(res => {
-                        handleToast(res.data?.message, 'success');
-                        !!refetch && refetch();
-                    })
-                    .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
+                blockSub();
                 break;
             case 'unblock':
-                axios.post(UNBLOCK_SUBSCRIPTION_API(selectedItem?.id))
-                    .then(res => {
-                        handleToast(res.data?.message, 'success');
-                        !!refetch && refetch();
-                    })
-                    .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
+                unblockSub();
                 break;
             case 'delete':
                 setConfirmData(prevState => ({...prevState, open: true}));
@@ -103,8 +98,7 @@ const SubscriptionDetail = ({item, refetch}) => {
         axios.post(BLOCK_SUBSCRIPTION_API(selectedItem.id))
             .then(res => {
                 handleToast(res.data.message, 'success');
-                refetch();
-                setSubscriptions([]);
+                fetchdetail();
             })
             .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
     }
@@ -112,8 +106,7 @@ const SubscriptionDetail = ({item, refetch}) => {
         axios.post(UNBLOCK_SUBSCRIPTION_API(selectedItem.id))
             .then(res => {
                 handleToast(res.data.message, 'success');
-                refetch();
-                setSubscriptions([]);
+                fetchdetail();
 
             })
             .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
@@ -122,7 +115,7 @@ const SubscriptionDetail = ({item, refetch}) => {
         axios.post(RENEW_SUBSCRIPTION_API(selectedItem.id), {expired_at: dateTime})
             .then(res => {
                 handleToast(res.data.message, 'success');
-                setSubscriptions([]);
+                fetchdetail();
 
             })
             .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
@@ -133,7 +126,7 @@ const SubscriptionDetail = ({item, refetch}) => {
             .then(res => {
                 setSubscriptions(prevState => prevState.filter(i => i.id !== selectedItem.id));
                 handleToast(res.data.message, 'success');
-                setSubscriptions([]);
+                // setSubscriptions([]);
 
             })
             .catch(err => handleToast(!!err?.response ? err?.response?.data.error : err.toString(), 'error'))
@@ -151,6 +144,16 @@ const SubscriptionDetail = ({item, refetch}) => {
         window.print()
     }
 
+    const getStatus=status=>{
+        switch (status) {
+            case 'subscribe':
+                return <Chip variant={"outlined"} color={"primary"} label={status}/>
+            case 'cancelled':
+                return <Chip variant={"outlined"} color={"secondary"} label={status}/>
+            default:
+                return <Chip variant={"outlined"} color={'default'} label={status}/>;
+        }
+    }
     return (
         <>
             {Boolean(subscriptions) ? <Card elevation={0}>
@@ -196,7 +199,7 @@ const SubscriptionDetail = ({item, refetch}) => {
                                                     </Hidden>
                                                     <TableCell>{sub?.course_name}</TableCell>
                                                     <TableCell>{sub?.expired_at}</TableCell>
-                                                    <TableCell>{sub?.status}</TableCell>
+                                                    <TableCell>{getStatus(sub?.status)}</TableCell>
                                                     <TableCell>
                                                         <IconButton onClick={event => {
                                                             setSelectedItem(sub);

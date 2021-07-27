@@ -16,10 +16,7 @@ import {useHistory} from "react-router-dom";
 import Hidden from "@material-ui/core/Hidden";
 import ToggleButton from "../components/ToggleButton";
 import {LOGOUT_API} from "../utils/ApiRoutes";
-import ImageOutlined from '@material-ui/icons/ImageOutlined';
-import VideoLibraryOutlined from '@material-ui/icons/VideoLibraryOutlined';
 import NoteOutlined from '@material-ui/icons/NoteOutlined';
-import PermMediaOutlined from '@material-ui/icons/PermMediaOutlined';
 import MonetizationOnOutlined from '@material-ui/icons/MonetizationOnOutlined';
 
 const styles = theme => ({
@@ -194,8 +191,11 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
             case 'media':
                 history.push('/admin/media');
                 break;
-            case 'users':
+            case 'official_account':
                 history.push('/admin/users');
+                break;
+            case 'public_account':
+                history.push('/admin/app-users');
                 break;
             case 'material':
                 history.push('/admin/materials');
@@ -258,7 +258,7 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                           setSelectedMenu('subscriptions')
                       }} button={true}>
                 <ListItemIcon>
-                   <MonetizationOnOutlined/>
+                    <MonetizationOnOutlined/>
                 </ListItemIcon>
                 <ListItemText primary={"Subscriptions"}/>
             </ListItem>
@@ -339,13 +339,13 @@ const Nav = ({classes, mobile, toggleDrawer}) => {
                         {adminMenu.items.map((child, index) =>
 
                             <ListItem key={index} button
+                                      selected={selectedMenu === child.key}
                                       onClick={event => {
                                           if (mobile) {
                                               toggleDrawer(!mobile)
                                           }
-                                          handleMenu('users')
-                                      }
-                                      }>
+                                          handleMenu(child.key)
+                                      }}>
                                 <ListItemIcon>
                                     <Icon>navigate_next</Icon>
                                 </ListItemIcon>

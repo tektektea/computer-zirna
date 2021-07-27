@@ -6,6 +6,12 @@ export const CREATE_ADMIN_API='admin/create'
 export const UDPATE_ADMIN_API=id=>`admin/${id}`
 export const DELETE_ADMIN_API=id=>`admin/${id}`
 
+export const FETCH_APP_USER_API='user/index'
+export const CREATE_APP_USER_API='user/create'
+export const UPDATE_APP_USER_API=id=>`user/${id}`
+export const DELETE_APP_USER_API=id=>`user/${id}`
+
+
 export const FETCH_CONTACT_API=`contacts/index`
 export const CREATE_CONTACT_API=`contacts/create`
 export const DELETE_CONTACT_API=id=>`contacts/${id}`
@@ -36,6 +42,7 @@ export const UPDATE_MATERIAL_API=id=>`material/${id}`
 export const DELETE_MATERIAL_API=id=>`material/${id}`
 export const DOWNLOAD_MATERIAL_API=id=>`material/${id}`
 
+export const GET_SUBSCRIPTION_API=userid=>`subscription/${userid}/detail`
 export const FETCH_SUBSCRIPTION_API='subscription/index'
 export const CREATE_SUBSCRIPTION_API='subscription/create'
 export const RENEW_SUBSCRIPTION_API=id=>`subscription/${id}/renew`
