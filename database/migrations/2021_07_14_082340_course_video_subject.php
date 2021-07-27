@@ -32,16 +32,7 @@ class CourseVideoSubject extends Migration
             $table->unsignedBigInteger('subject_id');
             $table->unsignedBigInteger('video_id');
             $table->softDeletes();
-            $table->timestamps();
-
-            $table->foreign('subject_id')
-                ->references('id')
-                ->on('subjects')
-                ->cascadeOnDelete();
-            $table->foreign('video_id')
-                ->references('id')
-                ->on('videos')
-                ->cascadeOnDelete();
+//
         });
     }
 

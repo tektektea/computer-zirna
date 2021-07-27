@@ -19,6 +19,7 @@ import ReactPlayer from "react-player";
 import {MESSAGE} from "../utils/Action";
 import {CREATE_SUBJECTS_API, SHOW_SUBJECTS_API, UPDATE_SUBJECTS_API} from "../utils/ApiRoutes";
 import EditDialog from "../videos/EditDialog";
+import CreateDialog from "../videos/CreateDialog";
 
 
 const validationSchema = Yup.object().shape({
@@ -33,7 +34,10 @@ const EditSubject = ({defaultValue}) => {
     const params = useParams();
     const [selected, setSelected] = React.useState();
     const [index, setIndex] = React.useState(0);
+    const [openCreate, setOpenCreate] = React.useState(false);
     const [state, dispatch] = React.useContext(AppContext);
+    const [openVideo, setOpenVideo] = React.useState(false);
+
     const formik = useFormik({
         initialValues: {
             id:null,
@@ -68,7 +72,6 @@ const EditSubject = ({defaultValue}) => {
                 })
         }
     })
-    const [openVideo, setOpenVideo] = React.useState(false);
     const fetchData = (page = 1, filter) => {
         axios.get(SHOW_SUBJECTS_API(params.id))
             .then(res => {
@@ -92,6 +95,12 @@ const EditSubject = ({defaultValue}) => {
             })
     }
 
+    const handleCreateVideo=video=>{
+        let videos = formik.values?.videos;
+        videos.push(video);
+        formik.setFieldValue('videos',videos);
+        setOpenCreate(false);
+    }
     const handleUpdateVideo=video=>{
         let videos = formik.values?.videos;
         videos[index]=video
@@ -145,7 +154,7 @@ const EditSubject = ({defaultValue}) => {
                 </div>
                 <br/>
                 <div className={'my-card'}>
-                    <Button onClick={event => setOpenVideo(true)} variant={"outlined"} color={'primary'}>Add
+                    <Button onClick={event => setOpenCreate(true)} variant={"outlined"} color={'primary'}>Add
                         video</Button>{"  "}
                     <Typography variant={"caption"}>Click here to add videos</Typography>
                 </div>
@@ -183,6 +192,9 @@ const EditSubject = ({defaultValue}) => {
                     </DialogActions>
                 </div>
             </form>
+            {openCreate && <CreateDialog open={openCreate}
+                                      createVideo={handleCreateVideo}
+                                      onClose={e=>setOpenCreate(false)}/>}
             {openVideo && <EditDialog open={openVideo}
                                       video={selected}
                                         updateVideo={handleUpdateVideo}

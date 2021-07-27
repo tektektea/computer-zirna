@@ -198,7 +198,12 @@ const SubscriptionDetail = ({item, refetch}) => {
                                                         <TableCell>{sub?.receipt}</TableCell>
                                                     </Hidden>
                                                     <TableCell>{sub?.course_name}</TableCell>
-                                                    <TableCell>{sub?.expired_at}</TableCell>
+                                                    <TableCell>
+                                                        {new Intl.DateTimeFormat('en-IN', {
+                                                            dateStyle: 'medium',
+                                                            timeStyle: 'medium'
+                                                        }).format(new Date(sub?.expired_at))}
+                                                    </TableCell>
                                                     <TableCell>{getStatus(sub?.status)}</TableCell>
                                                     <TableCell>
                                                         <IconButton onClick={event => {

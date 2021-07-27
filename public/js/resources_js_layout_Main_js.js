@@ -32505,25 +32505,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/Grid.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TextField/TextField.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/List/List.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItem/ListItem.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemAvatar/ListItemAvatar.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemText/ListItemText.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemSecondaryAction/ListItemSecondaryAction.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/DialogActions/DialogActions.js");
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/Button.js");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/Grid.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/TextField/TextField.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/List/List.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItem/ListItem.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemAvatar/ListItemAvatar.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemText/ListItemText.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/ListItemSecondaryAction/ListItemSecondaryAction.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/DialogActions/DialogActions.js");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/Button.js");
 /* harmony import */ var _context_AppContextProvider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContextProvider */ "./resources/js/context/AppContextProvider.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
 /* harmony import */ var formik__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! formik */ "./node_modules/formik/dist/formik.esm.js");
-/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/Typography.js");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/Typography.js");
 /* harmony import */ var react_player__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-player */ "./node_modules/react-player/lib/index.js");
 /* harmony import */ var _utils_Action__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/Action */ "./resources/js/utils/Action.js");
 /* harmony import */ var _utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/ApiRoutes */ "./resources/js/utils/ApiRoutes.js");
 /* harmony import */ var _videos_EditDialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../videos/EditDialog */ "./resources/js/videos/EditDialog.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _videos_CreateDialog__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../videos/CreateDialog */ "./resources/js/videos/CreateDialog.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -32551,17 +32552,18 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var validationSchema = yup__WEBPACK_IMPORTED_MODULE_2__.object().shape({
   title: yup__WEBPACK_IMPORTED_MODULE_2__.string().required('Title is required'),
   videos: yup__WEBPACK_IMPORTED_MODULE_2__.array().required('Videos is required')
 });
 
 var EditSubject = function EditSubject(_ref) {
-  var _formik$values3, _formik$touched, _formik$errors, _formik$touched2, _formik$errors2, _formik$values4, _formik$touched3, _formik$errors3, _formik$touched4, _formik$errors4, _formik$values5, _formik$values5$video;
+  var _formik$values4, _formik$touched, _formik$errors, _formik$touched2, _formik$errors2, _formik$values5, _formik$touched3, _formik$errors3, _formik$touched4, _formik$errors4, _formik$values6, _formik$values6$video;
 
   var defaultValue = _ref.defaultValue;
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
-  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useParams)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useHistory)();
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useParams)();
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0__.useState(),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -32573,10 +32575,20 @@ var EditSubject = function EditSubject(_ref) {
       index = _React$useState4[0],
       setIndex = _React$useState4[1];
 
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      openCreate = _React$useState6[0],
+      setOpenCreate = _React$useState6[1];
+
   var _React$useContext = react__WEBPACK_IMPORTED_MODULE_0__.useContext(_context_AppContextProvider__WEBPACK_IMPORTED_MODULE_1__.AppContext),
       _React$useContext2 = _slicedToArray(_React$useContext, 2),
       state = _React$useContext2[0],
       dispatch = _React$useContext2[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      openVideo = _React$useState8[0],
+      setOpenVideo = _React$useState8[1];
 
   var formik = (0,formik__WEBPACK_IMPORTED_MODULE_3__.useFormik)({
     initialValues: {
@@ -32615,11 +32627,6 @@ var EditSubject = function EditSubject(_ref) {
     }
   });
 
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0__.useState(false),
-      _React$useState6 = _slicedToArray(_React$useState5, 2),
-      openVideo = _React$useState6[0],
-      setOpenVideo = _React$useState6[1];
-
   var fetchData = function fetchData() {
     var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
     var filter = arguments.length > 1 ? arguments[1] : undefined;
@@ -32643,18 +32650,27 @@ var EditSubject = function EditSubject(_ref) {
     });
   };
 
-  var handleUpdateVideo = function handleUpdateVideo(video) {
+  var handleCreateVideo = function handleCreateVideo(video) {
     var _formik$values;
 
     var videos = (_formik$values = formik.values) === null || _formik$values === void 0 ? void 0 : _formik$values.videos;
+    videos.push(video);
+    formik.setFieldValue('videos', videos);
+    setOpenCreate(false);
+  };
+
+  var handleUpdateVideo = function handleUpdateVideo(video) {
+    var _formik$values2;
+
+    var videos = (_formik$values2 = formik.values) === null || _formik$values2 === void 0 ? void 0 : _formik$values2.videos;
     videos[index] = video;
     formik.setFieldValue('videos', videos);
   };
 
   var handleDelete = function handleDelete(subject) {
-    var _formik$values2, _formik$values2$video;
+    var _formik$values3, _formik$values3$video;
 
-    formik.setFieldValue('videos', (_formik$values2 = formik.values) === null || _formik$values2 === void 0 ? void 0 : (_formik$values2$video = _formik$values2.videos) === null || _formik$values2$video === void 0 ? void 0 : _formik$values2$video.filter(function (s) {
+    formik.setFieldValue('videos', (_formik$values3 = formik.values) === null || _formik$values3 === void 0 ? void 0 : (_formik$values3$video = _formik$values3.videos) === null || _formik$values3$video === void 0 ? void 0 : _formik$values3$video.filter(function (s) {
       return s.id != subject.id;
     }));
   };
@@ -32662,24 +32678,24 @@ var EditSubject = function EditSubject(_ref) {
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     fetchData();
   }, [params.id]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
     className: 'maincontent',
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("h1", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h1", {
       className: 'title',
       children: "Edit subject"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("form", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
       onSubmit: formik.handleSubmit,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
         className: 'my-card',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_10__.default, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_11__.default, {
           container: true,
           spacing: 2,
           alignItems: "center",
           justify: "space-between",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_10__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_11__.default, {
             item: true,
             xs: 12,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
               fullWidth: true,
               required: true,
               variant: "outlined",
@@ -32687,14 +32703,14 @@ var EditSubject = function EditSubject(_ref) {
               label: "Title",
               name: 'title',
               onChange: formik.handleChange,
-              value: (_formik$values3 = formik.values) === null || _formik$values3 === void 0 ? void 0 : _formik$values3.title,
+              value: (_formik$values4 = formik.values) === null || _formik$values4 === void 0 ? void 0 : _formik$values4.title,
               error: ((_formik$touched = formik.touched) === null || _formik$touched === void 0 ? void 0 : _formik$touched.title) && ((_formik$errors = formik.errors) === null || _formik$errors === void 0 ? void 0 : _formik$errors.title),
               helperText: ((_formik$touched2 = formik.touched) === null || _formik$touched2 === void 0 ? void 0 : _formik$touched2.title) && ((_formik$errors2 = formik.errors) === null || _formik$errors2 === void 0 ? void 0 : _formik$errors2.title)
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_10__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_11__.default, {
             item: true,
             xs: 12,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
               fullWidth: true,
               variant: "outlined",
               margin: "dense",
@@ -32703,43 +32719,43 @@ var EditSubject = function EditSubject(_ref) {
               multiline: true,
               rows: 4,
               onChange: formik.handleChange,
-              value: (_formik$values4 = formik.values) === null || _formik$values4 === void 0 ? void 0 : _formik$values4.description,
+              value: (_formik$values5 = formik.values) === null || _formik$values5 === void 0 ? void 0 : _formik$values5.description,
               error: ((_formik$touched3 = formik.touched) === null || _formik$touched3 === void 0 ? void 0 : _formik$touched3.description) && ((_formik$errors3 = formik.errors) === null || _formik$errors3 === void 0 ? void 0 : _formik$errors3.description),
               helperText: ((_formik$touched4 = formik.touched) === null || _formik$touched4 === void 0 ? void 0 : _formik$touched4.description) && ((_formik$errors4 = formik.errors) === null || _formik$errors4 === void 0 ? void 0 : _formik$errors4.description)
             })
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
         className: 'my-card',
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_12__.default, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__.default, {
           onClick: function onClick(event) {
-            return setOpenVideo(true);
+            return setOpenCreate(true);
           },
           variant: "outlined",
           color: 'primary',
           children: "Add video"
-        }), "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_13__.default, {
+        }), "  ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_14__.default, {
           variant: "caption",
           children: "Click here to add videos"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
         className: 'my-card',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_14__.default, {
-          children: (_formik$values5 = formik.values) === null || _formik$values5 === void 0 ? void 0 : (_formik$values5$video = _formik$values5.videos) === null || _formik$values5$video === void 0 ? void 0 : _formik$values5$video.map(function (video, i) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__.default, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_15__.default, {
+          children: (_formik$values6 = formik.values) === null || _formik$values6 === void 0 ? void 0 : (_formik$values6$video = _formik$values6.videos) === null || _formik$values6$video === void 0 ? void 0 : _formik$values6$video.map(function (video, i) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
               divider: true,
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_player__WEBPACK_IMPORTED_MODULE_4__.default, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__.default, {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_player__WEBPACK_IMPORTED_MODULE_4__.default, {
                   className: "react-player",
                   url: video === null || video === void 0 ? void 0 : video.video_url,
                   width: "80",
                   height: "60"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__.default, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_18__.default, {
                 primary: video === null || video === void 0 ? void 0 : video.title,
                 secondary: video === null || video === void 0 ? void 0 : video.description
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_18__.default, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_12__.default, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__.default, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__.default, {
                   onClick: function onClick(event) {
                     setSelected(video);
                     setIndex(i);
@@ -32747,7 +32763,7 @@ var EditSubject = function EditSubject(_ref) {
                   },
                   color: "primary",
                   children: "Edit"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_12__.default, {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__.default, {
                   onClick: function onClick(event) {
                     return handleDelete(video);
                   },
@@ -32758,15 +32774,15 @@ var EditSubject = function EditSubject(_ref) {
             }, i);
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
         className: 'my-card',
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__.default, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_12__.default, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_20__.default, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__.default, {
             onClick: formik.handleSubmit,
             variant: "contained",
             color: "primary",
             children: "Update"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_12__.default, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_13__.default, {
             onClick: formik.handleReset,
             variant: "outlined",
             color: "secondary",
@@ -32774,7 +32790,13 @@ var EditSubject = function EditSubject(_ref) {
           })]
         })
       })]
-    }), openVideo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_videos_EditDialog__WEBPACK_IMPORTED_MODULE_7__.default, {
+    }), openCreate && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_videos_CreateDialog__WEBPACK_IMPORTED_MODULE_8__.default, {
+      open: openCreate,
+      createVideo: handleCreateVideo,
+      onClose: function onClose(e) {
+        return setOpenCreate(false);
+      }
+    }), openVideo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_videos_EditDialog__WEBPACK_IMPORTED_MODULE_7__.default, {
       open: openVideo,
       video: selected,
       updateVideo: handleUpdateVideo,
@@ -34344,7 +34366,10 @@ var SubscriptionDetail = function SubscriptionDetail(_ref) {
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__.default, {
                         children: sub === null || sub === void 0 ? void 0 : sub.course_name
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__.default, {
-                        children: sub === null || sub === void 0 ? void 0 : sub.expired_at
+                        children: new Intl.DateTimeFormat('en-IN', {
+                          dateStyle: 'medium',
+                          timeStyle: 'medium'
+                        }).format(new Date(sub === null || sub === void 0 ? void 0 : sub.expired_at))
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__.default, {
                         children: getStatus(sub === null || sub === void 0 ? void 0 : sub.status)
                       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_22__.default, {
@@ -35194,11 +35219,7 @@ var PublicUsers = function PublicUsers(props) {
   };
 
   var handlePagination = function handlePagination(event, page) {
-    setUsers(function (prevState) {
-      return _objectSpread(_objectSpread({}, prevState), {}, {
-        page: page
-      });
-    });
+    fetchUser(page);
   };
 
   var fetchUser = function fetchUser() {

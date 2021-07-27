@@ -10,9 +10,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Video extends Model
 {
-    use SoftDeletes,HasFactory;
+    use HasFactory;
 
-    protected $fillable = ['id','title', 'description', 'video_url','course_id'];
+    protected $fillable = ['title', 'description', 'video_url','course_id'];
 
     public function subjects(): BelongsToMany
     {

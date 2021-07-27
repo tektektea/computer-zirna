@@ -95,7 +95,7 @@ const PublicUsers = props => {
             })
     }
     const handlePagination = (event, page) => {
-        setUsers(prevState => ({...prevState, page}))
+        fetchUser(page);
     };
     const fetchUser = (page = 1) => {
         axios.get(FETCH_APP_USER_API)
