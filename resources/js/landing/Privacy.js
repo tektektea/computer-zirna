@@ -119,7 +119,7 @@ const Privacy=props=>{
                             <div>&nbsp;</div>
                             <div>&nbsp;<b>9. CONTACT US</b></div>
                             <div>If you have any questions or concerns about this Privacy Policy, please contact us at:
-                                riomiyachi.1991@gmail.com
+                                thatea2010@gmail.com
                             </div>
                             <div>&nbsp;</div>
                             <div>&nbsp;</div>

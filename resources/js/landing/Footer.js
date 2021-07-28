@@ -14,8 +14,10 @@ const Footer = props => {
                 <IconButton><Icon style={{color: '#f6f6f6'}}>facebook</Icon></IconButton>
                 </span>
                 <span>
+                <Button style={{color: '#f6f6f6'}} onClick={event => history.push('/contact')} variant={"text"}>Contact us</Button>
                 <Button style={{color: '#f6f6f6'}} onClick={event => history.push('/privacy')} variant={"text"}>Privacy policy</Button>
                 <Button style={{color: '#f6f6f6'}} onClick={event => history.push('/toc')} variant={"text"}>Terms and condition</Button>
+                <Button style={{color: '#f6f6f6'}} onClick={event => history.push('/payment')} variant={"text"}>Payment term</Button>
 
                 </span>
             </Grid>

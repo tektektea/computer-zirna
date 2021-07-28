@@ -15165,6 +15165,76 @@ var Login = function Login(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/landing/Contact.js":
+/*!*****************************************!*\
+  !*** ./resources/js/landing/Contact.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/Grid.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+var Contact = function Contact(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: 'maincontent',
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+      className: 'title',
+      children: "Contact us"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__.default, {
+      container: true,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__.default, {
+        item: true,
+        xs: 2,
+        children: "Phone"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__.default, {
+        item: true,
+        xs: 10,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("code", {
+          children: "936263680"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__.default, {
+        item: true,
+        xs: 2,
+        children: "Email"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__.default, {
+        item: true,
+        xs: 10,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("code", {
+          children: "thatea2010@gmail.com"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__.default, {
+        item: true,
+        xs: 2,
+        children: "Address"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__.default, {
+        item: true,
+        xs: 10,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("address", {
+          children: "Thakthing bazar, Mission veng,"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("address", {
+          children: "Aizawl, Mizoram,"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("address", {
+          children: "796321"
+        })]
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Contact);
+
+/***/ }),
+
 /***/ "./resources/js/landing/Footer.js":
 /*!****************************************!*\
   !*** ./resources/js/landing/Footer.js ***!
@@ -15215,6 +15285,15 @@ var Footer = function Footer(props) {
             color: '#f6f6f6'
           },
           onClick: function onClick(event) {
+            return history.push('/contact');
+          },
+          variant: "text",
+          children: "Contact us"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_6__.default, {
+          style: {
+            color: '#f6f6f6'
+          },
+          onClick: function onClick(event) {
             return history.push('/privacy');
           },
           variant: "text",
@@ -15228,6 +15307,15 @@ var Footer = function Footer(props) {
           },
           variant: "text",
           children: "Terms and condition"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_6__.default, {
+          style: {
+            color: '#f6f6f6'
+          },
+          onClick: function onClick(event) {
+            return history.push('/payment');
+          },
+          variant: "text",
+          children: "Payment term"
         })]
       })]
     })
@@ -15361,17 +15449,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Header */ "./resources/js/landing/Header.js");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Container/Container.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/Container/Container.js");
 /* harmony import */ var _layout_Content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../layout/Content */ "./resources/js/layout/Content.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _Privacy__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Privacy */ "./resources/js/landing/Privacy.js");
 /* harmony import */ var _Toc__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Toc */ "./resources/js/landing/Toc.js");
 /* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Login */ "./resources/js/Login.js");
 /* harmony import */ var _context_AppContextProvider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../context/AppContextProvider */ "./resources/js/context/AppContextProvider.js");
 /* harmony import */ var _utils_Action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/Action */ "./resources/js/utils/Action.js");
-/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/Grid.js");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/Grid.js");
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Footer */ "./resources/js/landing/Footer.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Contact__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Contact */ "./resources/js/landing/Contact.js");
+/* harmony import */ var _PaymentTerm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./PaymentTerm */ "./resources/js/landing/PaymentTerm.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -15399,6 +15489,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 var Home = function Home(props) {
   var _React$useContext = react__WEBPACK_IMPORTED_MODULE_0__.useContext(_context_AppContextProvider__WEBPACK_IMPORTED_MODULE_6__.AppContext),
       _React$useContext2 = _slicedToArray(_React$useContext, 2),
@@ -15408,38 +15500,112 @@ var Home = function Home(props) {
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
     (0,_utils_Action__WEBPACK_IMPORTED_MODULE_7__.getPublicData)(dispatch);
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("main", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("main", {
     style: {
       backgroundColor: '#f6f6f6'
     },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_1__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_10__.default, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_1__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__.default, {
       maxWidth: "lg",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
+        exact: true,
+        path: '/payment',
+        component: _PaymentTerm__WEBPACK_IMPORTED_MODULE_10__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
         exact: true,
         path: '/privacy',
         component: _Privacy__WEBPACK_IMPORTED_MODULE_3__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
+        exact: true,
+        path: '/contact',
+        component: _Contact__WEBPACK_IMPORTED_MODULE_9__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
         exact: true,
         path: '/login',
         component: _Login__WEBPACK_IMPORTED_MODULE_5__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
         exact: true,
         path: '/toc',
         component: _Toc__WEBPACK_IMPORTED_MODULE_4__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
         exact: true,
         path: '/',
         component: _layout_Content__WEBPACK_IMPORTED_MODULE_2__.default
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_12__.default, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_14__.default, {
       container: true,
       item: true,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_8__.default, {})
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_8__.default, {})
     })]
   });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
+
+/***/ }),
+
+/***/ "./resources/js/landing/PaymentTerm.js":
+/*!*********************************************!*\
+  !*** ./resources/js/landing/PaymentTerm.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/Grid.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+var PaymentTerm = function PaymentTerm(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: 'maincontent',
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+      className: 'title',
+      children: "Contact us"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_2__.default, {
+      container: true,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h6", {
+        children: "Payment Terms"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "MEMBERSHIP"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "Computerzirna offer pay-per-view model to watch course video available on the platform. User are required to register with a valid phone number to become a member, video contents are priced accordingly."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "User will be charged a fixed amount to watch content and content once purchased will be available for watch for a fixed period of days. After purchasing the content, user will be able to start watching the content, and as soon as the user start watching the content, the video availability period will start counting. Content will be available for watch for a period of 365 days soon after the user start watching the content."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "All contents available in Computerzirna Platform are paid content and available for consumption as a pay-per-view model. Contents are priced by individual Course. User can choose based on their convenience."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "PAYMENT OPTIONS"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "There are several options to pay for contents in Computerzirna"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "We accept the locally issued credit, debit and ATM cards from major banks national and international."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "NOTE: You may need to enable your card for online transactions"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "We accept Netbanking from all major banks in India."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "We accept UPI payments and wallet - such as GPay, BHIM, Paytm, etc."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "REFUND/CANCELLATION AND PAYMENT RELATED ISSUES"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "User may contact us at thatea2010@gmail.com in case of refund and any other payment issues. In case of refund, payment gateway fees and taxes applicable on the fees may not be refunded once payment has been captured. Once user starts watching the content, cancellation of payment may not be claimed. However, user may request cancellation and refund on non-watched content. Non-watched contents are contents that the user have not started watching, for which the user can claim full refund excluding payment gateway fees and applicable taxes on the gateway fees. For series, user purchased full series, non-watch episodes will be used to calculate the refund amount."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "CONTACT SUPPORT"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+        children: "Contact us for any issues relating to payment at 936263680 or using email at thatea2010@gmail.com"
+      })]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PaymentTerm);
 
 /***/ }),
 
@@ -15594,7 +15760,7 @@ var Privacy = function Privacy(props) {
                 children: "9. CONTACT US"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-              children: "If you have any questions or concerns about this Privacy Policy, please contact us at: riomiyachi.1991@gmail.com"
+              children: "If you have any questions or concerns about this Privacy Policy, please contact us at: thatea2010@gmail.com"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
               children: "\xA0"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -15810,7 +15976,7 @@ var Toc = function Toc(props) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             children: "By creating an account, viewing videos, making a purchase, downloading our applications, or otherwise visiting or using the Computerzirna Service, you accept this Agreement and consent to contract with us electronically."
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            children: "If you are an entity other than a natural person, the person who registers the account or otherwise uses the Lersia Play\xA0Service must have the authority to bind the entity. In this context, \u201Cyou\u201D means both the entity and each person who is authorized to access the account."
+            children: "If you are an entity other than a natural person, the person who registers the account or otherwise uses the COMPUTERZIRNA \xA0Service must have the authority to bind the entity. In this context, \u201Cyou\u201D means both the entity and each person who is authorized to access the account."
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             children: "We may update this Agreement by posting a revised version on our website. By continuing to use the Computerzirna \xA0Service, you accept any revised Agreement."
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -15848,9 +16014,9 @@ var Toc = function Toc(props) {
               children: "4. Program Viewing and Purchase Options"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            children: "Lersia offer the below purchase options through our websites and applications:"
+            children: "Computer zirna offer the below purchase options through our apps :"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            children: "Pay per View: You are require to pay a fee in order to watch the specific programme"
+            children: "Pay per View: You are require to pay a fee in order to watch the specific course"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             children: "To make a purchase, you must provide a valid payment method. We may apply taxes, including GST (Goods & Services Taxes), to any charges. Prices and other terms of purchase are subject to change."
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -15872,7 +16038,7 @@ var Toc = function Toc(props) {
               children: "6. Disclaimers"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            children: "YOUR USE OF THE LERSIA PLAY SERVICE IS AT YOUR OWN RISK. COMPUTERZIRNA PROVIDES SERVICE ON AN \u201CAS IS\u201D AND \u201CAS AVAILABLE\u201D BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. LERSIA DISCLAIM ALL WARRANTIES, EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT."
+            children: "YOUR USE OF THE COMPUTERZIRNA SERVICE IS AT YOUR OWN RISK. COMPUTERZIRNA PROVIDES SERVICE ON AN \u201CAS IS\u201D AND \u201CAS AVAILABLE\u201D BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. COMPUTERZIRNA DISCLAIM ALL WARRANTIES, EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT."
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             children: "Without limiting the above, Computerzirna makes no representations or warranties concerning:"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -15928,7 +16094,7 @@ var Toc = function Toc(props) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            children: "User will be charged a fixed amount to watch content and content once purchased will be available for watch for a fixed period of days. After purchasing the content, user will be able to start watching the content, and as soon as the user start watching the content, the video availability period will start counting. TV Series will be available for watch for a period of 4 days soon after the user start watching the content. Likewise, movies and short films will be available for a period of 3 days soon after the user start watching the content."
+            children: "User will be charged a fixed amount to watch content and content once purchased will be available for watch for a fixed period of days. After purchasing the content, user will be able to start watching the content, and as soon as the user start watching the content, the video availability period will start counting. Tutorial Series will be available for watch for a period of 365 days soon after the user start watching the content."
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -16044,7 +16210,7 @@ var validationSchema = yup__WEBPACK_IMPORTED_MODULE_6__.object().shape({
 });
 
 var Content = function Content(props) {
-  var _state$testimony, _state$courses;
+  var _state$courses;
 
   var _React$useContext = react__WEBPACK_IMPORTED_MODULE_0__.useContext(_context_AppContextProvider__WEBPACK_IMPORTED_MODULE_2__.AppContext),
       _React$useContext2 = _slicedToArray(_React$useContext, 2),
@@ -16088,6 +16254,7 @@ var Content = function Content(props) {
 
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {}, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
+    justify: "center",
     container: true,
     spacing: 4,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
@@ -16398,32 +16565,6 @@ var Content = function Content(props) {
       item: true,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_12__.default, {
         variant: "h6",
-        children: "Testimony"
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
-      container: true,
-      spacing: 2,
-      children: state === null || state === void 0 ? void 0 : (_state$testimony = state.testimony) === null || _state$testimony === void 0 ? void 0 : _state$testimony.map(function (item, key) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
-          item: true,
-          md: 3,
-          xs: 12,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
-            className: 'my-card2',
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_landing_Qoute__WEBPACK_IMPORTED_MODULE_3__.default, {
-              avatar: item.avatar,
-              sentence: item.qoute
-            })
-          })
-        }, key);
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
-      container: true,
-      justify: "center",
-      alignItems: 'center',
-      item: true,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_12__.default, {
-        variant: "h6",
         children: "Course offered"
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
@@ -16452,6 +16593,11 @@ var Content = function Content(props) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {
       container: true,
       item: true,
+      justify: "center",
+      alignItems: "center",
+      style: {
+        maxWidth: 400
+      },
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
         className: 'my-card',
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)(_material_ui_core__WEBPACK_IMPORTED_MODULE_11__.default, {

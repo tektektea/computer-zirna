@@ -22,7 +22,7 @@ const Toc=props=>{
                             to contract with us electronically.
                         </div>
                         <div>If you are an entity other than a natural person, the person who registers the account or
-                            otherwise uses the Lersia Play&nbsp;Service must have the authority to bind the entity. In
+                            otherwise uses the COMPUTERZIRNA &nbsp;Service must have the authority to bind the entity. In
                             this context, “you” means both the entity and each person who is authorized to access the
                             account.
                         </div>
@@ -68,8 +68,8 @@ const Toc=props=>{
                             your contact information.&nbsp;</div>
                         <div><br/></div>
                         <div><b>4. Program Viewing and Purchase Options</b></div>
-                        <div>Lersia offer the below purchase options through our websites and applications:</div>
-                        <div>Pay per View: You are require to pay a fee in order to watch the specific programme</div>
+                        <div>Computer zirna offer the below purchase options through our apps :</div>
+                        <div>Pay per View: You are require to pay a fee in order to watch the specific course</div>
                         <div>To make a purchase, you must provide a valid payment method. We may apply taxes, including
                             GST (Goods &amp; Services Taxes), to any charges. Prices and other terms of purchase are
                             subject to change.
@@ -85,9 +85,9 @@ const Toc=props=>{
                             make derivative works from any Program.&nbsp;</div>
                         <div>&nbsp;</div>
                         <div><b>6. Disclaimers</b></div>
-                        <div>YOUR USE OF THE LERSIA PLAY SERVICE IS AT YOUR OWN RISK. COMPUTERZIRNA PROVIDES
+                        <div>YOUR USE OF THE COMPUTERZIRNA SERVICE IS AT YOUR OWN RISK. COMPUTERZIRNA PROVIDES
                             SERVICE ON AN “AS IS” AND “AS AVAILABLE” BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER
-                            EXPRESS OR IMPLIED. LERSIA DISCLAIM ALL WARRANTIES, EXPRESSED OR IMPLIED, INCLUDING BUT NOT
+                            EXPRESS OR IMPLIED. COMPUTERZIRNA DISCLAIM ALL WARRANTIES, EXPRESSED OR IMPLIED, INCLUDING BUT NOT
                             LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
                             NON-INFRINGEMENT.
                         </div>
@@ -143,10 +143,8 @@ const Toc=props=>{
                         <div>User will be charged a fixed amount to watch content and content once purchased will be
                             available for watch for a fixed period of days. After purchasing the content, user will be
                             able to start watching the content, and as soon as the user start watching the content, the
-                            video availability period will start counting. TV Series will be available for watch for a
-                            period of 4 days soon after the user start watching the content. Likewise, movies and short
-                            films will be available for a period of 3 days soon after the user start watching the
-                            content.
+                            video availability period will start counting. Tutorial Series will be available for watch for a
+                            period of 365 days soon after the user start watching the content.
                         </div>
                         <div><br/></div>
                         <div><b>Pricing and Payment Related&nbsp;</b></div>

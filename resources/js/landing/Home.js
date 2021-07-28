@@ -10,6 +10,8 @@ import {AppContext} from "../context/AppContextProvider";
 import {getPublicData} from "../utils/Action";
 import Grid from "@material-ui/core/Grid";
 import Footer from "./Footer";
+import Contact from "./Contact";
+import PaymentTerm from "./PaymentTerm";
 
 const Home=props=>{
     const [state, dispatch] = React.useContext(AppContext);
@@ -20,7 +22,9 @@ const Home=props=>{
         <main style={{backgroundColor:'#f6f6f6'}}>
             <Header/>
             <Container maxWidth={"lg"}>
+                <Route exact path={'/payment'} component={PaymentTerm}/>
                 <Route exact path={'/privacy'} component={Privacy}/>
+                <Route exact path={'/contact'} component={Contact}/>
                 <Route exact path={'/login'} component={Login}/>
                 <Route exact path={'/toc'} component={Toc}/>
                 <Route exact path={'/'} component={Content}/>

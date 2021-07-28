@@ -59,7 +59,7 @@ const Content = props => {
     React.useEffect(() => {
     }, [])
     return (
-        <Grid container={true} spacing={4}>
+        <Grid justify={"center"} container={true} spacing={4}>
             <Grid container={true} item={true}>
                 <Grid container={true} alignContent={'center'} justify={"center"} alignItems={'center'} xs={12} md={6}
                       item={true}>
@@ -249,18 +249,16 @@ const Content = props => {
                     </svg>
                 </Grid>
             </Grid>
-            <Grid container={true} justify={"center"} alignItems={'center'} item={true}>
-                <Typography variant={"h6"}>Testimony</Typography>
-            </Grid>
-            <Grid container={true} spacing={2}>
-                {/*<Carousel  autoPlay>*/}
-                {state?.testimony?.map((item, key) => <Grid item={true} md={3} xs={12} key={key}>
-                    <div className={'my-card2'}>
-                        <Qoute avatar={item.avatar} sentence={item.qoute}/>
-                    </div>
-                </Grid>)}
-                {/*</Carousel>*/}
-            </Grid>
+
+            {/*<Grid container={true} spacing={2}>*/}
+            {/*    /!*<Carousel  autoPlay>*!/*/}
+            {/*    {state?.testimony?.map((item, key) => <Grid item={true} md={3} xs={12} key={key}>*/}
+            {/*        <div className={'my-card2'}>*/}
+            {/*            <Qoute avatar={item.avatar} sentence={item.qoute}/>*/}
+            {/*        </div>*/}
+            {/*    </Grid>)}*/}
+            {/*    /!*</Carousel>*!/*/}
+            {/*</Grid>*/}
 
             <Grid container={true} justify={"center"} alignItems={'center'} item={true}>
                 <Typography variant={"h6"}>Course offered</Typography>
@@ -275,7 +273,7 @@ const Content = props => {
             <Grid container={true} alignItems={"center"} justify={'center'} item={true}>
                 <Typography variant={'h6'}>Contact us</Typography>
             </Grid>
-            <Grid container={true} item={true}>
+            <Grid container={true} item={true} justify={"center"} alignItems={"center"} style={{maxWidth:400}}>
                 <div className={'my-card'}>
                     <Grid style={{flex:1}} container={true}  alignItems={"center"} justify={"center"} spacing={4}
                           item={true}>

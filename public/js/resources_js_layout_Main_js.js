@@ -32444,7 +32444,7 @@ var CreateSubject = function CreateSubject(props) {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_16__.default, {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(react_player__WEBPACK_IMPORTED_MODULE_5__.default, {
                   className: "react-player",
-                  url: video === null || video === void 0 ? void 0 : video.video_url,
+                  url: "https://www.youtube.com/watch?v=".concat(video === null || video === void 0 ? void 0 : video.video_url),
                   width: "80",
                   height: "60"
                 })
@@ -32747,7 +32747,7 @@ var EditSubject = function EditSubject(_ref) {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_material_ui_core__WEBPACK_IMPORTED_MODULE_17__.default, {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_player__WEBPACK_IMPORTED_MODULE_4__.default, {
                   className: "react-player",
-                  url: video === null || video === void 0 ? void 0 : video.video_url,
+                  url: "https://www.youtube.com/watch?v=".concat(video === null || video === void 0 ? void 0 : video.video_url),
                   width: "80",
                   height: "60"
                 })
@@ -35224,7 +35224,11 @@ var PublicUsers = function PublicUsers(props) {
 
   var fetchUser = function fetchUser() {
     var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-    axios.get(_utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_2__.FETCH_APP_USER_API).then(function (res) {
+    axios.get(_utils_ApiRoutes__WEBPACK_IMPORTED_MODULE_2__.FETCH_APP_USER_API, {
+      params: {
+        page: page
+      }
+    }).then(function (res) {
       return setUsers(res.data.data);
     })["catch"](function (err) {
       var errMsg = !!err.response ? err.response.data.error : err.toString();
