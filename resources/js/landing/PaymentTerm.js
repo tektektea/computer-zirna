@@ -50,11 +50,9 @@ const PaymentTerm=props=>{
                     User may contact us at thatea2010@gmail.com in case of refund and any other payment issues.
                     In case of refund, payment gateway fees and taxes applicable on the fees may not be refunded once payment has been captured.
                     Once user starts watching the content, cancellation of payment may not be claimed.
-                    However, user may request cancellation and refund on non-watched content.
-                    Non-watched contents are contents that the user have not started watching,
+                    However, user may request cancellation and refund within 3 days.
                     for which the user can claim full refund excluding payment gateway fees
                     and applicable taxes on the gateway fees.
-                    For series, user purchased full series, non-watch episodes will be used to calculate the refund amount.
                 </p>
                 <p>
                     CONTACT SUPPORT

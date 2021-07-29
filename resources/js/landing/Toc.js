@@ -21,11 +21,6 @@ const Toc=props=>{
                             otherwise visiting or using the Computerzirna Service, you accept this Agreement and consent
                             to contract with us electronically.
                         </div>
-                        <div>If you are an entity other than a natural person, the person who registers the account or
-                            otherwise uses the COMPUTERZIRNA &nbsp;Service must have the authority to bind the entity. In
-                            this context, “you” means both the entity and each person who is authorized to access the
-                            account.
-                        </div>
                         <div>We may update this Agreement by posting a revised version on our website. By continuing to
                             use the Computerzirna &nbsp;Service, you accept any revised Agreement.
                         </div>
