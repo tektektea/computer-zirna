@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Otp;
 use App\Models\User;
 use App\PermissionUtil;
 use Illuminate\Http\Request;
@@ -24,18 +25,25 @@ class OtpController extends Controller
                 'otp' => 'required',
             ]);
 
-            $response = Http::get(self::VERIFY_URL, [
-                'authkey' => env('MSG91_AUTH_KEY'),
-                'mobile' => $request->get('phone_no'),
-                'otp' => $request->get('otp'),
-            ]);
-            $result = json_decode($response->body(), true);
-            if ($result['type'] === 'error') {
-                throw new \Exception($result['message'], 400);
-            }
-            $user=User::phone($request->get('phone_no'))->first();
-            if (!$user) {
-                $user = User::create([
+            $otp=Otp::query()->where('recipient', $request->get('phone_no'))
+                ->where('otp', $request->get('otp'))
+                ->latest()
+                ->first();
+            abort_if(blank($otp),500,'Invalid OTP');
+
+
+//            $response = Http::get(self::VERIFY_URL, [
+//                'authkey' => env('MSG91_AUTH_KEY'),
+//                'mobile' => $request->get('phone_no'),
+//                'otp' => $request->get('otp'),
+//            ]);
+//            $result = json_decode($response->body(), true);
+//            if ($result['type'] === 'error') {
+//                throw new \Exception($result['message'], 400);
+//            }
+            $user = User::query()->where('phone_no',$request->get('phone_no'))->first();
+            if (blank($user)) {
+                $user = User::query()->create([
                     'phone_no' => $request->get('phone_no'),
                     'type' => 'appuser'
                 ]);
@@ -55,16 +63,23 @@ class OtpController extends Controller
             $this->validate($request->only('phone_no'), [
                 'phone_no' => 'required',
             ]);
-
-            $response = Http::get(self::RETRY_URL, [
-                'authkey' => env('MSG91_AUTH_KEY'),
-                'mobile' => $request->get('phone_no'),
-                'retrytype' => 'text',
+            $otp=Otp::query()->create([
+                'otp' => rand(0000, 9999),
+                'recipient'=>$request->get('phone_no'),
             ]);
-            $result = json_decode($response->body(), true);
-            if ($result['type'] === 'error') {
-                throw new \Exception($result['message'], 400);
-            }
+            Http::withHeaders([
+                "authorization" => env('SMS_KEY'),
+                "Content-Type" => "application/json"
+            ])->post("https://www.fast2sms.com/dev/bulkV2", [
+                'route' => 'v3',
+                'sender_id' => 'Cghpet',
+                'message' => "Your OTP for Computerzirna : $otp",
+                'flash' => 1,
+                'language' => 'english',
+                'numbers' => $request->get('phone_no'),
+
+            ]);
+
             $this->handleResponse($request->get('phone_no'), 'Otp sent');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
@@ -77,26 +92,43 @@ class OtpController extends Controller
             $this->validate($request->only('phone_no'), [
                 'phone_no' => 'required'
             ]);
-            $phone=$request->get('phone_no');
+            $phone = $request->get('phone_no');
             if ($phone === '8787883628') {
-                $user=User::query()->where('phone_no', $phone)->first();
+                $user = User::query()->where('phone_no', $phone)->first();
                 Auth::login($user);
                 $token = $user->createToken('access-token', PermissionUtil::userPerms());
                 return response()->json([
-                    'data'=>$token,
+                    'data' => $token,
                     'message' => 'logged in',
-                    'user'=>$user
+                    'user' => $user
                 ]);
             }
-            $response = Http::get(self::SEND_URL, [
-                'template_id' => env('MSG91_TEMPLATE_ID'),
-                'authkey' => env('MSG91_AUTH_KEY'),
-                'mobile' => $request->get('phone_no')
+//            $response = Http::get(self::SEND_URL, [
+//                'template_id' => env('MSG91_TEMPLATE_ID'),
+//                'authkey' => env('MSG91_AUTH_KEY'),
+//                'mobile' => $request->get('phone_no')
+//            ]);
+
+            $otp=Otp::query()->create([
+                'otp' => rand(1000, 9999),
+                'recipient'=>$phone,
             ]);
-            $result = json_decode($response->body(), true);
-            if ($result['type'] === 'error') {
-                throw new \Exception($result['message'], 400);
-            }
+            Http::withHeaders([
+                "authorization" => env('SMS_KEY'),
+                "Content-Type" => "application/json"
+            ])->post("https://www.fast2sms.com/dev/bulkV2", [
+                'route' => 'v3',
+                'sender_id' => 'Cghpet',
+                'message' => "Your OTP for Computerzirna : $otp->otp",
+                'flash' => 0,
+                'language' => 'english',
+                'numbers' => $phone,
+
+            ]);
+//            $result = json_decode($response->body(), true);
+//            if ($result['type'] === 'error') {
+//                throw new \Exception($result['message'], 400);
+//            }
             return $this->handleResponse($request->get('phone_no'), 'Otp sent');
         } catch (\Exception $exception) {
             return $this->handlingException($exception);
