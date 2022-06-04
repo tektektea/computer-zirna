@@ -20,7 +20,7 @@ class OtpController extends Controller
     public function verify(Request $request)
     {
         try {
-            $this->validate($request->only('otp', 'phone_no'), [
+            $this->validate($request, [
                 'phone_no' => 'required',
                 'otp' => 'required',
             ]);
